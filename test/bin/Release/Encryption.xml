@@ -1,0 +1,550 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Encryption</name>
+    </assembly>
+    <members>
+        <member name="T:Utilities.Crypto.AES">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>March 2, 2011 - 1:10 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Implements AES encryption using the RijndaelManaged Cryptography library.
+             </summary>
+             @member byte[] key: Used to create random string.
+             @member byte[] vector: Used to create random string.
+             @member ICryptoTransform encryptorTransform: Used to encrypt a string.
+             @member ICryptoTransform decryptorTransform: Used to decrypt a string.
+             @member UTF8Encoding utfEncoder: Used to translate bytes to text and vice versa
+            *****************************************************************************
+        </member>
+        <member name="T:Utilities.Crypto.Encryption">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>March 2, 2011 - 1:10 PM</date>
+             <category>Abstract Class</category>
+             <summary>
+               Abstract Encryption object to handle encrypting and decrypting text.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Utilities.Crypto.EncryptionInterface">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>February 29, 2012 - 12:24 PM</date>
+             <category>Interface</category>
+             <summary>
+               Encryption interface. Defines how to make calls to decrypt and encrypt text.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.EncryptionInterface.Decrypt(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Decrypts text. Child class must define a method to decrypt a given text string.
+                     * </summary>
+                     * <param name="encryptedData">The encrypted text to decrypt.</param>
+                     * <returns>The decrypted text.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.EncryptionInterface.Decrypt">
+            ****************************************************************************
+            		 * <summary>
+                     *   Decrypts text that has already been encrypted with a call to Encrypt.
+                     * </summary>
+                     * <returns>The decrypted text.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.EncryptionInterface.Encrypt(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Encrypts text. Child class must define a method to encrypt a given text string.
+                     * </summary>
+                     * <param name="text">The regular text message to encrypt.</param>
+                     * <returns>The encrypted text.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.Encryption.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Does nothing.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.Encryption.#ctor(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Sets up the aes encryption and decryption transformations.
+                     * </summary>
+                     * <param name="encryptedText">Stores the encrypted text</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.Encryption.Decrypt(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Abstract Method. Decrypts text. Child class must define a method to decrypt 
+                     *   a given text string.
+                     * </summary>
+                     * <param name="encryptedData">The encrypted text to decrypt.</param>
+                     * <returns>The decrypted text.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.Encryption.Decrypt">
+            ****************************************************************************
+            		 * <summary>
+                     *   Abstract Method. Decrypts text that has already been encrypted with a call
+                     *   to Encrypt.
+                     * </summary>
+                     * <returns>The decrypted text.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.Encryption.Encrypt(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Abstract Method. Encrypts text. Child class must define a method to encrypt 
+                     *   a given text string.
+                     * </summary>
+                     * <param name="text">The regular text message to encrypt.</param>
+                     * <returns>The encrypted text.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="P:Utilities.Crypto.Encryption._encryptedText">
+            <value>The encrypted text.</value> *
+        </member>
+        <member name="M:Utilities.Crypto.AES.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Sets up the aes encryption and decryption transformations.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.AES.#ctor(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Sets up the aes encryption and decryption transformations.
+                     * </summary>
+                     * <param name="encryptedText">Stores the encrypted text</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.AES.GenerateEncryptionKey">
+            ****************************************************************************
+            		 * <summary>
+                     *   Generates an encryption key. Static method.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.AES.GenerateEncryptionVector">
+            ****************************************************************************
+            		 * <summary>
+                     *   Generates a unique encryption vector. Static method.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.AES.Encrypt(System.String)">
+            ****************************************************************************
+            		 * <summary>Encrypt some text and return a string suitable for passing in a URL.</summary>
+                     * <param name="data">The unencrypted text.</param>
+                     * <returns>Encrypted string suitable for passing to a URL.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.AES.Encrypt(System.String,System.Object)">
+            ****************************************************************************
+            		 * <summary>Encrypt some text and return an Encryption.</summary>
+                     * <param name="data">The unencrypted text.</param>
+                     * <param name="placeholder">Dummy parameter to differentiate between the other Encrypt method that returns a string.</param>
+                     * <returns>Encryption object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.AES.encryptHelper(System.String)">
+            Encrypt some text and return an encrypted byte array.
+        </member>
+        <member name="M:Utilities.Crypto.AES.Decrypt(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Decrypt encrypted text and return the original text.
+                     * </summary>
+                     * <returns>Regular text.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.AES.Decrypt(System.Byte[])">
+            ****************************************************************************
+            		 * <summary>
+                     *   Decryption when working with byte arrays.
+                     * </summary>
+                     * <returns>Regular text.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.AES.StrToByteArray(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Convert a string to a byte array.  NOTE: Normally we'd create a Byte Array from a string using an ASCII encoding (like so).
+                     *   System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+                     *   return encoding.GetBytes(str);
+                     *   However, this results in character values that cannot be passed in a URL.  So, instead, I just
+                     *   lay out all of the byte values in a long string of numbers (three per - must pad numbers less than 100).
+                     * </summary>
+                     * <returns>Byte array of string values.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.AES.ByteArrToString(System.Byte[])">
+            ****************************************************************************
+            		 * <summary>
+                     *   Same comment as above. Reverses the above process - StrToByteArray. 
+                     *   Normally the conversion would use an ASCII encoding in the other direction:
+                     *   System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+                     *   return enc.GetString(byteArr);
+                     * </summary>
+                     * <returns>String converted from byte array.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="T:Utilities.Crypto.MD5">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>April 29, 2011 - 10:27 AM</date>
+             <category>Utility Class</category>
+             <summary>
+               Encryption object to handle SHA1 encryption and decryption.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Utilities.Crypto.Rijndael">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>April 26, 2011 - 8:56 AM</date>
+             <category>Abstract Utility Class</category>
+             <summary>
+               Encryption object to handle encryption using the RijndaelManaged .NET encryptino
+               Library. This allows easy implementation of the SHA1 or MD5 (and more!)
+               encryption algorithms.
+             </summary>
+             @member string password: Password to encrypt with.
+             @member string salt: Salt to encrypt with.
+             @member string hashAlgorithm: Can be either SHA1 or MD5.
+             @member string passwordIterations: Number of iterations to do.
+             @member string initialVector: Needs to be 16 ASCII characters long.
+             @member string keySize: Can be 128, 192, or 256.
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.Rijndael.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Empty. Does Nothing. Assumes we use the default parameters
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.Rijndael.#ctor(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Specify a different password to use when encrypting data.
+                     * </summary>
+                     * <param name="password">Password to encrypt with</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.Rijndael.#ctor(System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Specify a different password and salt to use when encrypting data.
+                     * </summary>
+                    .* <param name="password">Password to encrypt with</param>
+            	     * <param name="salt">Salt to encrypt with</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.Rijndael.#ctor(System.String,System.String,System.String,System.Int32,System.String,System.Int32)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Must specify all the encryption parameters to use.
+                     * </summary>
+                     * <param name="password">Password to encrypt with</param>
+            	     * <param name="salt">Salt to encrypt with</param>
+            	     * <param name="hashAlgorithm">Can be either SHA1 or MD5</param>
+            	     * <param name="passwordIterations">Number of iterations to do</param>
+            	     * <param name="initialVector">Needs to be 16 ASCII characters long</param>
+            	     * <param name="keySize">Can be 128, 192, or 256</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.Rijndael.Encrypt(System.String)">
+            ****************************************************************************
+            	     * <summary>
+            	     *   Encrypts a string
+            	     * </summary>
+            	     * <param name="text">Text to be encrypted</param>
+            	     * <returns>An encrypted string</returns>
+                     ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.Rijndael.Decrypt(System.String)">
+            ****************************************************************************
+            	     * <summary>
+            	     *   Decrypts a string.
+            	     * </summary>
+            	     * <param name="encryptedData">Text to be decrypted</param>
+            	     * <returns>A decrypted string</returns>
+                     ******************************************************************************
+        </member>
+        <member name="P:Utilities.Crypto.Rijndael._hashAlgorithm">
+            <value>The child class will specify what type of encryption algorithm to use. eg. MD5 or SHA1</value> *
+        </member>
+        <member name="M:Utilities.Crypto.MD5.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Empty. Does Nothing. Assumes we use the default parameters
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.MD5.#ctor(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Specify a different password to use when encrypting data.
+                     * </summary>
+                     * <param name="password">Password to encrypt with</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.MD5.#ctor(System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Specify a different password and salt to use when encrypting data.
+                     * </summary>
+                    .* <param name="password">Password to encrypt with</param>
+            	     * <param name="salt">Salt to encrypt with</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.MD5.#ctor(System.String,System.String,System.String,System.Int32,System.String,System.Int32)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Must specify all the encryption parameters to use.
+                     * </summary>
+                     * <param name="password">Password to encrypt with</param>
+            	     * <param name="salt">Salt to encrypt with</param>
+            	     * <param name="hashAlgorithm">Can be either SHA1 or MD5</param>
+            	     * <param name="passwordIterations">Number of iterations to do</param>
+            	     * <param name="initialVector">Needs to be 16 ASCII characters long</param>
+            	     * <param name="keySize">Can be 128, 192, or 256</param>
+            		 ******************************************************************************
+        </member>
+        <member name="P:Utilities.Crypto.MD5._hashAlgorithm">
+            <value>Specify the type of encryption algorithm to use.</value> *
+        </member>
+        <member name="T:Utilities.Crypto.PGP">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>March 2, 2011 - 1:10 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Encryption object to handle PGP encryption. Note that this requires the use
+               of an external program, gpg.exe.
+             </summary>
+             @member string gpgExe: The path to the gpg.exe executable file. This program
+                performs the actual pgp encryption.
+             @member string password: The private password used to encrypt/decrypt text
+                with gpg.exe.
+             @member string keysFolder: The path to the public/private keys used with gpg.exe.
+                This folder should contain the pubring.gpg and secring.gpg files.
+             @member string PGPFile: The .gpg file created when encrypting pgp data.
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.PGP.#ctor(System.String,System.String,System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Must specify gpg executable and parameters necessary to run
+                     *   gpg.exe.
+                     * </summary>
+                     * <param name="gpgExe">The gpg executable file path. This is a third-party executable that implements the pgp encryption algorithm.</param>
+                     * <param name="password">The password used to encrypt/decrypt the text with gpg.exe.</param>
+                     * <param name="keysFolder">The path to the pair of public/private keys (pubring.gpg / secring.gpg).</param>
+                     * <param name="username">The real name to use for gpg encryption.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.PGP.#ctor(System.String,System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Must specify gpg executable and parameters necessary to run
+                     *   gpg.exe.
+                     * </summary>
+                     * <param name="gpgExe">The gpg executable file path. This is a third-party executable that implements the pgp encryption algorithm.</param>
+                     * <param name="password">The password used to encrypt/decrypt the text with gpg.exe.</param>
+                     * <param name="keysFolder">The path to the pair of public/private keys (pubring.gpg / secring.gpg).</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.PGP.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Setup default gpg settings for Warwick.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.PGP.Finalize">
+            ****************************************************************************
+            		 * <summary>
+                     *   Destructor. Deletes temporary files.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.PGP.Encrypt(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Encrypts text using pgp. This method must write a temporary file to run the
+                     *   gpg executable.
+                     * </summary>
+                     * <param name="filepath">The file or text to encrypt.</param>
+                     * <returns>The encrypted text.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.PGP.Decrypt(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Decrypts text using pgp. Note that pgp decrypts files, not text or data. 
+                     *   However, if the file is not found, this method attempts to write a temporary
+                     *   file and decrypt this file.
+                     * </summary>
+                     * <param name="filepath">The file to decrypt or the pgp-encrypted text to decrypt.</param>
+                     * <returns>The decrypted text.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="T:Utilities.Crypto.RSA">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>June 6, 2010 - 9:42 AM</date>
+             <category>Utility Class</category>
+             <summary>
+               Encryption object to handle RSA encryption.
+             </summary>
+             @member string privateKeyXmlFile: An optional private key file that specifies
+               the modulus and exponent.
+             @member string publicKeyXmlFile: An optional public key file that specifies
+               the modulus and exponent.
+             @member string modulus: Public key component used to generate RSA encryption.
+             @member string exponent: Public key component used to generate RSA encryption.
+             @member string p: Private key component used to generate RSA encryption.
+             @member string q: Private key component used to generate RSA encryption.
+             @member string dp: Private key component used to generate RSA encryption.
+             @member string dq: Private key component used to generate RSA encryption.
+             @member string inverseQ: Private key component used to generate RSA encryption.
+             @member string d: Private key component used to generate RSA encryption.
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.RSA.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Assumes we use the default RSA parameters specified in the 
+                     *   private members. Creates temporary xml files to store our parameter data.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.RSA.Finalize">
+            ****************************************************************************
+            		 * <summary>
+                     *   Destructor. Deletes temporary xml files created by the default/empty construtor.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.RSA.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Must specify all the public and private key parameters for the
+                     *   RSA encryption algorithm. Overwrites the default RSA settings.
+                     * </summary>
+                     * <param name="modulus">RSA public parameter.</param>
+                     * <param name="exponent">RSA public parameter.</param>
+                     * <param name="p">RSA private parameter.</param>
+                     * <param name="q">RSA private parameter.</param>
+                     * <param name="dp">RSA private parameter.</param>
+                     * <param name="dq">RSA private parameter.</param>
+                     * <param name="inverseQ">RSA private parameter.</param>
+                     * <param name="d">RSA private parameter.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.RSA.#ctor(System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Must specify XML files that contain the RSA parameters.
+                     * </summary>
+                     * <param name="privateKeyXmlFile">The file path to the xml file that specifies the private RSA parameters.</param>
+                     * <param name="publicKeyXmlFile">The file path to the xml file that specifies the public RSA parameters.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.RSA.AssignNewKey(System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Save a new key to the specified file.
+                     * </summary>
+                     * <param name="privateKeyXmlFile">The file path where the new private key file will be saved.</param>
+                     * <param name="publicKeyXmlFile">The file path where the new public key file will be saved.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.RSA.AssignParameter">
+            ****************************************************************************
+            		 * <summary>
+                     *   Assigns a parameter to be used in the encryption.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.RSA.Encrypt(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Encrypts plain text.
+                     * </summary>
+                     * <param name="text">The plain text to encrypt.</param>
+                     * <returns>An encrypted text string.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.RSA.Decrypt(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Decrypts encrypted text.
+                     * </summary>
+                     * <param name="encryptedData">The text encrypted with the Encrypt method.</param>
+                     * <returns>The decrypted plain text string.</returns>
+                     ******************************************************************************
+        </member>
+        <member name="T:Utilities.Crypto.SHA1">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>April 29, 2011 - 10:27 AM</date>
+             <category>Utility Class</category>
+             <summary>
+               Encryption object to handle SHA1 encryption and decryption.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.SHA1.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Empty. Does Nothing. Assumes we use the default parameters
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.SHA1.#ctor(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Specify a different password to use when encrypting data.
+                     * </summary>
+                     * <param name="password">Password to encrypt with</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.SHA1.#ctor(System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Specify a different password and salt to use when encrypting data.
+                     * </summary>
+                    .* <param name="password">Password to encrypt with</param>
+            	     * <param name="salt">Salt to encrypt with</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Utilities.Crypto.SHA1.#ctor(System.String,System.String,System.String,System.Int32,System.String,System.Int32)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Must specify all the encryption parameters to use.
+                     * </summary>
+                     * <param name="password">Password to encrypt with</param>
+            	     * <param name="salt">Salt to encrypt with</param>
+            	     * <param name="hashAlgorithm">Can be either SHA1 or MD5</param>
+            	     * <param name="passwordIterations">Number of iterations to do</param>
+            	     * <param name="initialVector">Needs to be 16 ASCII characters long</param>
+            	     * <param name="keySize">Can be 128, 192, or 256</param>
+            		 ******************************************************************************
+        </member>
+        <member name="P:Utilities.Crypto.SHA1._hashAlgorithm">
+            <value>Specify the type of encryption algorithm to use.</value> *
+        </member>
+    </members>
+</doc>

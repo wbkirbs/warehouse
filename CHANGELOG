@@ -1,0 +1,52 @@
+2013-03-15  Wayne Bryan <wayne.bryan@warwickfulfillment.com> v4.4
+  * Changed configuration to x86.
+
+2013-01-25	Wayne Bryan <wayne.bryan@warwickfulfillment.com> v4.3
+  * Attempt to change Warehouse class to Factory implementation.
+
+2012-12-17	Wayne Bryan <wayne.bryan@warwickfulfillment.com> v4.2
+  * Changed reference to lib folder.
+
+2012-11-19	Wayne Bryan <wayne.bryan@warwickfulfillment.com> v4.1
+  * Added Development flag in CompanyInfo class to easily specify to connect to 
+    a development database instead of production.
+  * Added new datbase in SQL Server, Warwick-DEV. If the development flag is 
+    set for CompanyInfo.WARWICK, this database will be used for database
+	connections.
+
+2012-10-22	Wayne Bryan <wayne.bryan@warwickfulfillment.com> v4.0
+  * Changed name of Inventory class to InventoryItem.
+  * Changed Item class to abstract.
+  * Updated item classes. Made Item class abstract and all other types of items inherit from this class, including Inventory
+  * Removed several obtuse constructors for the objects.
+
+2012-02-23  Wayne Bryan <wayne.bryan@warwickfulfillment.com>
+  * Created the TableJoin class to help facilitate sql joins. Example:
+  
+  SqlDatabase database = new SqlDatabase("abecas_cs", "wfsapp02");
+  
+  //the primary table
+  wmtransactionheader header = new wmtransactionheader(database);
+  header.transactionnumber = "S-0085525";
+
+  //the table to join
+  wmtransactiondetail detail = new wmtransactiondetail(database);
+  detail.setJoin(detail.Columns.r_transactionheader, header.Columns.rowid);
+
+  //another table to join
+  imitem item = new item(database);
+  item.setJoin(item.Columns.rowid, detail.Columns.r_item);
+  
+  TableJoin join = new TableJoin(header, detail);
+  join.Join(); //join the tables
+  
+  Console.WriteLine(join.ToString());//the actual sql join statement
+  
+  foreach (Row row in join) {
+      Console.WriteLine(row["transactionnumber"]);
+      Console.WriteLine(row["rowid"]); //wmtransactionheader.rowid
+      Console.WriteLine(row["wmtransactionheader.keysequence"]);
+      Console.WriteLine(row["wmtransactiondetail.r_transactionheader"]);
+      Console.WriteLine(row["wmtransactiondetail.rowid"]);
+      Console.WriteLine(row["imitem.itemcode"]);
+  }

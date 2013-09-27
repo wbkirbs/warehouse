@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\src\utilities\WarehouseTest\bin\Debug\WarehouseTest.exe" total="117" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2011-12-20" time="10:03:36">
+  <environment nunit-version="2.5.10.11092" clr-version="4.0.30319.239" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\src\utilities\WarehouseTest\bin\Debug" machine-name="GANDALF" user="Wayne" user-domain="gandalf" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\src\utilities\WarehouseTest\bin\Debug\WarehouseTest.exe" executed="True" result="Success" success="True" time="2.294" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="WarehouseTest" executed="True" result="Success" success="True" time="2.274" asserts="0">
+        <results>
+          <test-suite type="TestFixture" name="CompanyTest" executed="True" result="Success" success="True" time="0.310" asserts="0">
+            <results>
+              <test-case name="WarehouseTest.CompanyTest.Constructor_Test" executed="True" result="Success" success="True" time="0.070" asserts="5" />
+              <test-case name="WarehouseTest.CompanyTest.Copy_Test" executed="True" result="Success" success="True" time="0.000" asserts="6" />
+              <test-case name="WarehouseTest.CompanyTest.Create_Test" executed="True" result="Success" success="True" time="0.040" asserts="1" />
+              <test-case name="WarehouseTest.CompanyTest.Delete_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.CompanyTest.EqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.CompanyTest.Equals_Test" executed="True" result="Success" success="True" time="0.000" asserts="13" />
+              <test-case name="WarehouseTest.CompanyTest.Exists_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.CompanyTest.GetHashCode_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.CompanyTest.getRandomWarehouse_Test" executed="True" result="Success" success="True" time="0.020" asserts="5" />
+              <test-case name="WarehouseTest.CompanyTest.NotEqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+              <test-case name="WarehouseTest.CompanyTest.Read_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.CompanyTest.ToString_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.CompanyTest.Update_Test" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="CustomerTest" executed="True" result="Success" success="True" time="0.162" asserts="0">
+            <results>
+              <test-case name="WarehouseTest.CustomerTest.Constructor_Test" executed="True" result="Success" success="True" time="0.010" asserts="5" />
+              <test-case name="WarehouseTest.CustomerTest.Copy_Test" executed="True" result="Success" success="True" time="0.020" asserts="6" />
+              <test-case name="WarehouseTest.CustomerTest.Create_Test" executed="True" result="Success" success="True" time="0.031" asserts="1" />
+              <test-case name="WarehouseTest.CustomerTest.Delete_Test" executed="True" result="Success" success="True" time="0.044" asserts="1" />
+              <test-case name="WarehouseTest.CustomerTest.EqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.CustomerTest.Equals_Test" executed="True" result="Success" success="True" time="0.004" asserts="27" />
+              <test-case name="WarehouseTest.CustomerTest.Exists_Test" executed="True" result="Success" success="True" time="0.015" asserts="1" />
+              <test-case name="WarehouseTest.CustomerTest.GetHashCode_Test" executed="True" result="Success" success="True" time="0.002" asserts="3" />
+              <test-case name="WarehouseTest.CustomerTest.getRandomWarehouse_Test" executed="True" result="Success" success="True" time="0.000" asserts="16" />
+              <test-case name="WarehouseTest.CustomerTest.NotEqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+              <test-case name="WarehouseTest.CustomerTest.Read_Test" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+              <test-case name="WarehouseTest.CustomerTest.ToString_Test" executed="True" result="Success" success="True" time="0.000" asserts="16" />
+              <test-case name="WarehouseTest.CustomerTest.Update_Test" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="InventoryTest" executed="True" result="Success" success="True" time="0.110" asserts="0">
+            <results>
+              <test-case name="WarehouseTest.InventoryTest.Constructor_Test" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+              <test-case name="WarehouseTest.InventoryTest.Copy_Test" executed="True" result="Success" success="True" time="0.010" asserts="6" />
+              <test-case name="WarehouseTest.InventoryTest.Create_Test" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+              <test-case name="WarehouseTest.InventoryTest.Delete_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.InventoryTest.EqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.InventoryTest.Equals_Test" executed="True" result="Success" success="True" time="0.000" asserts="25" />
+              <test-case name="WarehouseTest.InventoryTest.Exists_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.InventoryTest.GetHashCode_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.InventoryTest.getRandomWarehouse_Test" executed="True" result="Success" success="True" time="0.000" asserts="13" />
+              <test-case name="WarehouseTest.InventoryTest.NotEqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+              <test-case name="WarehouseTest.InventoryTest.Read_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.InventoryTest.ToString_Test" executed="True" result="Success" success="True" time="0.000" asserts="14" />
+              <test-case name="WarehouseTest.InventoryTest.Update_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="ItemTest" executed="True" result="Success" success="True" time="0.320" asserts="0">
+            <results>
+              <test-case name="WarehouseTest.ItemTest.Constructor_Test" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+              <test-case name="WarehouseTest.ItemTest.Copy_Test" executed="True" result="Success" success="True" time="0.010" asserts="6" />
+              <test-case name="WarehouseTest.ItemTest.Create_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.ItemTest.Delete_Test" executed="True" result="Success" success="True" time="0.130" asserts="1" />
+              <test-case name="WarehouseTest.ItemTest.EqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.ItemTest.Equals_Test" executed="True" result="Success" success="True" time="0.000" asserts="14" />
+              <test-case name="WarehouseTest.ItemTest.Exists_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.ItemTest.GetHashCode_Test" executed="True" result="Success" success="True" time="0.030" asserts="3" />
+              <test-case name="WarehouseTest.ItemTest.getRandomWarehouse_Test" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+              <test-case name="WarehouseTest.ItemTest.NotEqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+              <test-case name="WarehouseTest.ItemTest.Read_Test" executed="True" result="Success" success="True" time="0.040" asserts="1" />
+              <test-case name="WarehouseTest.ItemTest.ToString_Test" executed="True" result="Success" success="True" time="0.000" asserts="19" />
+              <test-case name="WarehouseTest.ItemTest.Update_Test" executed="True" result="Success" success="True" time="0.030" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="KitTest" executed="True" result="Success" success="True" time="0.110" asserts="0">
+            <results>
+              <test-case name="WarehouseTest.KitTest.Constructor_Test" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+              <test-case name="WarehouseTest.KitTest.Copy_Test" executed="True" result="Success" success="True" time="0.000" asserts="6" />
+              <test-case name="WarehouseTest.KitTest.Create_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.KitTest.Delete_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.KitTest.EqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.KitTest.Equals_Test" executed="True" result="Success" success="True" time="0.000" asserts="13" />
+              <test-case name="WarehouseTest.KitTest.Exists_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.KitTest.GetHashCode_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.KitTest.getRandomWarehouse_Test" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+              <test-case name="WarehouseTest.KitTest.NotEqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+              <test-case name="WarehouseTest.KitTest.Read_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.KitTest.ToString_Test" executed="True" result="Success" success="True" time="0.000" asserts="8" />
+              <test-case name="WarehouseTest.KitTest.Update_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="OrderTest" executed="True" result="Success" success="True" time="0.210" asserts="0">
+            <results>
+              <test-case name="WarehouseTest.OrderTest.Constructor_Test" executed="True" result="Success" success="True" time="0.010" asserts="5" />
+              <test-case name="WarehouseTest.OrderTest.Copy_Test" executed="True" result="Success" success="True" time="0.030" asserts="6" />
+              <test-case name="WarehouseTest.OrderTest.Create_Test" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+              <test-case name="WarehouseTest.OrderTest.Delete_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.OrderTest.EqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.OrderTest.Equals_Test" executed="True" result="Success" success="True" time="0.000" asserts="27" />
+              <test-case name="WarehouseTest.OrderTest.Exists_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.OrderTest.GetHashCode_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.OrderTest.getRandomWarehouse_Test" executed="True" result="Success" success="True" time="0.000" asserts="20" />
+              <test-case name="WarehouseTest.OrderTest.NotEqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+              <test-case name="WarehouseTest.OrderTest.Read_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.OrderTest.ToString_Test" executed="True" result="Success" success="True" time="0.060" asserts="25" />
+              <test-case name="WarehouseTest.OrderTest.Update_Test" executed="True" result="Success" success="True" time="0.030" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="PurchaseOrderTest" executed="True" result="Success" success="True" time="0.120" asserts="0">
+            <results>
+              <test-case name="WarehouseTest.PurchaseOrderTest.Constructor_Test" executed="True" result="Success" success="True" time="0.010" asserts="5" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.Copy_Test" executed="True" result="Success" success="True" time="0.010" asserts="6" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.Create_Test" executed="True" result="Success" success="True" time="0.030" asserts="1" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.Delete_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.EqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.Equals_Test" executed="True" result="Success" success="True" time="0.000" asserts="14" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.Exists_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.GetHashCode_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.getRandomWarehouse_Test" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.NotEqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.Read_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.ToString_Test" executed="True" result="Success" success="True" time="0.000" asserts="6" />
+              <test-case name="WarehouseTest.PurchaseOrderTest.Update_Test" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="TableColumnTest" executed="True" result="Success" success="True" time="0.130" asserts="0">
+            <results>
+              <test-case name="WarehouseTest.TableColumnTest.Constructor_Test" executed="True" result="Success" success="True" time="0.000" asserts="5" />
+              <test-case name="WarehouseTest.TableColumnTest.Copy_Test" executed="True" result="Success" success="True" time="0.010" asserts="6" />
+              <test-case name="WarehouseTest.TableColumnTest.Create_Test" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+              <test-case name="WarehouseTest.TableColumnTest.Delete_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.TableColumnTest.EqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.TableColumnTest.Equals_Test" executed="True" result="Success" success="True" time="0.000" asserts="17" />
+              <test-case name="WarehouseTest.TableColumnTest.Exists_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.TableColumnTest.GetHashCode_Test" executed="True" result="Success" success="True" time="0.000" asserts="3" />
+              <test-case name="WarehouseTest.TableColumnTest.getRandomWarehouse_Test" executed="True" result="Success" success="True" time="0.010" asserts="9" />
+              <test-case name="WarehouseTest.TableColumnTest.NotEqualOperator_Test" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+              <test-case name="WarehouseTest.TableColumnTest.Read_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+              <test-case name="WarehouseTest.TableColumnTest.ToString_Test" executed="True" result="Success" success="True" time="0.000" asserts="9" />
+              <test-case name="WarehouseTest.TableColumnTest.Update_Test" executed="True" result="Success" success="True" time="0.020" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="TableTest" executed="True" result="Success" success="True" time="0.782" asserts="0">
+            <results>
+              <test-case name="WarehouseTest.TableTest.Constructor_Test" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+              <test-case name="WarehouseTest.TableTest.Copy_Test" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+              <test-case name="WarehouseTest.TableTest.Create_Test" executed="True" result="Success" success="True" time="0.078" asserts="1" />
+              <test-case name="WarehouseTest.TableTest.Delete_Test" executed="True" result="Success" success="True" time="0.010" asserts="1" />
+              <test-case name="WarehouseTest.TableTest.EqualOperator_Test" executed="True" result="Success" success="True" time="0.019" asserts="3" />
+              <test-case name="WarehouseTest.TableTest.Equals_Test" executed="True" result="Success" success="True" time="0.077" asserts="8" />
+              <test-case name="WarehouseTest.TableTest.Exists_Test" executed="True" result="Success" success="True" time="0.036" asserts="1" />
+              <test-case name="WarehouseTest.TableTest.GetHashCode_Test" executed="True" result="Success" success="True" time="0.002" asserts="3" />
+              <test-case name="WarehouseTest.TableTest.getRandomWarehouse_Test" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+              <test-case name="WarehouseTest.TableTest.NotEqualOperator_Test" executed="True" result="Success" success="True" time="0.002" asserts="4" />
+              <test-case name="WarehouseTest.TableTest.Read_Test" executed="True" result="Success" success="True" time="0.023" asserts="1" />
+              <test-case name="WarehouseTest.TableTest.ToString_Test" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+              <test-case name="WarehouseTest.TableTest.Update_Test" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

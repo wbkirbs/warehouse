@@ -1,0 +1,2484 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Warehouse</name>
+    </assembly>
+    <members>
+        <member name="T:Warehouse.Address">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 24, 2012 - 2:37 PM</date>
+             <category>Class</category>
+             <summary>
+               Stores address information for a customer, instead of all the individual fields.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.WarehouseData">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>September 28, 2010 - 2:20 PM</date>
+             <category>Abstract Class</category>
+             <summary>
+               Represents the root of the Warehouse Data class hierarchy. Is more or less
+               just an abstract placeholder. No functionality at this time.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.WarehouseInterface">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>November 23, 2011 - 11:36 AM</date>
+             <category>Interface</category>
+             <summary>
+               Represents the core functionality of a Warehouse object..
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseInterface.getRandomWarehouse">
+            ****************************************************************************
+            		 * <summary>
+                     *   Generates a random Warehouse object with random data.
+                     * </summary>
+                     * <returns>The random Warehouse object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseInterface.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The object to compare to.</param>
+                     * <returns>True if the Warehouse objects member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseInterface.CompareTo(System.Object)">
+            ****************************************************************************
+            		 * <summary>Compares two Warehouse objects to see if they are less than, equal, or great than one another. This is used for sorting objects.</summary>
+                     * <param name="warehouse">The object to compare to.</param>
+                     * <returns>0 if the two objects are identical. -1 if the current object is less than obj. +1 if the currnet object is greater than obj.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseInterface.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the Warehouse object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseInterface.Copy">
+            ****************************************************************************
+            		 * <summary>
+                     *   Creates a new WarehouseData object and copies all data members to this new object.
+                     * </summary>
+                     * <returns>An exact copy of the current WarehouseData object</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseInterface.Exists">
+            ****************************************************************************
+            		 * <summary>
+                     *   Checks if the current WarehouseData object already exists in the "database" context.
+                     * </summary>
+                     * <returns>True if the WarehouseData already exists. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseInterface.Create">
+            ****************************************************************************
+            		 * <summary>
+                     *   Creates a new WarehouseData object in the "database" with the values of the
+                     *   current WarehouseData object.
+                     * </summary>
+                     * <returns>True if the WarehouseData was successfully created. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseInterface.Read">
+            ****************************************************************************
+            		 * <summary>
+                     *   Retrieves data on the current WarehouseData object and updates itself.
+                     * </summary>
+                     * <returns>True if the WarehouseData was successfully read. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseInterface.ReadAll">
+            ****************************************************************************
+            		 * <summary>
+                     *   Retrieves list of data on the current WarehouseData object and updates itself.
+                     * </summary>
+                     * <returns>True if the WarehouseData was successfully read. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseInterface.Update">
+            ****************************************************************************
+            		 * <summary>
+                     *   Updates the current WarehouseData object in the "database."
+                     * </summary>
+                     * <returns>True if the WarehouseData was successfully updated. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseInterface.Delete">
+            ****************************************************************************
+            		 * <summary>
+                     *   Deletes the current WarehouseData object in the "database."
+                     * </summary>
+                     * <returns>True if the WarehouseData was successfully deleted. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="F:Warehouse.WarehouseData._company">
+            <value>The company to perform Warehouse operations on.</value> *
+        </member>
+        <member name="M:Warehouse.WarehouseData.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Does nothing.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.#ctor(Warehouse.WarehouseData)">
+            ****************************************************************************
+             <summary>
+                Copy Constructor. Assigns value of Warehouse object to the current instance.
+             </summary>
+             <param name="warehouse"></param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>
+                Constructor. Assigns company value.
+             </summary>
+             <param name="company">The company to use for this Warehouse object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.verifyCompany">
+            ****************************************************************************
+             <summary>Easy way to verify Company is correctly setup.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.ToString">
+            ****************************************************************************
+             <summary>ToString implementation.</summary>
+             <returns>String representation of all Warehouse members.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The object to compare to.</param>
+                     * <returns>True if the Warehouse objects member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.op_Equality(Warehouse.WarehouseData,Warehouse.WarehouseData)">
+            ****************************************************************************
+            		 * <summary>Overload the == operator for convenience. Calls the Equals method.</summary>
+                     * <param name="warehouse1">One of the Warehouse objects to compare.</param>
+                     * <param name="warehouse2">The other Warehouse object to use for comparison.</param>
+                     * <returns>True if the Warehouse objects are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.op_Inequality(Warehouse.WarehouseData,Warehouse.WarehouseData)">
+            ****************************************************************************
+            		 * <summary>Overload the != operator for convenience. Calls the == method.</summary>
+                     * <param name="warehouse1">One of the Warehouse objects to compare.</param>
+                     * <param name="warehouse2">The other Warehouse object to use for comparison.</param>
+                     * <returns>False if the Warehouse objects are equivalent. True otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.CompareTo(System.Object)">
+            ****************************************************************************
+            		 * <summary>Compares two Warehouse objects to see if they are less than, equal, or great than one another. This is used for sorting objects.</summary>
+                     * <param name="warehouse">The object to compare to.</param>
+                     * <returns>0 if the two objects are identical. -1 if the current object is less than obj. +1 if the currnet object is greater than obj.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the Warehouse object.</returns>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.Dispose">
+            ****************************************************************************
+             <summary>Cleans up warehouse. Disposes of company/database connection.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.getRandomWarehouse">
+            ****************************************************************************
+             <summary>Sets Warehouse members with random data.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.setCompany(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Sets the Company object for the Warehouse.</summary>
+             <param name="company">The company object to use.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.currentTime">
+            ****************************************************************************
+            		 * <summary>
+                     *   Returns the current system time.
+                     * </summary>
+                     * <returns>Current time, to the millisecond.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.currentDate">
+            ****************************************************************************
+            		 * <summary>
+                     *   Returns the current date, withouth any time information.
+                     * </summary>
+                     * <returns>Current time, at midnight.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.getDateTime(System.String)">
+            ****************************************************************************
+             <summary>Useful string to DateTime conversion function.</summary>
+             <param name="datetimeString">The string to use to convert to a DateTime.</param>
+             <returns>Converted DateTime object.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.getDate(System.DateTime)">
+            ****************************************************************************
+             <summary>Strips off the time and just returns the date @ midnight.</summary>
+             <param name="datetime">The date to use to convert.</param>
+             <returns>Converted DateTime object.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.getDouble(System.String)">
+            ****************************************************************************
+             <summary>Useful string to double conversion function.</summary>
+             <param name="doubleString">The string to use to convert to a double.</param>
+             <returns>Converted double.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.getFloat(System.String)">
+            ****************************************************************************
+             <summary>Useful string to float conversion function.</summary>
+             <param name="floatString">The string to use to convert to a float.</param>
+             <returns>Converted float.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.getInt(System.String)">
+            ****************************************************************************
+             <summary>Useful string to int conversion function.</summary>
+             <param name="intString">The string to use to convert to a int.</param>
+             <returns>Converted int.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.getBoolean(System.String)">
+            ****************************************************************************
+             <summary>Converts a string to a boolean object.</summary>
+             <param name="boolean">String format of a boolean, such as true or yes.</param>
+             <returns>Boolean representation of the string.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.getBytes(System.String)">
+            ****************************************************************************
+             <summary>Converts a string to a byte array.</summary>
+             <param name="bytes">String to convert to byte array.</param>
+             <returns>A byte array, using utf8 encoding.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.getCurrency(System.String)">
+            ****************************************************************************
+             <summary>Converts a string number to currency format.</summary>
+             <param name="number">String format of a number.</param>
+             <returns>A string representation of a number, rounded to two decimal places.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.getCurrency(System.Double)">
+            ****************************************************************************
+             <summary>Converts a number to currency format. Alias.</summary>
+             <param name="number">The number to convert to currency.</param>
+             <returns>A string representation of a number, rounded to two decimal places.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.Copy">
+            ****************************************************************************
+            		 * <summary>
+                     *   Creates a new WarehouseData object and copies all data members to this new object.
+                     * </summary>
+                     * <returns>An exact copy of the current WarehouseData object</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.Exists">
+            ****************************************************************************
+            		 * <summary>
+                     *   Checks if the current WarehouseData object already exists in the "database" context.
+                     * </summary>
+                     * <returns>True if the WarehouseData already exists. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.Create">
+            ****************************************************************************
+            		 * <summary>
+                     *   Creates a new WarehouseData object in the "database" with the values of the
+                     *   current WarehouseData object.
+                     * </summary>
+                     * <returns>True if the WarehouseData object was successfully created. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.Read">
+            ****************************************************************************
+            		 * <summary>Retrieves data on the current WarehouseData object and updates itself.</summary>
+                     * <returns>True if the WarehouseData object was successfully read. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.ReadAll">
+            ****************************************************************************
+            		 * <summary>Retrieves list of data on the current WarehouseData object.</summary>
+                     * <returns>Array of WarehouseData.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.Update">
+            ****************************************************************************
+            		 * <summary>Updates the current WarehouseData object in the "database."</summary>
+                     * <returns>True if the WarehouseData object was successfully updated. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.Delete">
+            ****************************************************************************
+            		 * <summary>Deletes the current WarehouseData object in the "database."</summary>
+                     * <returns>True if the WarehouseData object was successfully deleted. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.GetEnumerator">
+            ****************************************************************************
+             <summary>IEnumerator implementation.</summary>
+             <returns>An enumerator to the WarehouseData object.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.Reset">
+            ****************************************************************************
+             <summary>IEnumerable implementation. Resets the foreach loop.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.WarehouseData.MoveNext">
+            ****************************************************************************
+             <summary>IEnumerable implementation. Moves to the next iteration in the loop.</summary>
+             <returns>True if another iteration is possible. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.WarehouseData.Company">
+            <value>Returns the appropriate company for this Warehouse instance.</value> *
+        </member>
+        <member name="P:Warehouse.WarehouseData.id">
+            <value>Identifying string. All Warehouse objects must use an id.</value> *
+        </member>
+        <member name="P:Warehouse.WarehouseData.Time">
+            <value>The current date and time. Alias of currentTime(). Read-only access.</value> *
+        </member>
+        <member name="P:Warehouse.WarehouseData.Date">
+            <value>Today's date, as of midnight. Alias of currentDate(). Read-only access.</value> *
+        </member>
+        <member name="P:Warehouse.WarehouseData.MidnightDateTime">
+            <value>Today's date, as of midnight in DateTime object.</value> *
+        </member>
+        <member name="P:Warehouse.WarehouseData.ItemProfile">
+            <value>The item profile for the company.</value> *
+        </member>
+        <member name="P:Warehouse.WarehouseData.Current">
+            ****************************************************************************
+             <value>IEnumerable implementation. Returns the current object in the loop.</value>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Address.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Does nothing.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Address.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Sets up company.</summary>
+             <param name="company">The Company to use.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Address.getName">
+            ****************************************************************************
+            		 * <summary>Gets the formatted full name - helper to name property.</summary>
+                     * <returns>Full Name of a customer</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Address.setName(System.String)">
+            ****************************************************************************
+            		 * <summary>Takes in a full name and breaks it up into first and last names - helper to name property.</summary>
+                     * <param name="name">The full name to store.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Address.getFirstName(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Processes a full name and only returns the first name.
+                     * </summary>
+                     * <param name="name">The full name of a customer</param>
+                     * <returns>First Name for a customer</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Address.getMiddleName(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Processes a full name and only returns the middle name.
+                     * </summary>
+                     * <param name="name">The full name of a customer</param>
+                     * <returns>Middle Name for a customer</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Address.getLastName(System.String)">
+            ****************************************************************************
+            		 * <summary>Processes a full name and only returns the last name.</summary>
+                     * <param name="name">The last name of a customer</param>
+                     * <returns>Last Name for a customer</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Address.getAddress">
+            ****************************************************************************
+            		 * <summary>Gets a formatted address - helper to address property.</summary>
+                     * <returns>The formatted address.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Address.getCityStateZip">
+            ****************************************************************************
+            		 * <summary>Gets the city, state zipcode line of an address.</summary>
+                     * <returns>The formatted address.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Address.ToString">
+            ****************************************************************************
+            		 * <summary>
+                     *   Retrieves a printable string of all the customer fields.
+                     * </summary>
+                     * <returns>String of each customer field member.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Address.FirstName">
+            <value>A first name.</value>                              *
+        </member>
+        <member name="P:Warehouse.Address.MiddleName">
+            <value>A middle name.</value>                             *
+        </member>
+        <member name="P:Warehouse.Address.LastName">
+            <value>A last name.</value>                               *
+        </member>
+        <member name="P:Warehouse.Address.BusinessName">
+            <value>Business or company name.</value>                  *
+        </member>
+        <member name="P:Warehouse.Address.Attention">
+            <value>Attention Line. Defaults to business name.</value> *
+        </member>
+        <member name="P:Warehouse.Address.Address1">
+            <value>First line of street address.</value>              *
+        </member>
+        <member name="P:Warehouse.Address.Address2">
+            <value>Second line of street address.</value>             *
+        </member>
+        <member name="P:Warehouse.Address.Address3">
+            <value>Third line of street address.</value>              *
+        </member>
+        <member name="P:Warehouse.Address.City">
+            <value>The city.</value>                                  *
+        </member>
+        <member name="P:Warehouse.Address.State">
+            <value>The state.</value>                                 *
+        </member>
+        <member name="P:Warehouse.Address.ZipCode">
+            <value>The zip code or postal code.</value>               *
+        </member>
+        <member name="P:Warehouse.Address.Country">
+            <value>The country Name.</value>                          *
+        </member>
+        <member name="P:Warehouse.Address.ISO2">
+            <value>ISO 2-digit code of the country</value>            *
+        </member>
+        <member name="P:Warehouse.Address.ISO3">
+            <value>ISO 3-digit code of the country</value>            *
+        </member>
+        <member name="P:Warehouse.Address.ISONumeric">
+            <value>ISO numberic code of the country</value>           *
+        </member>
+        <member name="P:Warehouse.Address.Phone">
+            <value>The phone number.</value>                          *
+        </member>
+        <member name="P:Warehouse.Address.PhoneExtension">
+            <value>The phone extension.</value>                       *
+        </member>
+        <member name="P:Warehouse.Address.Phone2">
+            <value>The second phone number.</value>                   *
+        </member>
+        <member name="P:Warehouse.Address.PhoneExtension2">
+            <value>The second phone extension.</value>                *
+        </member>
+        <member name="P:Warehouse.Address.Email">
+            <value>The email address.</value>                         *
+        </member>
+        <member name="P:Warehouse.Address.Fax">
+            <value>The fax number.</value>                            *
+        </member>
+        <member name="P:Warehouse.Address.Suffix">
+            <value>The suffix (jr., sr., etc.)</value>                *
+        </member>
+        <member name="P:Warehouse.Address.Salutation">
+            <value>The saluation (mr, mrs, etc.)</value>              *
+        </member>
+        <member name="P:Warehouse.Address.Gender">
+            <value>Gender</value>                                     *
+        </member>
+        <member name="P:Warehouse.Address.Name">
+            <value>Full name of customer. Calls getName() and setName().</value> *
+        </member>
+        <member name="P:Warehouse.Address.AddressLine">
+            <value>Full address of customer, including street address and city and state. Calls getAddress() and setAddress().</value> *
+        </member>
+        <member name="P:Warehouse.Address.CityStateZip">
+            <value>city state zip code line of address</value> *
+        </member>
+        <member name="T:Warehouse.Adjustment">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>August 16, 2012 - 1:40 PM</date>
+             <category>WarehouseData Class</category>
+             <summary>
+               Provides an interfaces to Adjustment transactions.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.PurchaseOrder">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>November 23, 2011 - 1:05 PM</date>
+             <category>Class</category>
+             <summary>
+               Implements Purchase Order functionality.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Just calls base class to setup the company.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.#ctor(Warehouse.PurchaseOrder)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies PurchaseOrder member data.</summary>
+             <param name="po">The PurchaseOrder to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="company">The company to use for this Warehouse object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.ToString">
+            ****************************************************************************
+             <summary>ToString implementation.</summary>
+             <returns>String representation of all PurchaseOrder members.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.getRandomWarehouse">
+            ****************************************************************************
+             <summary>Generates a Customer with random made up data.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The PurchaseOrder object to compare to.</param>
+                     * <returns>True if the PurchaseOrder member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the PurchaseOrder object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.Copy">
+            ****************************************************************************
+             <summary>Copies current PurchaseOrder member data and returns a new PurchaseOrder instance.</summary>
+             <returns>An equivalent PurchaseOrder object, as a new object.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.Exists">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.Create">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.Read">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.ReadAll">
+            ****************************************************************************
+            		 * <summary>Implements ReadAll Method for WarehouseData.</summary>
+                     * <returns>Not implemented yet.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.Update">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrder.Delete">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.PurchaseOrder.Items">
+            <value>The list of items on the po.</value>                 *
+        </member>
+        <member name="P:Warehouse.PurchaseOrder.Shipper">
+            <value>Where the po is shipped from.</value>                *
+        </member>
+        <member name="P:Warehouse.PurchaseOrder.DateCreated">
+            <value>The date the po was created.</value>                 *
+        </member>
+        <member name="P:Warehouse.PurchaseOrder.DateReceived">
+            <value>The date the po was received.</value>                *
+        </member>
+        <member name="P:Warehouse.PurchaseOrder.DateExpected">
+            <value>The date the po truck is destined to arrive.</value> *
+        </member>
+        <member name="P:Warehouse.PurchaseOrder.Comments">
+            <value>Instructions/Comments on the PO.</value>             *
+        </member>
+        <member name="M:Warehouse.Adjustment.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Sets up the company connection.</summary>
+             <param name="company">The company to use for the Adjustment.</param>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Company">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>September 26, 2010 - 6:29 PM</date>
+             <category>Class</category>
+             <summary>
+               Provides a way to setup the company that the WarehouseData should be performed on.
+               A company should be setup before any WarehouseData objects are created.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Warehouse.Company.id">
+            <value>Company id </value> *
+        </member>
+        <member name="M:Warehouse.Company.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Just calls base class to setup the company.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies Company member data.</summary>
+             <param name="company">The Company to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.#ctor(Databases.Database)">
+            ****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="database">The database to use for the Company object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.#ctor(Databases.Database,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="database">The database to use for the Company object.</param>
+             <param name="companyId">The company identifier to use for the Company object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.ToString">
+            ****************************************************************************
+            		 * <summary>Used to prints out company settings, such as company name, user id, etc.</summary>
+                     * <returns>String of the Company object data members.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.Dispose">
+            ****************************************************************************
+            		 * <summary>
+                     *   Closes the database connection and performs cleanup.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.getRandomWarehouse">
+            ****************************************************************************
+             <summary>Generates a Customer with random made up data.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The Company object to compare to.</param>
+                     * <returns>True if the Company member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the Company object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.Copy">
+            ****************************************************************************
+             <summary>Copies current Company member data and returns a new Company instance.</summary>
+             <returns>An equivalent Company object, as a new object.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.Copy(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Copies current Company member data to the current instance.</summary>
+             <param name="company">The Company object to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.Exists">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.Create">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.Read">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.ReadAll">
+            ****************************************************************************
+            		 * <summary>Implements ReadAll Method for WarehouseData.</summary>
+                     * <returns>Not implemented yet.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.Update">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Company.Delete">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.Company.Database">
+            <value>Database object that WarehouseData uses. Read-only access.</value> *
+        </member>
+        <member name="P:Warehouse.Company.CompanyName">
+            <value>The company name that the WarehouseData is using. Read-only access.</value> *
+        </member>
+        <member name="P:Warehouse.Company.Name">
+            <value>The company name that the WarehouseData is using. Read-only access.</value> *
+        </member>
+        <member name="P:Warehouse.Company.SystemName">
+            <value>Read-only access.</value> *
+        </member>
+        <member name="P:Warehouse.Company.UserName">
+            <value>The user name or id that the WarehouseData is using. Read-only access.</value> *
+        </member>
+        <member name="P:Warehouse.Company.MomDatabase">
+            <value>The corresponding name of the MOM database to interface with.</value> *
+        </member>
+        <member name="P:Warehouse.Company.MomServer">
+            <value>The corresponding name of the MOM server to interface with.</value> *
+        </member>
+        <member name="P:Warehouse.Company.MomUserName">
+            <value>The username to connect to the MOM database.</value> *
+        </member>
+        <member name="P:Warehouse.Company.MomPassword">
+            <value>The password to connect to the MOM database.</value> *
+        </member>
+        <member name="P:Warehouse.Company.CompanyGuid">
+            <value>The global identifier for this company, for easier access.</value> *
+        </member>
+        <member name="P:Warehouse.Company.ShipmentProfile">
+            <value>The default shipment profile to use for this company.</value> *
+        </member>
+        <member name="P:Warehouse.Company.ReceivingProfile">
+            <value>The default receiving profile to use for this company.</value> *
+        </member>
+        <member name="P:Warehouse.Company.CustomerPrefix">
+            <value>The customer prefix to use for consignees and customers.</value> *
+        </member>
+        <member name="P:Warehouse.Company.MinimumItemPrice">
+            <value>A minimum item price for all items of this company. For user error checks.</value> *
+        </member>
+        <member name="T:Warehouse.CreditCard">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 22, 2012 - 12:22 PM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Class for storing payment information for an order.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Payment">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 22, 2012 - 12:22 PM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Class for storing payment information for an order.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Warehouse.Payment.Type">
+            <value>The type of payment. See PaymentType enumerator for options.</value> *
+        </member>
+        <member name="F:Warehouse.Payment.Amount">
+            <value>The total amount of this payment.</value>                            *
+        </member>
+        <member name="M:Warehouse.Payment.#ctor(Warehouse.Payment.PaymentType)">
+            ****************************************************************************
+             <summary>Constructor. Simply calls parent class and sets up the payment type.</summary>
+             <param name="paymentType">The type of payment.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Payment.#ctor(Warehouse.Payment.PaymentType,Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Simply calls parent class and sets up the payment type.</summary>
+             <param name="paymentType">The type of payment.</param>
+             <param name="company">The company object to use.</param>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Payment.PaymentType">
+            <value>Types of available payments.</value> *
+        </member>
+        <member name="F:Warehouse.Payment.PaymentType.CREDIT_CARD">
+            <value>A credit card payment.</value>       *
+        </member>
+        <member name="F:Warehouse.Payment.PaymentType.CHECK">
+            <value>A check payment.</value>             *
+        </member>
+        <member name="F:Warehouse.Payment.PaymentType.INVOICE">
+            <value>An invoice payment.</value>          *
+        </member>
+        <member name="F:Warehouse.Payment.PaymentType.ECHECK">
+            <value>An echeck payment.</value>           *
+        </member>
+        <member name="F:Warehouse.Payment.PaymentType.CREDIT_CARD_TOKEN">
+            <value>A credit card token payment.</value> *
+        </member>
+        <member name="F:Warehouse.Payment.PaymentType.PAYPAL">
+            <value>A paypal payment.</value>            *
+        </member>
+        <member name="M:Warehouse.CreditCard.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Sets payment type as credit card.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.CreditCard.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Sets payment type as credit card.</summary>
+             <param name="company">The company object to use.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.CreditCard.LuhnCheckDigitValidation">
+            ****************************************************************************
+             <summary>Algorithm for determining if a credit card number is a valid number. This works for all major credit cards.</summary>
+             <returns>True if a valid credit card number. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.CreditCard.expiration">
+            <value>The expiration date of the credit card.</value> *
+        </member>
+        <member name="P:Warehouse.CreditCard.cvc">
+            <value>The CVC code of the credit card. This value should never be saved to permanent storage.</value> *
+        </member>
+        <member name="P:Warehouse.CreditCard.authorization">
+            <value>An authorization code for a credit card payment.</value> *
+        </member>
+        <member name="P:Warehouse.CreditCard.authorizationTime">
+            <value>Time of the authorization</value> *
+        </member>
+        <member name="P:Warehouse.CreditCard.creditcard">
+            <value>The credit card type. See CardTypes enumerator for possible list.</value> *
+        </member>
+        <member name="P:Warehouse.CreditCard.number">
+            <value></value> *
+        </member>
+        <member name="T:Warehouse.CreditCard.CardType">
+            <value>List of credit card types</value> *
+        </member>
+        <member name="F:Warehouse.CreditCard.CardType.VISA">
+            <value>A Visa credit card.</value>              *
+        </member>
+        <member name="F:Warehouse.CreditCard.CardType.DISCOVER">
+            <value>A Discover credit card.</value>          *
+        </member>
+        <member name="F:Warehouse.CreditCard.CardType.AMERICAN_EXPRESS">
+            <value>An American Express credit card.</value> *
+        </member>
+        <member name="F:Warehouse.CreditCard.CardType.MASTERCARD">
+            <value>A Mastercard credit card.</value>        *
+        </member>
+        <member name="F:Warehouse.CreditCard.CardType.DINERS_CLUB">
+            <value>A Diners Club card.</value>              *
+        </member>
+        <member name="T:Warehouse.CreditCardToken">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 22, 2012 - 12:37 PM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Class for storing payment information about a credit card tokenization order.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.CreditCardToken.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Sets payment type as a credit card token.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.CreditCardToken.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Sets payment type as a credit card token.</summary>
+             <param name="company">The company object to use.</param>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.CreditCardToken.CustomerProfileId">
+            <value>The Authorize.net customer id.</value>              *
+        </member>
+        <member name="P:Warehouse.CreditCardToken.PaymentProfileId">
+            <value>The Authorize.net payment profile id.</value>       *
+        </member>
+        <member name="P:Warehouse.CreditCardToken.LastFourOfNumber">
+            <value>Last four digits of the credit card number.</value> *
+        </member>
+        <member name="P:Warehouse.CreditCardToken.ApprovalCode">
+            <value>The approval code for the tokenization.</value>     *
+        </member>
+        <member name="P:Warehouse.CreditCardToken.Issuer">
+            <value>Issuer of the tokenization transaction.</value>     *
+        </member>
+        <member name="P:Warehouse.CreditCardToken.AuthorizationTransactionId">
+            <value>Authorize.net transaction id.</value>               *
+        </member>
+        <member name="T:Warehouse.Customer">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>September 24, 2010 - 11:11 AM</date>
+             <category>Class</category>
+             <summary>
+               Implementation of a customer/consignee.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Warehouse.Customer.customerType">
+            <value>The type of customer. See CustomerType enumerator.</value> *
+        </member>
+        <member name="M:Warehouse.Customer.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Call parent constructor.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.#ctor(Warehouse.Customer)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies Customer member data.</summary>
+             <param name="customer">The Customer to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="company">The company to use for this Customer object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.#ctor(Warehouse.Address)">
+            ****************************************************************************
+             <summary>Constructor. Assigns address and company values.</summary>
+             <param name="address">The address to use for this Customer object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.ToString">
+            ****************************************************************************
+            		 * <summary>
+                     *   Retrieves a printable string of all the customer fields.
+                     * </summary>
+                     * <returns>String of each customer field member.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.getRandomWarehouse">
+            ****************************************************************************
+             <summary>Generates a Customer with random made up data.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The Customer object to compare to.</param>
+                     * <returns>True if the Customer member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the Customer object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.Copy">
+            ****************************************************************************
+            		 * <summary>
+                     *   Copies customer data into a new Customer object.
+                     * </summary>
+                     * <returns>The new Customer object with the same data as the current object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.Exists">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Exists Method for WarehouseData.
+                     * </summary>
+                     * <returns>True if this customer already exists in the customers table. False otherwise</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.Create">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Create Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.Read">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Read Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.ReadAll">
+            ****************************************************************************
+            		 * <summary>Implements ReadAll Method for WarehouseData.</summary>
+                     * <returns>Not implemented yet.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.Update">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Update Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Customer.Delete">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Delete Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Customer.FirstName">
+            <value>Customer's first name.</value>                             *
+        </member>
+        <member name="P:Warehouse.Customer.MiddleName">
+            <value>Customer's middle name.</value>                            *
+        </member>
+        <member name="P:Warehouse.Customer.LastName">
+            <value>Customer's last name.</value>                              *
+        </member>
+        <member name="P:Warehouse.Customer.Name">
+            <value>Customer's full name.</value>                              *
+        </member>
+        <member name="P:Warehouse.Customer.BusinessName">
+            <value>Customer's business or company name.</value>               *
+        </member>
+        <member name="P:Warehouse.Customer.Attention">
+            <value>Attention Line. Defaults to business name.</value>         *
+        </member>
+        <member name="P:Warehouse.Customer.Address1">
+            <value>First line of customer's street address.</value>           *
+        </member>
+        <member name="P:Warehouse.Customer.Address2">
+            <value>Second line of customer's street address.</value>          *
+        </member>
+        <member name="P:Warehouse.Customer.Address3">
+            <value>Thirs line of customer's street address.</value>           *
+        </member>
+        <member name="P:Warehouse.Customer.City">
+            <value>Customer's city.</value>                                   *
+        </member>
+        <member name="P:Warehouse.Customer.State">
+            <value>Customer's state.</value>                                  *
+        </member>
+        <member name="P:Warehouse.Customer.ZipCode">
+            <value>Customer's zip code or postal code.</value>                *
+        </member>
+        <member name="P:Warehouse.Customer.Country">
+            <value>Customer's country.</value>                                *
+        </member>
+        <member name="P:Warehouse.Customer.Phone">
+            <value>Customer's phone number.</value>                           *
+        </member>
+        <member name="P:Warehouse.Customer.PhoneExtension">
+            <value>Customer's phone extension.</value>                        *
+        </member>
+        <member name="P:Warehouse.Customer.Phone2">
+            <value>Customer's second phone number.</value>                    *
+        </member>
+        <member name="P:Warehouse.Customer.PhoneExtension2">
+            <value>Customer's second phone extension.</value>                 *
+        </member>
+        <member name="P:Warehouse.Customer.Email">
+            <value>Customer's e-mail address.</value>                         *
+        </member>
+        <member name="P:Warehouse.Customer.Fax">
+            <value>Customer's fax number.</value>                             *
+        </member>
+        <member name="P:Warehouse.Customer.CityStateZip">
+            <value>The city state zipcode address line.</value>               *
+        </member>
+        <member name="T:Warehouse.Customer.CustomerType">
+            <value>List of possible customer types.</value> *
+        </member>
+        <member name="F:Warehouse.Customer.CustomerType.SHIPTO">
+            <value>A customer that is represented by a shipping adderss.</value> *
+        </member>
+        <member name="F:Warehouse.Customer.CustomerType.BILLTO">
+            <value>A customer that is represented by a billing adderss.</value>  *
+        </member>
+        <member name="F:Warehouse.Customer.CustomerType.SOLDTO">
+            <value>A customer that is represented by a soldto adderss.</value>   *
+        </member>
+        <member name="T:Warehouse.Inventory">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>September 24, 2010 - 11:10 AM</date>
+             <category>WarehouseData Class</category>
+             <summary>
+               Provides an interface with order line items.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Item">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>September 24, 2010 - 11:10 AM</date>
+             <category>WarehouseData Class</category>
+             <summary>
+               Provides an interfaces with items.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Just calls parent constructor.
+                     * </summary>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="company">The company to use for this Warehouse object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.#ctor(Warehouse.Item)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies Item member data.</summary>
+             <param name="item">The Item to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.#ctor(Warehouse.Inventory)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies Inventory member data from parent class.</summary>
+             <param name="inventory">The Inventory to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The Item object to compare to.</param>
+                     * <returns>True if the Item member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.CompareTo(System.Object)">
+            ****************************************************************************
+            		 * <summary>Compares two Warehouse objects to see if they are less than, equal, or great than one another. This is used for sorting objects.</summary>
+                     * <param name="warehouse">The object to compare to.</param>
+                     * <returns>0 if the two objects are identical. -1 if the current object is less than obj. +1 if the currnet object is greater than obj.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the Item object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.getPriceString">
+            *****************************************************************************
+            		 * <summary>
+                     *   Gets the price in a string currency format.
+                     * </summary>
+                     * <returns>The price as a currency string.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.ToString">
+            ****************************************************************************
+            		 * <summary>
+                     *   Used to print out item settings.
+                     * </summary>
+                     * <returns>String of the Item object data members.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.getRandomWarehouse">
+            ****************************************************************************
+             <summary>Generates an OrderItem with random made up data.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.Copy">
+            ****************************************************************************
+            		 * <summary>
+                     *   Copies item data into a new Item object.
+                     * </summary>
+                     * <returns>The new Item object with the same data as the current object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.Exists">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Exists Method for WarehouseData.
+                     * </summary>
+                     * <returns>True if the Item already exists in the items table. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.Create">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Create Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.Read">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Read Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.Update">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Update Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Item.Delete">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Delete Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Item.Inventory">
+            <value>Representation of the inventory object.</value> *
+        </member>
+        <member name="P:Warehouse.Item.SKU">
+            <value>The item sku.</value>                                           *
+        </member>
+        <member name="P:Warehouse.Item.UPC">
+            <value>The upc of an item.</value>                                     *
+        </member>
+        <member name="P:Warehouse.Item.ISBN">
+            <value>The ISBN code of the item.</value>                              *
+        </member>
+        <member name="P:Warehouse.Item.Description">
+            <value>A description of the item.</value>                              *
+        </member>
+        <member name="P:Warehouse.Item.Description2">
+            <value>Additional description of the item.</value>                     *
+        </member>
+        <member name="P:Warehouse.Item.Quantity">
+            <value>The quantity of the item.</value>                               *
+        </member>
+        <member name="P:Warehouse.Item.Price">
+            <value>The price of the item.</value>                                  *
+        </member>
+        <member name="P:Warehouse.Item.UnitCost">
+            <value>The unit cost of the item.</value>                              *
+        </member>
+        <member name="P:Warehouse.Item.Discount">
+            <value>The discount applied to the item.</value>                       *
+        </member>
+        <member name="P:Warehouse.Item.Tax">
+            <value>The tax associated with this order.</value>                     *
+        </member>
+        <member name="P:Warehouse.Item.ShippingCost">
+            <value>The shipping cost for shipping this order.</value>              *
+        </member>
+        <member name="P:Warehouse.Item.Subtotal">
+            <value>The total value before shipping, tax, etc. are applied.</value> *
+        </member>
+        <member name="P:Warehouse.Item.Total">
+            <value>The total cost of item qty, price, discount.</value>            *
+        </member>
+        <member name="P:Warehouse.Item.SerialNumbers">
+            <value>List of serial numbers for an item.</value>                     *
+        </member>
+        <member name="P:Warehouse.Item.Weight">
+            <value>The weight of the item.</value>                                 *
+        </member>
+        <member name="P:Warehouse.Item.Width">
+            <value>The width of the item.</value>                                  *
+        </member>
+        <member name="P:Warehouse.Item.Length">
+            <value>The length of the item.</value>                                 *
+        </member>
+        <member name="P:Warehouse.Item.Height">
+            <value>The height of the item.</value>                                 *
+        </member>
+        <member name="P:Warehouse.Item.Volume">
+            <value>The item volume.</value>                                        *
+        </member>
+        <member name="P:Warehouse.Item.Instructions">
+            <value>Special instructions for the item.</value>                      *
+        </member>
+        <member name="P:Warehouse.Item.QuantityOrdered">
+            <value>Current quantity on order for this inventory item.</value>      *
+        </member>
+        <member name="P:Warehouse.Item.QuantityPending">
+            <value>Current quantity pending for this inventory item.</value>       *
+        </member>
+        <member name="P:Warehouse.Item.QuantityReadyToShip">
+            <value>Current quantity available to ship.</value>                     *
+        </member>
+        <member name="P:Warehouse.Item.QuantityBackOrdered">
+            <value>Current quantity on backorder for this inventory item.</value>  *
+        </member>
+        <member name="P:Warehouse.Item.QuantityShipped">
+            <value>Current quantity committed for this inventory item.</value>     *
+        </member>
+        <member name="P:Warehouse.Item.QuantityCancelled">
+            <value>The quantity cancelled of the item.</value>                     *
+        </member>
+        <member name="P:Warehouse.Item.QuantityFilled">
+            <value>The quantity fulfilled of the item.</value>                     *
+        </member>
+        <member name="P:Warehouse.Item.UnitOfMeasure">
+            <value>The items unit of measure.</value>                              *
+        </member>
+        <member name="P:Warehouse.Item.Oversize">
+            <value>Indicates whether this item is oversized.</value>               *
+        </member>
+        <member name="P:Warehouse.Item.ColorCode">
+            <value>A color code describing the item.</value>                       *
+        </member>
+        <member name="P:Warehouse.Item.Color">
+            <value>The color description of the item.</value>                      *
+        </member>
+        <member name="P:Warehouse.Item.ColorDescription">
+            <value>A color description describing the item.</value>                *
+        </member>
+        <member name="P:Warehouse.Item.SizeCode">
+            <value>A size code desribing the item.</value>                         *
+        </member>
+        <member name="P:Warehouse.Item.Size">
+            <value>The size describing the item.</value>                           *
+        </member>
+        <member name="P:Warehouse.Item.SizeDescription">
+            <value>A size description for the item.</value>                        *
+        </member>
+        <member name="P:Warehouse.Item.DepartmentCode">
+            <value>A department code describing the item.</value>                  *
+        </member>
+        <member name="P:Warehouse.Item.Style">
+            <value>The style associated with this item.</value>                    *
+        </member>
+        <member name="P:Warehouse.Item.ShipDate">
+            <value>The date this item should be shipped.</value>                   *
+        </member>
+        <member name="P:Warehouse.Item.GiftWrap">
+            <value>Indicates whether this item should be gift wrapped.</value>     *
+        </member>
+        <member name="P:Warehouse.Item.GiftMessage">
+            <value>A gift message the customer can enter for this item.</value>    *
+        </member>
+        <member name="P:Warehouse.Item.Continuity">
+            <value>Indicates whether item is part of a continuity order.</value>   *
+        </member>
+        <member name="M:Warehouse.Inventory.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Just calls parent constructor.
+                     * </summary>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="company">The company to use for this Warehouse object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.#ctor(Warehouse.Inventory)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies InventoryItem member data.</summary>
+             <param name="item">The InventoryItem to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.#ctor(Warehouse.Item)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies Inventory member data from parent class.</summary>
+             <param name="inventory">The Inventory to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.ToString">
+            ****************************************************************************
+            		 * <summary>
+                     *   Used to prints out item settings.
+                     * </summary>
+                     * <returns>String of the InventoryItem obejcts data members.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.getRandomWarehouse">
+            ****************************************************************************
+             <summary>Generates an InventoryItem with random made up data.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The InventoryItem object to compare to.</param>
+                     * <returns>True if the InventoryItem member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the InventoryItem object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.CompareTo(System.Object)">
+            ****************************************************************************
+            		 * <summary>Compares two Inventory objects.</summary>
+                     * <param name="obj">The other Inventory object to compare.</param>
+                     * <returns>0 if the two objects are identical. -1 if the current object is less than obj. +1 if the currnet object is greater than obj.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.Copy">
+            ****************************************************************************
+            		 * <summary>
+                     *   Copies item data into a new InventoryItem object.
+                     * </summary>
+                     * <returns>The new InventoryItem object with the same data as the current object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.Exists">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Exists Method for WarehouseData.
+                     * </summary>
+                     * <returns>True if the InventoryItem already exists in the items table. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.Create">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Create Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.Read">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Read Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.Update">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Update Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Inventory.Delete">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Delete Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Warehouse.Inventory.Locations" -->
+        <member name="T:Warehouse.Kit">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>November 23, 2011 - 12:44 PM</date>
+             <category>Class</category>
+             <summary>
+               Implements Kit functionality. A kit is essentially a group of inventory items.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Just calls base class to setup the company.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.#ctor(Warehouse.Kit)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies Kit member data.</summary>
+             <param name="kit">The Kit to copy.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="company">The company to use for this Warehouse object.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.ToString">
+            ****************************************************************************
+             <summary>ToString implementation.</summary>
+             <returns>String representation of all Kit members.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.getRandomWarehouse">
+            ****************************************************************************
+             <summary>Generates a Kit with random made up data.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The Kit object to compare to.</param>
+                     * <returns>True if the Kit member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the Kit object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.AddItem(Warehouse.Inventory)">
+            ****************************************************************************
+            		 * <summary>Adds an item to the list of kit items.</summary>
+                     * <param name="item">The item to add to this kit.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.RemoveItem(Warehouse.Inventory)">
+            ****************************************************************************
+            		 * <summary>Removes an item from the list of kit items.</summary>
+                     * <param name="item">The item to remove from the kit.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.Copy">
+            ****************************************************************************
+             <summary>Copies current Kit member data and returns a new Kit instance.</summary>
+             <returns>An equivalent Kit object, as a new object.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.Exists">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.Create">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.Read">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.ReadAll">
+            ****************************************************************************
+            		 * <summary>Implements ReadAll Method for WarehouseData.</summary>
+                     * <returns>Not implemented yet.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.Update">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Kit.Delete">
+            ****************************************************************************
+             <summary>Not implement yet.</summary>
+             <returns>Not implement yet.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.Kit.Items">
+            <value>The list of items in the kit.</value> *
+        </member>
+        <member name="P:Warehouse.Kit.SKU">
+            <value>The kit item sku.</value>             *
+        </member>
+        <member name="P:Warehouse.Kit.Name">
+            <value>The kit name.</value>                 *
+        </member>
+        <member name="P:Warehouse.Kit.Description">
+            <value>The kit description.</value>          *
+        </member>
+        <member name="P:Warehouse.Kit.Weight">
+            <value>The kit weight.</value>               *
+        </member>
+        <member name="P:Warehouse.Kit.Width">
+            <value>The kit width.</value>                *
+        </member>
+        <member name="P:Warehouse.Kit.Length">
+            <value>The kit length.</value>               *
+        </member>
+        <member name="P:Warehouse.Kit.Height">
+            <value>The kit height.</value>               *
+        </member>
+        <member name="P:Warehouse.Kit.Quantity">
+            <value>The quantity of the kit.</value>      *
+        </member>
+        <member name="T:Warehouse.Order">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>September 21, 2010 - 3:51 PM</date>
+             <category>WarehouseData Class</category>
+             <summary>
+               Provides an interfaces to orders.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Call parent constructor.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.#ctor(Warehouse.Order)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies Order member data.</summary>
+             <param name="order">The Order to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="company">The company to use for this Warehouse object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.ToString">
+            ****************************************************************************
+            		 * <summary>Used to prints out order settings.</summary>
+                     * <returns>String of the Order obejcts data members.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The Order object to compare to.</param>
+                     * <returns>True if the Order member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the Order object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.getRandomWarehouse">
+            ****************************************************************************
+            		 * <summary>
+                     *   Copies random order data into an Order object.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.Copy">
+            ****************************************************************************
+            		 * <summary>
+                     *   Copies order data into a new Order object.
+                     * </summary>
+                     * <returns>The new Order object with the same data as the current object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.Exists">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Exists Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.Create">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Create Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.Read">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Read Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.ReadAll">
+            ****************************************************************************
+            		 * <summary>Implements ReadAll Method for WarehouseData.</summary>
+                     * <returns>Not implemented yet.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.Update">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Update Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Order.Delete">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Delete Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Order.OrderNumber">
+            <value>The order id number for this transaction. Alias of id.</value>  *
+        </member>
+        <member name="P:Warehouse.Order.SubTotal">
+            <value>The Total value before shipping, Tax, etc. are applied.</value> *
+        </member>
+        <member name="P:Warehouse.Order.Discount">
+            <value>A discount amount for the order</value>                         *
+        </member>
+        <member name="P:Warehouse.Order.ShippingCost">
+            <value>The shipping cost for shipping this order.</value>              *
+        </member>
+        <member name="P:Warehouse.Order.Tax">
+            <value>The Tax associated with this order.</value>                     *
+        </member>
+        <member name="P:Warehouse.Order.Total">
+            <value>The final Total amount on the order.</value>                    *
+        </member>
+        <member name="P:Warehouse.Order.GiftMessage">
+            <value>A gift message the customer can enter for the order</value>     *
+        </member>
+        <member name="P:Warehouse.Order.SourceCode">
+            <value>A source code to track this order.</value>                      *
+        </member>
+        <member name="P:Warehouse.Order.OrderDate">
+            <value>The date the order was "placed".</value>                        *
+        </member>
+        <member name="T:Warehouse.OrderItem">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>September 24, 2010 - 11:10 AM</date>
+             <category>WarehouseData Class</category>
+             <summary>
+               Provides an interfaces with order line items.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Just calls parent constructor.
+                     * </summary>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="company">The company to use for this Warehouse object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.#ctor(Warehouse.OrderItem)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies OrderItem member data.</summary>
+             <param name="item">The OrderItem to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.#ctor(Warehouse.Inventory)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies Inventory member data from parent class.</summary>
+             <param name="inventory">The Inventory to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.ToString">
+            ****************************************************************************
+            		 * <summary>
+                     *   Used to prints out item settings.
+                     * </summary>
+                     * <returns>String of the OrderItem obejcts data members.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The OrderItem object to compare to.</param>
+                     * <returns>True if the OrderItem member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.CompareTo(System.Object)">
+            ****************************************************************************
+            		 * <summary>Compares two Warehouse objects to see if they are less than, equal, or great than one another. This is used for sorting objects.</summary>
+                     * <param name="warehouse">The object to compare to.</param>
+                     * <returns>0 if the two objects are identical. -1 if the current object is less than obj. +1 if the currnet object is greater than obj.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the OrderItem object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.Copy">
+            ****************************************************************************
+            		 * <summary>
+                     *   Copies item data into a new OrderItem object.
+                     * </summary>
+                     * <returns>The new OrderItem object with the same data as the current object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.Exists">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Exists Method for WarehouseData.
+                     * </summary>
+                     * <returns>True if the OrderItem already exists in the items table. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.Create">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Create Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.Read">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Read Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.Update">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Update Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderItem.Delete">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Delete Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="P:Warehouse.OrderItem.SalesPrice">
+            <value>The sales price of the item. Alias to price.</value> *
+        </member>
+        <member name="T:Warehouse.OrderList">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 23, 2012 - 8:45 AM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Class to read in an entire list of order objects.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Warehouse.OrderList._ordersToSearch">
+            <value>Stored list of orders to search from.</value> *
+        </member>
+        <member name="M:Warehouse.OrderList.search">
+            ****************************************************************************
+             <summary>Child classes must implement method to search for orders.</summary>
+             <returns>List of orders that were found</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderList.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Calls parent constructor.</summary>
+             <param name="company">The company to use.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderList.Add(Warehouse.Order)">
+            ****************************************************************************
+             <summary>Adds an order to the list to search.</summary>
+             <param name="order">The order to add to the list.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderList.GetEnumerator">
+            ****************************************************************************
+             <summary>Gets an enumerator for the order list.</summary>
+             <returns>Enumerator to loop over the order list object.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderList.MoveNext">
+            ****************************************************************************
+             <summary>Moves to the next order in the list.</summary>
+             <returns>True if there are any more orders in the list. False if no more orders exist.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.OrderList.Reset">
+            ****************************************************************************
+             <summary>Sets the iterator back to the beginning of the order list.</summary>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.OrderList.Current">
+            <value>The current order in the list.</value> *
+        </member>
+        <member name="T:Warehouse.PayPal">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 22, 2012 - 12:38 PM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Class for storing payment information about a PayPayl order.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PayPal.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Sets payment type as paypal.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PayPal.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Sets payment type as paypal.</summary>
+             <param name="company">The company object to use.</param>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.PayPal.token">
+            <value>The paypal token.</value> *
+        </member>
+        <member name="P:Warehouse.PayPal.payerId">
+            <value>Paypal id.</value> *
+        </member>
+        <member name="T:Warehouse.PurchaseOrderItem">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>September 24, 2010 - 11:10 AM</date>
+             <category>WarehouseData Class</category>
+             <summary>
+               Provides an interfaces with order line items.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Just calls parent constructor.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="company">The company to use for this Warehouse object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.#ctor(Warehouse.PurchaseOrderItem)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies PurchaseOrderItem member data.</summary>
+             <param name="item">The PurchaseOrderItem to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.#ctor(Warehouse.Inventory)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies Inventory member data from parent class.</summary>
+             <param name="inventory">The Inventory to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.ToString">
+            ****************************************************************************
+            		 * <summary>
+                     *   Used to prints out item settings.
+                     * </summary>
+                     * <returns>String of the PurchaseOrderItem object data members.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.getRandomWarehouse">
+            ****************************************************************************
+             <summary>Generates an PurchaseOrderItem with random made up data.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The PurchaseOrderItem object to compare to.</param>
+                     * <returns>True if the PurchaseOrderItem member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.CompareTo(System.Object)">
+            ****************************************************************************
+            		 * <summary>Compares two Warehouse objects to see if they are less than, equal, or great than one another. This is used for sorting objects.</summary>
+                     * <param name="warehouse">The object to compare to.</param>
+                     * <returns>0 if the two objects are identical. -1 if the current object is less than obj. +1 if the currnet object is greater than obj.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the PurchaseOrderItem object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.Copy">
+            ****************************************************************************
+            		 * <summary>
+                     *   Copies item data into a new PurchaseOrderItem object.
+                     * </summary>
+                     * <returns>The new PurchaseOrderItem object with the same data as the current object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.Exists">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Exists Method for WarehouseData.
+                     * </summary>
+                     * <returns>True if the PurchaseOrderItem already exists in the items table. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.Create">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Create Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.Read">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Read Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.Update">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Update Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.PurchaseOrderItem.Delete">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Delete Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="P:Warehouse.PurchaseOrderItem.QuantityDelivered">
+            <value>The quantity delivered of the item.</value>            *
+        </member>
+        <member name="P:Warehouse.PurchaseOrderItem.QuantityApplied">
+            <value>The quantity applied to the purchase order.</value>    *
+        </member>
+        <member name="P:Warehouse.PurchaseOrderItem.ExpectedDate">
+            <value>The date the item is expected.</value>                 *
+        </member>
+        <member name="P:Warehouse.PurchaseOrderItem.ReceivedDate">
+            <value>The date the item was received.</value>                *
+        </member>
+        <member name="P:Warehouse.PurchaseOrderItem.Received">
+            <value>Indicates whether this item has been received.</value> *
+        </member>
+        <member name="P:Warehouse.PurchaseOrderItem.SupplierSku">
+            <value>Supplier Sku number.</value>                           *
+        </member>
+        <member name="P:Warehouse.PurchaseOrderItem.SupplierDescription">
+            <value>Supplier Description.</value>                          *
+        </member>
+        <member name="T:Warehouse.Shipment">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>September 21, 2010 - 3:51 PM</date>
+             <category>WarehouseData Class</category>
+             <summary>
+               Provides an interfaces to orders.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Call parent constructor.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.#ctor(Warehouse.Shipment)">
+            ****************************************************************************
+             <summary>Copy Constructor. Copies Order member data.</summary>
+             <param name="order">The Order to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="company">The company to use for this Warehouse object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.setShipType(System.String)">
+            ****************************************************************************
+             <summary>Sets the appropriate shipping method based on a string value.</summary>
+             <param name="shipType">The shipping method to lookup.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.ToString">
+            ****************************************************************************
+            		 * <summary>Used to prints out order settings.</summary>
+                     * <returns>String of the Order obejcts data members.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement object Equals.</summary>
+                     * <param name="obj">The Order object to compare to.</param>
+                     * <returns>True if the Order member data are equivalent. False otherwise.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.AddItem(Warehouse.OrderItem[])">
+            ****************************************************************************
+            		 * <summary>Adds an item to the list of order items.</summary>
+                     * <param name="item">The item to add to this order.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.AddItem(System.String,System.Int32)">
+            ****************************************************************************
+            		 * <summary>Adds an item to the list of order items.</summary>
+                     * <param name="sku">The item sku to add to this order.</param>
+                     * <param name="quantity">The item quantity to add to this order.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.RemoveItem(Warehouse.OrderItem)">
+            ****************************************************************************
+            		 * <summary>Removes an item from the list of order items.</summary>
+                     * <param name="item">The item to remove from the order.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.RemoveItem(System.String,System.Int32)">
+            ****************************************************************************
+            		 * <summary>Removes an item from the list of order items.</summary>
+                     * <param name="sku">The item sku to remove from the order.</param>
+                     * <param name="quantity">The item quantity to remove from the order.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.AddPayment(Warehouse.Payment)">
+            ****************************************************************************
+            		 * <summary>Adds a payment to the list of order payments.</summary>
+                     * <param name="payment">The payment to add to this order.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.RemovePayment(Warehouse.Payment)">
+            ****************************************************************************
+            		 * <summary>Removes a payment from the list of order payments.</summary>
+                     * <param name="payment">The payment to remove from the order.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Warehouse must implement GetHashCode.</summary>
+                     * <returns>Unique hashcode for the Order object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.getRandomWarehouse">
+            ****************************************************************************
+            		 * <summary>
+                     *   Copies random order data into an Order object.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.Copy">
+            ****************************************************************************
+            		 * <summary>
+                     *   Copies order data into a new Order object.
+                     * </summary>
+                     * <returns>The new Order object with the same data as the current object.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.Exists">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Exists Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.Create">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Create Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.Read">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Read Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.ReadAll">
+            ****************************************************************************
+            		 * <summary>Implements ReadAll Method for WarehouseData.</summary>
+                     * <returns>Not implemented yet.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.Update">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Update Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Shipment.Delete">
+            ****************************************************************************
+            		 * <summary>
+                     *   Implements Delete Method for WarehouseData.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Shipment.ShipmentNumber">
+            <value>Alternative order identifier.</value>                           *
+        </member>
+        <member name="P:Warehouse.Shipment.OrderDate">
+            <value>The date the order was "placed".</value>                        *
+        </member>
+        <member name="P:Warehouse.Shipment.ShipDate">
+            <value>The date the order was "shipped".</value>                       *
+        </member>
+        <member name="P:Warehouse.Shipment.PickTicketNumber">
+            <value>A pick ticket reference number.</value>                         *
+        </member>
+        <member name="P:Warehouse.Shipment.GiftMessage">
+            <value>A gift message the customer can enter for the order</value>     *
+        </member>
+        <member name="P:Warehouse.Shipment.SubTotal">
+            <value>The Total value before shipping, Tax, etc. are applied.</value> *
+        </member>
+        <member name="P:Warehouse.Shipment.Discount">
+            <value>A discount amount for the order</value>                         *
+        </member>
+        <member name="P:Warehouse.Shipment.ShippingCost">
+            <value>The shipping cost for shipping this order.</value>              *
+        </member>
+        <member name="P:Warehouse.Shipment.Tax">
+            <value>The Tax associated with this order.</value>                     *
+        </member>
+        <member name="P:Warehouse.Shipment.Total">
+            <value>The final Total amount on the order.</value>                    *
+        </member>
+        <member name="P:Warehouse.Shipment.SourceCode">
+            <value>A source code to track this order.</value>                      *
+        </member>
+        <member name="P:Warehouse.Shipment.OrderType">
+            <value>The type of order: Internet, Phone, etc.</value>                *
+        </member>
+        <member name="P:Warehouse.Shipment.CatalogCode">
+            <value>The catalog code.</value>                                       *
+        </member>
+        <member name="P:Warehouse.Shipment.PromotionCode">
+            <value>A promotion code entered by the customer.</value>               *
+        </member>
+        <member name="P:Warehouse.Shipment.Multiship">
+            <value>Whether or not this order has multiple shipto addresses</value> *
+        </member>
+        <member name="P:Warehouse.Shipment.ShipMethod">
+            <value>The shipping method used for the order.</value>                 *
+        </member>
+        <member name="P:Warehouse.Shipment.TrackingNumber">
+            <value>The tracking number for the order.</value>                                          *
+        </member>
+        <member name="P:Warehouse.Shipment.TrackingNumbers">
+            <value>List of tracking number objects.</value>                                            *
+        </member>
+        <member name="P:Warehouse.Shipment.BillTo">
+            <value>The customer paying for the order.</value>                                          *
+        </member>
+        <member name="P:Warehouse.Shipment.ShipTo">
+            <value>The customer the order is shipping to.</value>                                      *
+        </member>
+        <member name="P:Warehouse.Shipment.Items">
+            <value>List of items that were ordered.</value>                                            *
+        </member>
+        <member name="P:Warehouse.Shipment.Boxes">
+            <value>List of boxes on the order.</value>                                             *
+        </member>
+        <member name="P:Warehouse.Shipment.Payments">
+            <value>List of payments on the order.</value> *
+        </member>
+        <member name="P:Warehouse.Shipment.Payment">
+            <value>Default payment of the order.</value> *
+        </member>
+        <member name="P:Warehouse.Shipment.TotalItemPrice">
+            ****************************************************************************
+            		 * <summary>Computes the Total price, according to the price of each individual item.</summary>
+                     * <returns>Total price of the items.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Shipment.TotalItemQuantity">
+            ****************************************************************************
+            		 * <summary>Computes the Total number of items on the order.</summary>
+                     * <returns>Total quanity of items in the order...eg number of item units.</returns>
+            		 ******************************************************************************
+        </member>
+        <member name="T:Warehouse.Shipment.ShipType">
+            <value>List of possible shipping methods.</value> *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPSG">
+            <value>UPS Ground shipping.</value>                 *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPS1">
+            <value>UPS next day shipping.</value>               *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPS1AM">
+            <value>UPS next day AN shipping.</value>            *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPS1PM">
+            <value>UPS next day PM shipping.</value>            *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPS1SAVER">
+            <value>UPS next day air saver.</value>              *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPS2">
+            <value>UPS 2nd day shipping.</value>                *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPS2AM">
+            <value>UPS 2nd day AM shipping.</value>             *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPS2PM">
+            <value>UPS 2nd day PM shipping.</value>             *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPS3">
+            <value>UPS 3rd day select shipping.</value>         *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.USPS">
+            <value>Post office shipping.</value>                *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPSMI">
+            <value>Mail Innovations shipping.</value>           *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPSMI1">
+            <value>Mail Innovations overnight shipping.</value> *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPSMI2">
+            <value>Mail Innovations 2nd day shipping.</value>   *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.UPSINTERNATIONAL">
+            <value>UPS Expedited International.</value>         *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.FEDEX">
+            <value>Fed Ex Ground shipping.</value>              *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.FEDEXHOM">
+            <value>Fed Ex Home Delivery shipping.</value>       *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.FEDEX1">
+            <value>Fed Ex standard overnight shipping.</value>  *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.FEDEX1AM">
+            <value>Fed Ex express overnight shipping.</value>   *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.FEDEX1EAM">
+            <value>Fed Ex first overnight shipping.</value>     *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.FEDEX2">
+            <value>Fed Ex 2nd day shipping.</value>             *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.FEDEX3">
+            <value>Fed Ex 3rd day shipping.</value>             *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.FEDEXSP">
+            <value>Fed Ex SmartPost (USPS) shipping.</value>    *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.FEDEXSAVER">
+            <value>Fed Ex Express Saver (3DF)</value>           *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.LTL">
+            <value>LTL shipping.</value>                        *
+        </member>
+        <member name="F:Warehouse.Shipment.ShipType.AMAZON">
+            <value>Amazon shipping.</value>                     *
+        </member>
+        <member name="T:Warehouse.Tax">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 24, 2012 - 2:42 PM</date>
+             <category>Class</category>
+             <summary>
+               Stores tax data for a location.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Warehouse.Tax.location">
+            <value>The tax location.</value>                          *
+        </member>
+        <member name="M:Warehouse.Tax.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Sets up company.</summary>
+             <param name="company">The Company to use.</param>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.Tax.nationalRate">
+            <value>National sales tax percentage.</value>             *
+        </member>
+        <member name="P:Warehouse.Tax.stateRate">
+            <value>State sales tax percentage.</value>                *
+        </member>
+        <member name="P:Warehouse.Tax.countyRate">
+            <value>County sales tax percentage.</value>               *
+        </member>
+        <member name="P:Warehouse.Tax.cityRate">
+            <value>City sales tax percentage.</value>                 *
+        </member>
+        <member name="P:Warehouse.Tax.taxShipping">
+            <value>Whether to calculate tax on shipping cost.</value> *
+        </member>
+        <member name="T:Warehouse.TrackingNumber">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>February 22, 2012 - 1:42 PM</date>
+             <category>Warehosue Class</category>
+             <summary>Represents a tracking number for a package.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.TrackingNumber.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Does nothing.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.TrackingNumber.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Assigns the company.</summary>
+             <param name="company">The company object to use.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.TrackingNumber.#ctor(Warehouse.Company,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Assigns the company.</summary>
+             <param name="company">The company object to use.</param>
+             <param name="trackingNumber">The tracking number to store.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.TrackingNumber.Equals(System.Object)">
+            ****************************************************************************
+            		 * <summary>Determines if this TrackingNumber object is equivalent to another TrackingNumber.</summary>
+                     * <param name="obj">The TrackingNumber object to compare to.</param>
+                     * <returns>True if the TrackingNumber member data are equivalent. False otherwise.</returns>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Warehouse.TrackingNumber.GetHashCode">
+            ****************************************************************************
+            		 * <summary>Calculates a unique hash for this TrackingNumber object.</summary>
+                     * <returns>Unique hashcode for the TrackingNumber object.</returns>
+            		 *******************************************************************************
+        </member>
+        <member name="P:Warehouse.TrackingNumber.TheTrackingNumber">
+            <value>The actual tracking number assigned.</value>       *
+        </member>
+        <member name="P:Warehouse.TrackingNumber.Weight">
+            <value>The weight of the package.</value>                 *
+        </member>
+        <member name="P:Warehouse.TrackingNumber.Freight">
+            <value>The freight weight of the package.</value>         *
+        </member>
+        <member name="P:Warehouse.TrackingNumber.Shipdate">
+            <value>The shipping date of this tracking number.</value> *
+        </member>
+    </members>
+</doc>

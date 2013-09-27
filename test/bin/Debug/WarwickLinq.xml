@@ -1,0 +1,1474 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WarwickLinq</name>
+    </assembly>
+    <members>
+        <member name="T:Warehouse.Databases.Linq.Warwick.company">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 23, 2012 - 12:55 PM</date>
+             <category>Linq Class</category>
+             <name>company</name>
+             <summary>Table representation of the company table in the warwick database.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.company.id">
+            <value>easy access to the "id" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.company.fullname">
+            <value>easy access to the "fullname" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.company.name">
+            <value>easy access to the "name" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.company.created">
+            <value>easy access to the "created" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.company.created_user">
+            <value>easy access to the "created_user" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.company.updated">
+            <value>easy access to the "updated" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.company.updated_user">
+            <value>easy access to the "updated_user" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.company.momdbname">
+            <value>easy access to the "momdbname" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.company.apikey">
+            <value>easy access to the "apikey" field</value> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.company.#ctor">
+            *****************************************************************************
+             <summary>Constructor. Automatically sets up database connection to Warwick.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.company.#ctor(Warehouse.Company)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="company">Company object to use for connecting to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.company.#ctor(Warehouse.Databases.Linq.Warwick.company.companyDataContext.companyData)">
+            *****************************************************************************
+             <summary>Copy Constructor.</summary>
+             <param name="row">The table data to copy.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.company.Create">
+            *****************************************************************************
+             <summary>Attempts to create a row in a database table.</summary>
+             <returns>True if the table row was successfully created. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.company.DataContext">
+            <value>The current data context used for linq queries.</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.company.Table">
+            <value>The table object used for linq queries.</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.company.companyDataContext">
+            <summary>Wrapper class for table database access.</summary> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.company.companyDataContext.#ctor(System.String)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connectionString">The connection string to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.company.companyDataContext.#ctor(System.Data.SqlClient.SqlConnection)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connection">Established SQL connection object.</param>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.company.companyDataContext.table">
+            <summary>Access to the underlying table data context.</summary> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.company.companyDataContext.companyData">
+            <summary>Wrapper class for individual table fields.</summary> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.company.companyDataContext.companyData.id">
+            <value>"id" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.company.companyDataContext.companyData.fullname">
+            <value>"fullname" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.company.companyDataContext.companyData.name">
+            <value>"name" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.company.companyDataContext.companyData.created">
+            <value>"created" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.company.companyDataContext.companyData.created_user">
+            <value>"created_user" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.company.companyDataContext.companyData.updated">
+            <value>"updated" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.company.companyDataContext.companyData.updated_user">
+            <value>"updated_user" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.company.companyDataContext.companyData.momdbname">
+            <value>"momdbname" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.company.companyDataContext.companyData.apikey">
+            <value>"apikey" field</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.customers">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 23, 2012 - 12:55 PM</date>
+             <category>Linq Class</category>
+             <name>customers</name>
+             <summary>Table representation of the customers table in the warwick database.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.id">
+            <value>easy access to the "id" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.company">
+            <value>easy access to the "company" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.system">
+            <value>easy access to the "system" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.customerid">
+            <value>easy access to the "customerid" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.firstname">
+            <value>easy access to the "firstname" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.middlename">
+            <value>easy access to the "middlename" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.lastname">
+            <value>easy access to the "lastname" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.businessname">
+            <value>easy access to the "businessname" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.address1">
+            <value>easy access to the "address1" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.address2">
+            <value>easy access to the "address2" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.address3">
+            <value>easy access to the "address3" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.city">
+            <value>easy access to the "city" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.state">
+            <value>easy access to the "state" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.zipcode">
+            <value>easy access to the "zipcode" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.country">
+            <value>easy access to the "country" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.phone">
+            <value>easy access to the "phone" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.phone2">
+            <value>easy access to the "phone2" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.email">
+            <value>easy access to the "email" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.created">
+            <value>easy access to the "created" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.created_user">
+            <value>easy access to the "created_user" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.updated">
+            <value>easy access to the "updated" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.updated_user">
+            <value>easy access to the "updated_user" field</value> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.customers.#ctor">
+            *****************************************************************************
+             <summary>Constructor. Automatically sets up database connection to Warwick.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.customers.#ctor(Warehouse.Company)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="company">Company object to use for connecting to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.customers.#ctor(Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData)">
+            *****************************************************************************
+             <summary>Copy Constructor.</summary>
+             <param name="row">The table data to copy.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.customers.Create">
+            *****************************************************************************
+             <summary>Attempts to create a row in a database table.</summary>
+             <returns>True if the table row was successfully created. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.DataContext">
+            <value>The current data context used for linq queries.</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.Table">
+            <value>The table object used for linq queries.</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.customers.customersDataContext">
+            <summary>Wrapper class for table database access.</summary> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.#ctor(System.String)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connectionString">The connection string to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.#ctor(System.Data.SqlClient.SqlConnection)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connection">Established SQL connection object.</param>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.table">
+            <summary>Access to the underlying table data context.</summary> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData">
+            <summary>Wrapper class for individual table fields.</summary> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.id">
+            <value>"id" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.company">
+            <value>"company" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.system">
+            <value>"system" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.customerid">
+            <value>"customerid" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.firstname">
+            <value>"firstname" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.middlename">
+            <value>"middlename" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.lastname">
+            <value>"lastname" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.businessname">
+            <value>"businessname" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.address1">
+            <value>"address1" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.address2">
+            <value>"address2" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.address3">
+            <value>"address3" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.city">
+            <value>"city" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.state">
+            <value>"state" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.zipcode">
+            <value>"zipcode" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.country">
+            <value>"country" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.phone">
+            <value>"phone" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.phone2">
+            <value>"phone2" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.email">
+            <value>"email" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.created">
+            <value>"created" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.created_user">
+            <value>"created_user" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.updated">
+            <value>"updated" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.customers.customersDataContext.customersData.updated_user">
+            <value>"updated_user" field</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.inventory">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 23, 2012 - 12:55 PM</date>
+             <category>Linq Class</category>
+             <name>inventory</name>
+             <summary>Table representation of the inventory table in the warwick database.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.id">
+            <value>easy access to the "id" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.company">
+            <value>easy access to the "company" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.system">
+            <value>easy access to the "system" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.sku">
+            <value>easy access to the "sku" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.quantity">
+            <value>easy access to the "quantity" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.description">
+            <value>easy access to the "description" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.price">
+            <value>easy access to the "price" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.discount">
+            <value>easy access to the "discount" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.colorcode">
+            <value>easy access to the "colorcode" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.colordescription">
+            <value>easy access to the "colordescription" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.sizecode">
+            <value>easy access to the "sizecode" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.sizedescription">
+            <value>easy access to the "sizedescription" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.departmentcode">
+            <value>easy access to the "departmentcode" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.oversize">
+            <value>easy access to the "oversize" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.location">
+            <value>easy access to the "location" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.created">
+            <value>easy access to the "created" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.created_user">
+            <value>easy access to the "created_user" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.updated">
+            <value>easy access to the "updated" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.updated_user">
+            <value>easy access to the "updated_user" field</value> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.inventory.#ctor">
+            *****************************************************************************
+             <summary>Constructor. Automatically sets up database connection to Warwick.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.inventory.#ctor(Warehouse.Company)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="company">Company object to use for connecting to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.inventory.#ctor(Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData)">
+            *****************************************************************************
+             <summary>Copy Constructor.</summary>
+             <param name="row">The table data to copy.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.inventory.Create">
+            *****************************************************************************
+             <summary>Attempts to create a row in a database table.</summary>
+             <returns>True if the table row was successfully created. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.DataContext">
+            <value>The current data context used for linq queries.</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.Table">
+            <value>The table object used for linq queries.</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext">
+            <summary>Wrapper class for table database access.</summary> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.#ctor(System.String)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connectionString">The connection string to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.#ctor(System.Data.SqlClient.SqlConnection)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connection">Established SQL connection object.</param>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.table">
+            <summary>Access to the underlying table data context.</summary> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData">
+            <summary>Wrapper class for individual table fields.</summary> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.id">
+            <value>"id" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.company">
+            <value>"company" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.system">
+            <value>"system" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.sku">
+            <value>"sku" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.quantity">
+            <value>"quantity" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.description">
+            <value>"description" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.price">
+            <value>"price" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.discount">
+            <value>"discount" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.colorcode">
+            <value>"colorcode" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.colordescription">
+            <value>"colordescription" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.sizecode">
+            <value>"sizecode" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.sizedescription">
+            <value>"sizedescription" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.departmentcode">
+            <value>"departmentcode" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.oversize">
+            <value>"oversize" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.location">
+            <value>"location" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.created">
+            <value>"created" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.created_user">
+            <value>"created_user" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.updated">
+            <value>"updated" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.inventory.inventoryDataContext.inventoryData.updated_user">
+            <value>"updated_user" field</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.items">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 23, 2012 - 12:55 PM</date>
+             <category>Linq Class</category>
+             <name>items</name>
+             <summary>Table representation of the items table in the warwick database.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.id">
+            <value>easy access to the "id" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.orderid">
+            <value>easy access to the "orderid" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.inventoryid">
+            <value>easy access to the "inventoryid" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.quantity">
+            <value>easy access to the "quantity" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.price">
+            <value>easy access to the "price" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.discount">
+            <value>easy access to the "discount" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.total">
+            <value>easy access to the "total" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.giftwrap">
+            <value>easy access to the "giftwrap" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.giftmessage">
+            <value>easy access to the "giftmessage" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.continuity">
+            <value>easy access to the "continuity" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.shipdate">
+            <value>easy access to the "shipdate" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.created">
+            <value>easy access to the "created" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.created_user">
+            <value>easy access to the "created_user" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.updated">
+            <value>easy access to the "updated" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.updated_user">
+            <value>easy access to the "updated_user" field</value> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.items.#ctor">
+            *****************************************************************************
+             <summary>Constructor. Automatically sets up database connection to Warwick.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.items.#ctor(Warehouse.Company)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="company">Company object to use for connecting to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.items.#ctor(Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData)">
+            *****************************************************************************
+             <summary>Copy Constructor.</summary>
+             <param name="row">The table data to copy.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.items.Create">
+            *****************************************************************************
+             <summary>Attempts to create a row in a database table.</summary>
+             <returns>True if the table row was successfully created. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.DataContext">
+            <value>The current data context used for linq queries.</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.Table">
+            <value>The table object used for linq queries.</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.items.itemsDataContext">
+            <summary>Wrapper class for table database access.</summary> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.#ctor(System.String)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connectionString">The connection string to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.#ctor(System.Data.SqlClient.SqlConnection)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connection">Established SQL connection object.</param>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.table">
+            <summary>Access to the underlying table data context.</summary> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData">
+            <summary>Wrapper class for individual table fields.</summary> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.id">
+            <value>"id" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.orderid">
+            <value>"orderid" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.inventoryid">
+            <value>"inventoryid" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.quantity">
+            <value>"quantity" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.price">
+            <value>"price" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.discount">
+            <value>"discount" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.total">
+            <value>"total" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.giftwrap">
+            <value>"giftwrap" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.giftmessage">
+            <value>"giftmessage" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.continuity">
+            <value>"continuity" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.shipdate">
+            <value>"shipdate" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.created">
+            <value>"created" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.created_user">
+            <value>"created_user" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.updated">
+            <value>"updated" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.items.itemsDataContext.itemsData.updated_user">
+            <value>"updated_user" field</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.logs">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 23, 2012 - 12:55 PM</date>
+             <category>Linq Class</category>
+             <name>logs</name>
+             <summary>Table representation of the logs table in the warwick database.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.id">
+            <value>easy access to the "id" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.company">
+            <value>easy access to the "company" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.system">
+            <value>easy access to the "system" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.task">
+            <value>easy access to the "task" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.status">
+            <value>easy access to the "status" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.entrytype">
+            <value>easy access to the "entrytype" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.started">
+            <value>easy access to the "started" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.completed">
+            <value>easy access to the "completed" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.timestamp">
+            <value>easy access to the "timestamp" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.starttime">
+            <value>easy access to the "starttime" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.endtime">
+            <value>easy access to the "endtime" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.count">
+            <value>easy access to the "count" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.linecount">
+            <value>easy access to the "linecount" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.first">
+            <value>easy access to the "first" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.last">
+            <value>easy access to the "last" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.checksum">
+            <value>easy access to the "checksum" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.username">
+            <value>easy access to the "username" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.domain">
+            <value>easy access to the "domain" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.folder">
+            <value>easy access to the "folder" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.filename">
+            <value>easy access to the "filename" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.database">
+            <value>easy access to the "database" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.server">
+            <value>easy access to the "server" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.customer">
+            <value>easy access to the "customer" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.databaseid">
+            <value>easy access to the "databaseid" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.valid">
+            <value>easy access to the "valid" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.created">
+            <value>easy access to the "created" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.verified">
+            <value>easy access to the "verified" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.delivered">
+            <value>easy access to the "delivered" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.data1">
+            <value>easy access to the "data1" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.data2">
+            <value>easy access to the "data2" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.data3">
+            <value>easy access to the "data3" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.message">
+            <value>easy access to the "message" field</value> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.logs.#ctor">
+            *****************************************************************************
+             <summary>Constructor. Automatically sets up database connection to Warwick.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.logs.#ctor(Warehouse.Company)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="company">Company object to use for connecting to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.logs.#ctor(Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData)">
+            *****************************************************************************
+             <summary>Copy Constructor.</summary>
+             <param name="row">The table data to copy.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.logs.Create">
+            *****************************************************************************
+             <summary>Attempts to create a row in a database table.</summary>
+             <returns>True if the table row was successfully created. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.DataContext">
+            <value>The current data context used for linq queries.</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.Table">
+            <value>The table object used for linq queries.</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.logs.logsDataContext">
+            <summary>Wrapper class for table database access.</summary> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.#ctor(System.String)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connectionString">The connection string to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.#ctor(System.Data.SqlClient.SqlConnection)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connection">Established SQL connection object.</param>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.table">
+            <summary>Access to the underlying table data context.</summary> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData">
+            <summary>Wrapper class for individual table fields.</summary> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.id">
+            <value>"id" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.company">
+            <value>"company" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.system">
+            <value>"system" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.task">
+            <value>"task" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.status">
+            <value>"status" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.entrytype">
+            <value>"entrytype" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.started">
+            <value>"started" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.completed">
+            <value>"completed" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.timestamp">
+            <value>"timestamp" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.starttime">
+            <value>"starttime" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.endtime">
+            <value>"endtime" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.count">
+            <value>"count" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.linecount">
+            <value>"linecount" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.first">
+            <value>"first" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.last">
+            <value>"last" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.checksum">
+            <value>"checksum" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.username">
+            <value>"username" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.domain">
+            <value>"domain" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.folder">
+            <value>"folder" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.filename">
+            <value>"filename" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.database">
+            <value>"database" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.server">
+            <value>"server" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.customer">
+            <value>"customer" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.databaseid">
+            <value>"databaseid" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.valid">
+            <value>"valid" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.created">
+            <value>"created" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.verified">
+            <value>"verified" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.delivered">
+            <value>"delivered" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.data1">
+            <value>"data1" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.data2">
+            <value>"data2" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.data3">
+            <value>"data3" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.logs.logsDataContext.logsData.message">
+            <value>"message" field</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.momaudit">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 23, 2012 - 12:55 PM</date>
+             <category>Linq Class</category>
+             <name>momaudit</name>
+             <summary>Table representation of the momaudit table in the warwick database.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.momaudit.recordid">
+            <value>easy access to the "recordid" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.momaudit.companyid">
+            <value>easy access to the "companyid" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.momaudit.momtableid">
+            <value>easy access to the "momtableid" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.momaudit.momidvalue">
+            <value>easy access to the "momidvalue" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.momaudit.changedate">
+            <value>easy access to the "changedate" field</value> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.momaudit.#ctor">
+            *****************************************************************************
+             <summary>Constructor. Automatically sets up database connection to Warwick.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.momaudit.#ctor(Warehouse.Company)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="company">Company object to use for connecting to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.momaudit.#ctor(Warehouse.Databases.Linq.Warwick.momaudit.momauditDataContext.momauditData)">
+            *****************************************************************************
+             <summary>Copy Constructor.</summary>
+             <param name="row">The table data to copy.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.momaudit.Create">
+            *****************************************************************************
+             <summary>Attempts to create a row in a database table.</summary>
+             <returns>True if the table row was successfully created. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.momaudit.DataContext">
+            <value>The current data context used for linq queries.</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.momaudit.Table">
+            <value>The table object used for linq queries.</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.momaudit.momauditDataContext">
+            <summary>Wrapper class for table database access.</summary> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.momaudit.momauditDataContext.#ctor(System.String)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connectionString">The connection string to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.momaudit.momauditDataContext.#ctor(System.Data.SqlClient.SqlConnection)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connection">Established SQL connection object.</param>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.momaudit.momauditDataContext.table">
+            <summary>Access to the underlying table data context.</summary> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.momaudit.momauditDataContext.momauditData">
+            <summary>Wrapper class for individual table fields.</summary> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.momaudit.momauditDataContext.momauditData.recordid">
+            <value>"recordid" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.momaudit.momauditDataContext.momauditData.companyid">
+            <value>"companyid" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.momaudit.momauditDataContext.momauditData.momtableid">
+            <value>"momtableid" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.momaudit.momauditDataContext.momauditData.momidvalue">
+            <value>"momidvalue" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.momaudit.momauditDataContext.momauditData.changedate">
+            <value>"changedate" field</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.orders">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 23, 2012 - 12:55 PM</date>
+             <category>Linq Class</category>
+             <name>orders</name>
+             <summary>Table representation of the orders table in the warwick database.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.id">
+            <value>easy access to the "id" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.company">
+            <value>easy access to the "company" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.system">
+            <value>easy access to the "system" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.status">
+            <value>easy access to the "status" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.orderid">
+            <value>easy access to the "orderid" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.ordernumber">
+            <value>easy access to the "ordernumber" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.shipto">
+            <value>easy access to the "shipto" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.billto">
+            <value>easy access to the "billto" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.orderdate">
+            <value>easy access to the "orderdate" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.pickticketnumber">
+            <value>easy access to the "pickticketnumber" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.shipmethod">
+            <value>easy access to the "shipmethod" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.giftmessage">
+            <value>easy access to the "giftmessage" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.subtotal">
+            <value>easy access to the "subtotal" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.discount">
+            <value>easy access to the "discount" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.shippingcost">
+            <value>easy access to the "shippingcost" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.tax">
+            <value>easy access to the "tax" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.total">
+            <value>easy access to the "total" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.trackingnumber">
+            <value>easy access to the "trackingnumber" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.sourcecode">
+            <value>easy access to the "sourcecode" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.promotioncode">
+            <value>easy access to the "promotioncode" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.created">
+            <value>easy access to the "created" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.created_user">
+            <value>easy access to the "created_user" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.updated">
+            <value>easy access to the "updated" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.updated_user">
+            <value>easy access to the "updated_user" field</value> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.orders.#ctor">
+            *****************************************************************************
+             <summary>Constructor. Automatically sets up database connection to Warwick.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.orders.#ctor(Warehouse.Company)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="company">Company object to use for connecting to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.orders.#ctor(Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData)">
+            *****************************************************************************
+             <summary>Copy Constructor.</summary>
+             <param name="row">The table data to copy.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.orders.Create">
+            *****************************************************************************
+             <summary>Attempts to create a row in a database table.</summary>
+             <returns>True if the table row was successfully created. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.DataContext">
+            <value>The current data context used for linq queries.</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.Table">
+            <value>The table object used for linq queries.</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext">
+            <summary>Wrapper class for table database access.</summary> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.#ctor(System.String)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connectionString">The connection string to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.#ctor(System.Data.SqlClient.SqlConnection)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connection">Established SQL connection object.</param>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.table">
+            <summary>Access to the underlying table data context.</summary> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData">
+            <summary>Wrapper class for individual table fields.</summary> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.id">
+            <value>"id" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.company">
+            <value>"company" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.system">
+            <value>"system" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.status">
+            <value>"status" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.orderid">
+            <value>"orderid" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.ordernumber">
+            <value>"ordernumber" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.shipto">
+            <value>"shipto" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.billto">
+            <value>"billto" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.orderdate">
+            <value>"orderdate" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.pickticketnumber">
+            <value>"pickticketnumber" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.shipmethod">
+            <value>"shipmethod" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.giftmessage">
+            <value>"giftmessage" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.subtotal">
+            <value>"subtotal" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.discount">
+            <value>"discount" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.shippingcost">
+            <value>"shippingcost" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.tax">
+            <value>"tax" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.total">
+            <value>"total" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.trackingnumber">
+            <value>"trackingnumber" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.sourcecode">
+            <value>"sourcecode" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.promotioncode">
+            <value>"promotioncode" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.created">
+            <value>"created" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.created_user">
+            <value>"created_user" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.updated">
+            <value>"updated" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.orders.ordersDataContext.ordersData.updated_user">
+            <value>"updated_user" field</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.settings">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 23, 2012 - 12:55 PM</date>
+             <category>Linq Class</category>
+             <name>settings</name>
+             <summary>Table representation of the settings table in the warwick database.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.settings.id">
+            <value>easy access to the "id" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.settings.company">
+            <value>easy access to the "company" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.settings.system">
+            <value>easy access to the "system" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.settings.argument">
+            <value>easy access to the "argument" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.settings.value">
+            <value>easy access to the "value" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.settings.production">
+            <value>easy access to the "production" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.settings.development">
+            <value>easy access to the "development" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.settings.testing">
+            <value>easy access to the "testing" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.settings.environment">
+            <value>easy access to the "environment" field</value> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.settings.#ctor">
+            *****************************************************************************
+             <summary>Constructor. Automatically sets up database connection to Warwick.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.settings.#ctor(Warehouse.Company)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="company">Company object to use for connecting to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.settings.#ctor(Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.settingsData)">
+            *****************************************************************************
+             <summary>Copy Constructor.</summary>
+             <param name="row">The table data to copy.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.settings.Create">
+            *****************************************************************************
+             <summary>Attempts to create a row in a database table.</summary>
+             <returns>True if the table row was successfully created. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.settings.DataContext">
+            <value>The current data context used for linq queries.</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.settings.Table">
+            <value>The table object used for linq queries.</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext">
+            <summary>Wrapper class for table database access.</summary> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.#ctor(System.String)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connectionString">The connection string to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.#ctor(System.Data.SqlClient.SqlConnection)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connection">Established SQL connection object.</param>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.table">
+            <summary>Access to the underlying table data context.</summary> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.settingsData">
+            <summary>Wrapper class for individual table fields.</summary> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.settingsData.id">
+            <value>"id" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.settingsData.company">
+            <value>"company" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.settingsData.system">
+            <value>"system" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.settingsData.argument">
+            <value>"argument" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.settingsData.value">
+            <value>"value" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.settingsData.production">
+            <value>"production" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.settingsData.development">
+            <value>"development" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.settingsData.testing">
+            <value>"testing" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.settings.settingsDataContext.settingsData.environment">
+            <value>"environment" field</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.systems">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 23, 2012 - 12:55 PM</date>
+             <category>Linq Class</category>
+             <name>systems</name>
+             <summary>Table representation of the systems table in the warwick database.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.systems.id">
+            <value>easy access to the "id" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.systems.name">
+            <value>easy access to the "name" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.systems.company">
+            <value>easy access to the "company" field</value> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.systems.#ctor">
+            *****************************************************************************
+             <summary>Constructor. Automatically sets up database connection to Warwick.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.systems.#ctor(Warehouse.Company)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="company">Company object to use for connecting to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.systems.#ctor(Warehouse.Databases.Linq.Warwick.systems.systemsDataContext.systemsData)">
+            *****************************************************************************
+             <summary>Copy Constructor.</summary>
+             <param name="row">The table data to copy.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.systems.Create">
+            *****************************************************************************
+             <summary>Attempts to create a row in a database table.</summary>
+             <returns>True if the table row was successfully created. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.systems.DataContext">
+            <value>The current data context used for linq queries.</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.systems.Table">
+            <value>The table object used for linq queries.</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.systems.systemsDataContext">
+            <summary>Wrapper class for table database access.</summary> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.systems.systemsDataContext.#ctor(System.String)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connectionString">The connection string to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.systems.systemsDataContext.#ctor(System.Data.SqlClient.SqlConnection)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connection">Established SQL connection object.</param>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.systems.systemsDataContext.table">
+            <summary>Access to the underlying table data context.</summary> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.systems.systemsDataContext.systemsData">
+            <summary>Wrapper class for individual table fields.</summary> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.systems.systemsDataContext.systemsData.id">
+            <value>"id" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.systems.systemsDataContext.systemsData.name">
+            <value>"name" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.systems.systemsDataContext.systemsData.company">
+            <value>"company" field</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.users">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 23, 2012 - 12:55 PM</date>
+             <category>Linq Class</category>
+             <name>users</name>
+             <summary>Table representation of the users table in the warwick database.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.users.id">
+            <value>easy access to the "id" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.users.user">
+            <value>easy access to the "user" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.users.name">
+            <value>easy access to the "name" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.users.domain">
+            <value>easy access to the "domain" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.users.created">
+            <value>easy access to the "created" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.users.created_user">
+            <value>easy access to the "created_user" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.users.updated">
+            <value>easy access to the "updated" field</value> *
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.users.updated_user">
+            <value>easy access to the "updated_user" field</value> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.users.#ctor">
+            *****************************************************************************
+             <summary>Constructor. Automatically sets up database connection to Warwick.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.users.#ctor(Warehouse.Company)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="company">Company object to use for connecting to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.users.#ctor(Warehouse.Databases.Linq.Warwick.users.usersDataContext.usersData)">
+            *****************************************************************************
+             <summary>Copy Constructor.</summary>
+             <param name="row">The table data to copy.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.users.Create">
+            *****************************************************************************
+             <summary>Attempts to create a row in a database table.</summary>
+             <returns>True if the table row was successfully created. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.users.DataContext">
+            <value>The current data context used for linq queries.</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.users.Table">
+            <value>The table object used for linq queries.</value> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.users.usersDataContext">
+            <summary>Wrapper class for table database access.</summary> *
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.users.usersDataContext.#ctor(System.String)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connectionString">The connection string to the database.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.users.usersDataContext.#ctor(System.Data.SqlClient.SqlConnection)">
+            *****************************************************************************
+             <summary>Constructor. Sets up database connection.</summary>
+             <param name="connection">Established SQL connection object.</param>
+            ******************************************************************************
+        </member>
+        <member name="F:Warehouse.Databases.Linq.Warwick.users.usersDataContext.table">
+            <summary>Access to the underlying table data context.</summary> *
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.users.usersDataContext.usersData">
+            <summary>Wrapper class for individual table fields.</summary> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.users.usersDataContext.usersData.id">
+            <value>"id" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.users.usersDataContext.usersData.user">
+            <value>"user" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.users.usersDataContext.usersData.name">
+            <value>"name" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.users.usersDataContext.usersData.domain">
+            <value>"domain" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.users.usersDataContext.usersData.created">
+            <value>"created" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.users.usersDataContext.usersData.created_user">
+            <value>"created_user" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.users.usersDataContext.usersData.updated">
+            <value>"updated" field</value> *
+        </member>
+        <member name="P:Warehouse.Databases.Linq.Warwick.users.usersDataContext.usersData.updated_user">
+            <value>"updated_user" field</value> *
+        </member>
+    </members>
+</doc>

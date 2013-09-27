@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Abecas</name>
+    </assembly>
+    <members>
+        <member name="T:Warehouse.Abecas.Company">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>February 24, 2012 - 2:04 PM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides access to an Abecas company. Note that in Abecas, a company is 
+               actually referred to as a customer.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.Company.#ctor(Databases.Database)">
+            ****************************************************************************
+             <summary>Constructor. Assigns database for the company.</summary>
+             <param name="database">The database connection to use for querying Abecas.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.Company.#ctor(Databases.Database,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Assigns database and company name for the company.</summary>
+             <param name="database">The database connection to use for querying Abecas.</param>
+             <param name="company">The name of the company.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.Company.#ctor(Warehouse.Databases.Abecas.idmaster)">
+            ****************************************************************************
+             <summary>Constructor. Assigns an idmaster table as the company table.</summary>
+             <param name="idmaster">The idmaster table record in Abecas that is associated with the company.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.Company.#ctor(Warehouse.Databases.Abecas.idcustomer)">
+            ****************************************************************************
+             <summary>Constructor. Assigns an idmaster table as the company table.</summary>
+             <param name="idcustomer">The idcustomer table record in Abecas that is associated with the company.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.Company.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Copy Constructor.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.Company.Read">
+            ****************************************************************************
+             <summary>Retrieves the company data from Abecas.</summary>
+             <returns>True if the company information was successfully read. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.Company.ReadAll">
+            ****************************************************************************
+             <summary>Reads in a list of companies based on the idcustomer table.</summary>
+             <returns>List of matching Company objects.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.Abecas.Company.idcustomer">
+            <value>public access to the idcustomer table, which contains data on the customer screen in Abecas.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.idmaster">
+            <value>public access to the idmaster table, containing the customer name.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.idaddress">
+            <value>public access to the idaddress table, containing the customer address information.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.CompanyName">
+            <value>The name of this company </value>*
+        </member>
+        <member name="P:Warehouse.Abecas.Company.Name">
+            <value>The name of this company </value>*
+        </member>
+        <member name="P:Warehouse.Abecas.Company.MomDatabase">
+            <value>The database name to use for interfacing with MOM.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.MomServer">
+            <value>The server address to use for the MOM database.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.MomUserName">
+            <value>The MOM username to use when connecting to the mom API.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.MomPassword">
+            <value>The MOM password (AES encrypted) to use when connecting to the Mom API.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.CompanyGuid">
+            <value>The idmaster global id value.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.ShipmentProfile">
+            <value>The default shipment profile to use for creating new shipment transactions.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.ReceivingProfile">
+            <value>The default receiving profile to use for creating new receipt transactions.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.CustomerPrefix">
+            <value>A prefix to use for assigning new consignee numbers.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.MinimumItemPrice">
+            <value>The minimum price of an item this customer allows. Used for determing user errors.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.Company.customer">
+            <value>A customer record of the company</value> *
+        </member>
+        <member name="T:Warehouse.Abecas.CompanyInfo">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>November 19, 2012 - 12:10 PM</date>
+             <category>Abecas Class</category>
+             <summary>
+               Allows for direct (static) access to an Abecas connection. WARWICK provides
+               access without specifying a company, or "customer" in Abecas speak.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.Abecas.CompanyInfo.WARWICK">
+            <value>This is a generic connection to the Abecas system. No specific company data will be provided.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.CompanyInfo.GIGGLE">
+            <value>Abecas connection to Olio Carli. </value> *
+        </member>
+        <member name="P:Warehouse.Abecas.CompanyInfo.OLIOCARLI">
+            <value>Abecas connection to Olio Carli. </value> *
+        </member>
+        <member name="P:Warehouse.Abecas.CompanyInfo.FREECOUNTRY">
+            <value>Abecas connection to Free Country. </value> *
+        </member>
+        <member name="P:Warehouse.Abecas.CompanyInfo.PHYSICIANS">
+            <value>Abecas connection to Physician's Formula. </value> *
+        </member>
+        <member name="P:Warehouse.Abecas.CompanyInfo.PHYSICIANS_EXTRUDED">
+            <value>Abecas connection to Physician's Formula Extruded. </value> *
+        </member>
+        <member name="P:Warehouse.Abecas.CompanyInfo.AHCA">
+            <value>This is a generic connection to the Abecas system. No specific company data will be provided.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.CompanyInfo.ALASSIS">
+            <value>This is a generic connection to the Abecas system. No specific company data will be provided.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.CompanyInfo.JOURNEYBEE">
+            <value>This is a generic connection to the Abecas system. No specific company data will be provided.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.CompanyInfo.FLOURISH">
+            <value>Test company.</value> *
+        </member>
+        <member name="M:Warehouse.Abecas.Order.#ctor(Databases.Database)">
+            *****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="database">The database to use for the Company object.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.Order.LoadProfile">
+            ****************************************************************************
+             <summary>Loads the wmtransactionheader table with the default profile</summary>
+             <param name="profile">The profile code to use for this transaction.</param>
+             <returns>True if the profile defaults were successfully loaded. False if the profile could not be found.</returns>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Abecas.XM">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>May 23, 2012 - 8:16 AM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Wrapper for the XM Manager program and associated tables.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Warehouse.Abecas.XM.tradepartner">
+            <value>The trade partner name for the job.</value> *
+        </member>
+        <member name="F:Warehouse.Abecas.XM.mappingid">
+            <value>The mapping id for the job.</value> *
+        </member>
+        <member name="F:Warehouse.Abecas.XM.delimiter">
+            <value>The character delimiter for the file. Abecas just uses a line feed by default.</value> *
+        </member>
+        <member name="M:Warehouse.Abecas.XM.#ctor(Warehouse.Abecas.Company)">
+            ****************************************************************************
+             <summary>Constructor. Sets up XM Warehouse object.</summary>
+             <param name="company">The company to use for this XM object</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.#ctor(Warehouse.Abecas.Company,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Sets up XM Warehouse object with a specified job.</summary>
+             <param name="company">The company to use for this XM object</param>
+             <param name="jobName">The name of the job of the XM record.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.#ctor(Warehouse.Abecas.Company,System.String,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Sets up XM Warehouse object.</summary>
+             <param name="company">The company to use for this XM object</param>
+             <param name="jobName">The name of the job of the XM record.</param>
+             <param name="tradePartner">The name of the trading partner for this XM record.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.#ctor(Warehouse.Abecas.Company,System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Sets up XM Warehouse object.</summary>
+             <param name="company">The company to use for this XM object</param>
+             <param name="jobName">The name of the job of the XM record.</param>
+             <param name="tradePartner">The name of the trading partner for this XM record.</param>
+             <param name="mappingID">The mapping identifier name for the XM record.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.AddImportRecord">
+            ****************************************************************************
+             <summary>Add an ascii import queue record to the list of document records.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.AddImportRecord(System.Int32,System.Int32)">
+            ****************************************************************************
+             <summary>Add an ascii import queue record to the list of document records.</summary>
+             <param name="start">The starting record number.</param>
+             <param name="end">The ending record number</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.Copy">
+            ****************************************************************************
+             <summary>Not implemented.</summary>
+             <returns>Not implemented.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.Exists">
+            ****************************************************************************
+             <summary>Not implemented.</summary>
+             <returns>Not implemented.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.Create">
+            ****************************************************************************
+             <summary></summary>
+             <returns>True if XM record was created, false otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.Read">
+            ****************************************************************************
+             <summary>Reads in the XM data, including unzipping the document file.</summary>
+             <returns>True if read was successful, false otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.ReadAll">
+            ****************************************************************************
+             <summary>Not implemented.</summary>
+             <returns>Not implemented.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.Update">
+            ****************************************************************************
+             <summary>Not implemented.</summary>
+             <returns>Not implemented.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.Delete">
+            ****************************************************************************
+             <summary>Not implemented.</summary>
+             <returns>Not implemented.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.getRandomWarehouse">
+            ****************************************************************************
+             <summary>Not implemented.</summary>
+             <returns>Not implemented.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.Equals(System.Object)">
+            ****************************************************************************
+             <summary>Not implemented.</summary>
+             <returns>Not implemented.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Abecas.XM.GetHashCode">
+            ****************************************************************************
+             <summary>Not implemented.</summary>
+             <returns>Not implemented.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.Abecas.XM.xmdocument">
+            <value>Public access to the xmdocument table which stores the primary record for XM.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.XM.xmascimportqueue">
+            <value>Public access to the xmascimportqueue table which stores the individual import records.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.XM.xmtpascimplink">
+            <value>Public access to the xmtpascimplink table which stores the trading partner and map links.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.XM.xmlog">
+            <value>Public access to the xmlog table which stores any logs for the record.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.XM.jobidmaster">
+            <value>Public access to the jobidmaster table which stores the job's idmaster record</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.XM.companyidmaster">
+            <value>Public access to the jobidmaster table which stores the XM company idmaster record</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.XM.job">
+            <value>The name of the job.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.XM.filename">
+            <value>The import/export file.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.XM.filecontents">
+            <value>The contents of the import/export file.</value> *
+        </member>
+        <member name="P:Warehouse.Abecas.XM.status">
+            <value>The status of the job when it ran.</value> *
+        </member>
+        <member name="T:Warehouse.Abecas.XM.DIRECTION">
+            ****************************************************************************
+             <summary>Whether the file is an import or export. References the xmdocument.
+             direction column.</summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Abecas.XM.STATUS">
+            ****************************************************************************
+             <summary>The current status of the job. References the xmdocument.status 
+             column.</summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Abecas.XM.DOCUMENTTYPE">
+            ****************************************************************************
+             <summary>The type of document. References the xmdocument.documenttype column.</summary>
+            *****************************************************************************
+        </member>
+    </members>
+</doc>

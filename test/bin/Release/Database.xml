@@ -1,0 +1,1710 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Database</name>
+    </assembly>
+    <members>
+        <member name="T:Databases.Database">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>December 11, 2009 - 1:20 PM</date>
+             <category>Abstract Class</category>
+             <summary>
+               Abstract Database object to handle database connection and queries.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Databases.DatabaseInterface">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 13, 2012 - 1:20 PM</date>
+             <category>Interface</category>
+             <summary>
+               Interface to handle database connection and queries.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.ToString">
+            *****************************************************************************
+             <summary>Print out properties for debugging purposes.</summary>
+             <returns>String containing the database properties.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Dispose">
+            ****************************************************************************
+             <summary>
+               Implements the IDisposable interface for better cleanup and closing the 
+               database connection.  
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Equals(System.Object)">
+            ****************************************************************************
+             <summary>Compares two Database objects.</summary>
+             <returns>True if the objects are equal. False otherwise.</returns>
+             <param name="obj">The other database object to compare with.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.GetHashCode">
+            ****************************************************************************
+             <summary>Computes a unique hash code for this object.</summary>
+             <returns>Unique hash code as an integer.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Connect">
+            ****************************************************************************
+            		 * <summary>
+                     *   Instantiates the database connection. Child class must  define a method to 
+                     *   initialize its database connection.
+                     * </summary>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Close">
+            ****************************************************************************
+             <summary>Closes and cleans up the database connection.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Reconnect">
+            ****************************************************************************
+             <summary>Reconnects to the database. Simply closes and then connects.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Query(System.String)">
+            ****************************************************************************
+            		 * <summary>Abstract Method. Reads data from table.</summary>
+                     * <returns>Result set of the rows returned in the sql query.</returns>
+                     * <param name="query">The sql command to execute.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Query(System.Object)">
+            ****************************************************************************
+            		 * <summary>Abstract Method. Reads data from table.</summary>
+                     * <returns>Result set of the rows returned in the sql query.</returns>
+                     * <param name="query">The linq command to execute.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Fetch(System.String)">
+            ****************************************************************************
+            		 * <summary>Abstract Method. Reads the first row data from the query statement.</summary>
+                     * <returns>Row object with the table data.</returns>
+                     * <param name="query">The command to execute.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.NonQuery(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Abstract Method. Executes database query without storing a result. Typically
+                     *   used for an insert, delete, or update statement.
+                     * </summary>
+                     * <param name="sql">The command to execute.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Exists(System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Returns true if a matching row can be found. Formulates a select query 
+               statement such as, select [column] from [table] where [column] = '[value]'.
+             </summary>
+             <param name="table">Name of the database table.</param>
+             <param name="column">Name of the column.</param>
+             <param name="value">Data in the column</param>
+             <returns>True if a matching row was found. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Exists(System.String,System.String[],System.Object[])">
+            ****************************************************************************
+             <summary>
+               Returns true if a matching row can be found. Formulates a select query 
+               statement such as, select [column] from [table] where [column] = '[value]'.
+               However, multiple columns and values can be given in one to one arrays.
+             </summary>
+             <param name="table">Name of the database table.</param>
+             <param name="columns">List of columns to search.</param>
+             <param name="values">List of data in the columns to search.</param>
+             <returns>True if a matching row was found. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Select(System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Returns a Query object for a select statement. Column and value should be unique.
+             </summary>
+             <param name="table">The database table to perform the select statement.</param>
+             <param name="column">Column to perform select statement on.</param>
+             <param name="value">Column value to lookup.</param>
+             <returns>Query object containing the sql result.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Select(System.String,System.String[],System.Object[])">
+            ****************************************************************************
+             <summary>
+               Returns a Query object for a select statement. String arrays, columns and
+               values should have a one-to-one mapping.
+             </summary>
+             <param name="table">The database table to perform the select statement.</param>
+             <param name="columns">Columns to perform select lookup on.</param>
+             <param name="values">Column values to lookup.</param>
+             <returns>Query object containing the sql result.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Insert(System.String,System.String[],System.Object[])">
+            ****************************************************************************
+             <summary>
+               Shorthand for an insert statement. Specify the table to insert the row and
+               the columns and values have a 1-to-1 relationship. Returns the last row id
+               inserted.
+             </summary>
+             <param name="table">The database table to perform the insert statement.</param>
+             <param name="columns">List of columns to be inserted.</param>
+             <param name="values">List of values to be inserted.</param>
+             <returns>Identifying value of the column inserted.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Update(System.String,System.String[],System.Object[],System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Shorthand for an update statement. Specify the table to update. The row and
+               the columns and values have a 1-to-1 relationship. Returns the last row
+               updated.
+             </summary>
+             <param name="table">The database table to perform the insert statement.</param>
+             <param name="columns">List of columns to be updated.</param>
+             <param name="values">List of values to be updated.</param>
+             <param name="id">The column to match when performing the update.</param>
+             <param name="idValue">The column value to match when performing the update.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Update(System.String,System.String,System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Shorthand for an update statement. Specify the table to update. The row and
+               the columns and values have a 1-to-1 relationship. Returns the last row
+               updated.
+             </summary>
+             <param name="table">The database table to perform the insert statement.</param>
+             <param name="column">The columns to be updated.</param>
+             <param name="value">List of values to be updated.</param>
+             <param name="id">The column to match when performing the update.</param>
+             <param name="idValue">The column value to match when performing the update.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.Delete(System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Shorthand for a delete statement. Specify the table to delete plus the column.
+             </summary>
+             <param name="table">The database table to perform the delete statement.</param>
+             <param name="column">The column to perform the where filter with.</param>
+             <param name="value">The value to match when deleting.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.ExecuteStoredProcedure(System.String,System.String[],System.String[],System.String[],System.String[])">
+            ****************************************************************************
+             <summary>
+               Executes a sql stored procedure.
+             </summary>
+             <param name="procedure">The name of the stored procedure to execute.</param>
+             <param name="parameters">The variable names.</param>
+             <param name="values">The values of the variables.</param>
+             <param name="outputParameters">The return results of the stored procedure.</param>
+             <param name="outputTypes">The types of the return results.</param>
+             <returns>Results of the stored procedure as a string array.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.IdentityColumn(System.String)">
+            ****************************************************************************
+             <summary>Lookup the name of the identity id column for a particular table.</summary>
+             <returns>The identity id column name.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.PrimaryKeyColumn(System.String)">
+            ****************************************************************************
+             <summary>Lookup the name of the primary key column for a particular table.</summary>
+             <returns>The primary key column name.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.TruncateLogFile(System.Int32)">
+            ****************************************************************************
+             <summary>Truncates size of log file for the database.</summary>
+             <param name="size">The size (in megabytes) to shrink the file to.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.TruncateLogFile">
+            ****************************************************************************
+             <summary>Alias. Shrinks the log file to 2 megabytes, by default.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.getGUID">
+            ****************************************************************************
+            		 * <summary>Looks up a unique global id.</summary>
+                     * <returns>Global Unique Identifier.</returns>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.ServerList">
+            ****************************************************************************
+             <summary>Returns list of sql servers on the network</summary>
+             <returns>String array of sql server names</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.DatabaseList">
+            ****************************************************************************
+             <summary>Returns list of databases.</summary>
+             <returns>String array of database names on the server.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.TableList">
+            ****************************************************************************
+             <summary>Returns list of tables.</summary>
+             <returns>String array of tables in the database.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.SaveSnapshot(System.String,System.String[])">
+            ****************************************************************************
+             <summary>Saves a snapshot of all data in a table.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.DatabaseInterface.CreateConnectionFile(System.String)">
+            ****************************************************************************
+             <summary>Saves current database settings to an xml file.</summary>
+             <param name="filename">File path to save xml file.</param>
+            *****************************************************************************
+        </member>
+        <member name="F:Databases.Database._sql">
+            <value>The last executed sql query.</value> *
+        </member>
+        <member name="M:Databases.Database.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Attempts to opens database connection with credentials from an xml file.
+                     * </summary>
+                     *******************************************************************************
+        </member>
+        <member name="M:Databases.Database.#ctor(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Connect using an odbc connection string.
+                     * </summary>
+                     *******************************************************************************
+        </member>
+        <member name="M:Databases.Database.#ctor(System.String,System.String,System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>Constructor. Opens database connection with credentials.</summary>
+                     * <param name="database">Name of the database to connect to.</param>
+                     * <param name="server">Name of the server to connect to.</param>
+                     * <param name="username">Username to connect with.</param>
+                     * <param name="password">Password to connect with.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.Database.#ctor(System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Opens database connection without specifying credentials. Will
+                     *   attempt to find credentials in an xml file. Otherwise, will use a trusted
+                     *   connection.
+                     * </summary>
+                     * <param name="database">Name of the database to connect to.</param>
+                     * <param name="server">Name of the server to connect to.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.Database.#ctor(Databases.Database)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Copy Constructor. Opens database connection with identical credentials.
+                     * </summary>
+                     * <param name="database">The database object to copy.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.Database.constructor(System.String,System.String,System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor helper. Database connection settings are read in and will be validated.
+                     *   There are serveral ways in which a database connection can be specified.
+                     *   1. The database, server, username, and password explicitly be defined.
+                     *   xml file elsewhere), or a connection id can be given, which will look in a
+                     *   xml file for proper connection settings.
+                     * </summary>
+                     * <param name="database">Name of the database to connect to.</param>
+                     * <param name="server">Name of the server to connect to.</param>
+                     * <param name="username">Username to connect with.</param>
+                     * <param name="password">Password to connect with.</param>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Databases.Database.Finalize">
+            ****************************************************************************
+             <summary>
+               Destructor. Closes database connection. Close() method is defined in the
+               child classes.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.ToString">
+            ****************************************************************************
+             <summary>Print out properties for debugging purposes.</summary>
+             <returns>String containing the database properties.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Database.Dispose">
+            ****************************************************************************
+             <summary>
+               Implements the IDisposable interface for better cleanup and closing the 
+               database connection.  
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.Equals(System.Object)">
+            ****************************************************************************
+             <summary>Compares two Database objects.</summary>
+             <returns>True if the objects are equal. False otherwise.</returns>
+             <param name="obj">The other Database object to compare with.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Database.GetHashCode">
+            ****************************************************************************
+             <summary>Computes a unique hash code for this Database object.</summary>
+             <returns>Unique hash code as an integer.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Database.Connect">
+            ****************************************************************************
+            		 * <summary>
+                     *   Abstract Method. Instantiates the database connection. Child class must 
+                     *   define a method to initialize its database connection.
+                     * </summary>
+            		 ******************************************************************************
+        </member>
+        <member name="M:Databases.Database.Close">
+            ****************************************************************************
+             <summary>Abstract Method. Closes and cleans up the database connection.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Database.Reconnect">
+            ****************************************************************************
+             <summary>Reconnects to the database. Simply closes and then connects.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.Query(System.String)">
+            ****************************************************************************
+            		 * <summary>Abstract Method. Reads data from table.</summary>
+                     * <returns>Result set of the rows returned in the sql query.</returns>
+                     * <param name="query">The sql command to execute.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.Database.Query(System.Object)">
+            ****************************************************************************
+            		 * <summary>Abstract Method. Reads data from table.</summary>
+                     * <returns>Result set of the rows returned in the sql query.</returns>
+                     * <param name="query">The linq command to execute.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.Database.Fetch(System.String)">
+            ****************************************************************************
+            		 * <summary>Abstract Method. Reads the first row data from the query statement.</summary>
+                     * <returns>Row object with the table data.</returns>
+                     * <param name="query">The command to execute.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.Database.NonQuery(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Abstract Method. Executes database query without storing a result. Typically
+                     *   used for an insert, delete, or update statement.
+                     * </summary>
+                     * <param name="sql">The sql command to execute.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.Database.Exists(System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Returns true if a matching row can be found. Formulates a select query 
+               statement such as, select [column] from [table] where [column] = '[value]'.
+             </summary>
+             <param name="table">Name of the database table.</param>
+             <param name="column">Name of the column.</param>
+             <param name="value">Data in the column</param>
+             <returns>True if a matching row was found. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.Exists(System.String,System.String[],System.Object[])">
+            ****************************************************************************
+             <summary>
+               Returns true if a matching row can be found. Formulates a select query 
+               statement such as, select [column] from [table] where [column] = '[value]'.
+               However, multiple columns and values can be given in one to one arrays.
+             </summary>
+             <param name="table">Name of the database table.</param>
+             <param name="columns">List of columns to search.</param>
+             <param name="values">List of data in the columns to search.</param>
+             <returns>True if a matching row was found. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.Select(System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Returns a Query object for a select statement. Column and value should be unique.
+             </summary>
+             <param name="table">The database table to perform the select statement.</param>
+             <param name="column">Column to perform select statement on.</param>
+             <param name="value">Column value to lookup.</param>
+             <returns>Query object containing the sql result.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.Select(System.String,System.String[],System.Object[])">
+            ****************************************************************************
+             <summary>
+               Returns a Query object for a select statement. String arrays, columns and
+               values should have a one-to-one mapping.
+             </summary>
+             <param name="table">The database table to perform the select statement.</param>
+             <param name="columns">Columns to perform select lookup on.</param>
+             <param name="values">Column values to lookup.</param>
+             <returns>Query object containing the sql result.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.Insert(System.String,System.String[],System.Object[])">
+            ****************************************************************************
+             <summary>
+               Shorthand for an insert statement. Specify the table to insert the row and
+               the columns and values have a 1-to-1 relationship. Returns the last row id
+               inserted.
+             </summary>
+             <param name="table">The database table to perform the insert statement.</param>
+             <param name="columns">List of columns to be inserted.</param>
+             <param name="values">List of values to be inserted.</param>
+             <returns>Identifying value of the column inserted.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.Update(System.String,System.String[],System.Object[],System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Shorthand for an update statement. Specify the table to update. The row and
+               the columns and values have a 1-to-1 relationship. Returns the last row
+               updated.
+             </summary>
+             <param name="table">The database table to perform the insert statement.</param>
+             <param name="columns">List of columns to be updated.</param>
+             <param name="values">List of values to be updated.</param>
+             <param name="id">The column to match when performing the update.</param>
+             <param name="idValue">The column value to match when performing the update.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.Update(System.String,System.String,System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Shorthand for an update statement. Specify the table to update. The row and
+               the columns and values have a 1-to-1 relationship. Returns the last row
+               updated.
+             </summary>
+             <param name="table">The database table to perform the insert statement.</param>
+             <param name="column">The columns to be updated.</param>
+             <param name="value">List of values to be updated.</param>
+             <param name="id">The column to match when performing the update.</param>
+             <param name="idValue">The column value to match when performing the update.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.Delete(System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Shorthand for a delete statement. Specify the table to delete plus the column.
+             </summary>
+             <param name="table">The database table to perform the delete statement.</param>
+             <param name="column">The column to perform the where filter with.</param>
+             <param name="value">The value to match when deleting.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.ExecuteStoredProcedure(System.String,System.String[],System.String[],System.String[],System.String[])">
+            ****************************************************************************
+             <summary>
+               Executes a sql stored procedure.
+             </summary>
+             <param name="procedure">The name of the stored procedure to execute.</param>
+             <param name="parameters">The variable names.</param>
+             <param name="values">The values of the variables.</param>
+             <param name="outputParameters">The return results of the stored procedure.</param>
+             <param name="outputTypes">The types of the return results.</param>
+             <returns>Results of the stored procedure as a string array.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.IdentityColumn(System.String)">
+            ****************************************************************************
+             <summary>Lookup the name of the identity id column for a particular table.</summary>
+             <returns>The identity id column name.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.PrimaryKeyColumn(System.String)">
+            ****************************************************************************
+             <summary>Lookup the name of the primary key column for a particular table.</summary>
+             <returns>The primary key column name.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.TruncateLogFile(System.Int32)">
+            ****************************************************************************
+             <summary>Truncates size of log file for the database.</summary>
+             <param name="size">The size (in megabytes) to shrink the file to.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Database.TruncateLogFile">
+            ****************************************************************************
+             <summary>Alias. Shrinks the log file to 2 megabytes, by default.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Database.getGUID">
+            ****************************************************************************
+            		 * <summary>Abstract Method. Looks up a unique global id.</summary>
+                     * <returns>Global Unique Identifier.</returns>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.Database.ServerList">
+            ****************************************************************************
+             <summary>Returns list of sql servers on the network</summary>
+             <returns>String array of sql server names</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.DatabaseList">
+            ****************************************************************************
+             <summary>Returns list of databases.</summary>
+             <returns>String array of database names on the server.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.TableList">
+            ****************************************************************************
+             <summary>Returns list of tables.</summary>
+             <returns>String array of tables in the database.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.SaveSnapshot(System.String,System.String[])">
+            ****************************************************************************
+             <summary>Saves a snapshot of all data in a table.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.CreateConnectionFile(System.String,System.String,System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Static method. Writes a xml file with the connection settings provided. The 
+               password is stored as encrypted text.
+             </summary>
+             <param name="filename">The file to save the xml data to.</param>
+             <param name="database">Name of the database.</param>
+             <param name="server">Name of the server.</param>
+             <param name="username">Name of the connecting user.</param>
+             <param name="password">Password to connect to the database. Will be stored as AES encrypted when written to disk.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Database.CreateConnectionFile(System.String)">
+            ****************************************************************************
+             <summary>
+               Class version of CreateConnectionFile. Saves current database settings to an xml file.
+             </summary>
+             <param name="filename">File path to save xml file.</param>
+            *****************************************************************************
+        </member>
+        <member name="P:Databases.Database._server">
+            <value>Host Name or IP Address of the server that the database is hosted on.</value> *
+        </member>
+        <member name="P:Databases.Database._database">
+            <value>Name of the database we're connecting to.</value> *
+        </member>
+        <member name="P:Databases.Database._username">
+            <value>The Username to authenticate to the database. If not provide, a trusted connection will be assumed</value> *
+        </member>
+        <member name="P:Databases.Database._password">
+            <value>The password to authenticate to the database.</value> *
+        </member>
+        <member name="P:Databases.Database._connectionString">
+            <value>Stores the original connection string.</value> *
+        </member>
+        <member name="P:Databases.Database.DatabaseName">
+            <value>Public read-only access to the database name.</value> *
+        </member>
+        <member name="P:Databases.Database.Server">
+            <value>Public read-only access to the server name.</value> *
+        </member>
+        <member name="P:Databases.Database.Username">
+            <value>Public read-only access to the username.</value> *
+        </member>
+        <member name="P:Databases.Database.Password">
+            <value>The encrypted password. Read-only access.</value> *
+        </member>
+        <member name="P:Databases.Database.Trusted">
+            <value>Public read-only access to the </value> *
+        </member>
+        <member name="P:Databases.Database.odbc">
+            <value>Public read-only access to the connection string.</value> *
+        </member>
+        <member name="P:Databases.Database.sql">
+            <value>Public read-only access to the last sql query run.</value> *
+        </member>
+        <member name="T:Databases.DatabaseSettings">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>March 11, 2011 - 1:56 PM</date>
+             <category>XML Class</category>
+             <summary>
+               XML class to store database settings.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Databases.DatabaseSettings.database">
+            <value>Name of the database to connect to.</value> *
+        </member>
+        <member name="F:Databases.DatabaseSettings.server">
+            <value>Server Name the database is hosted on.</value> *
+        </member>
+        <member name="F:Databases.DatabaseSettings.username">
+            <value>Username to connect with to the database.</value> *
+        </member>
+        <member name="F:Databases.DatabaseSettings.password">
+            <value>Password to connect with to the database.</value> *
+        </member>
+        <member name="F:Databases.DatabaseSettings.trusted">
+            <value>Whether or not this is a trusted connection.</value> *
+        </member>
+        <member name="T:Databases.LinqTable">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>August 31, 2012 - 12:59 PM</date>
+             <category>Database Class</category>
+             <summary>
+               Provides common class for the Warehouse Database Linq connections. Added in 
+               v3.0.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Databases.LinqTable._dc">
+            <value>The data context to use for linq queries. Child classes implement an internal DataContext class that represents the database table layout.</value> *
+        </member>
+        <member name="M:Databases.LinqTable.#ctor(Databases.Database)">
+            ****************************************************************************
+            		 * <summary>Constructor. Does nothing.</summary>
+                     * <param name="database">A database object. Not stored at this time.</param>
+                     ******************************************************************************
+        </member>
+        <member name="M:Databases.LinqTable.#ctor">
+            ****************************************************************************
+            		 * <summary>Empty Constructor. Does nothing.</summary>
+                     ******************************************************************************
+        </member>
+        <member name="T:Databases.Result">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 1:20 PM</date>
+             <category>Database Class</category>
+             <summary>
+               Opens a Result set and iterates through list of Row objects in a Database Table.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.ResultInterface.FetchRow">
+            ****************************************************************************
+             <summary>Retrieves the next row from a sql query.</summary>
+             <returns>The Row object representing a row in the table. Null if no more rows exist.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.ResultInterface.Close">
+            ****************************************************************************
+             <summary>Closes current Result connection.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.ResultInterface.ToString">
+            ****************************************************************************
+             <summary>Print out properties for debugging purposes.</summary>
+             <returns>String containing the database properties.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.ResultInterface.Dispose">
+            ****************************************************************************
+             <summary>
+               Implements the IDisposable interface for better cleanup and closing the 
+               database connection.  
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.ResultInterface.Equals(System.Object)">
+            ****************************************************************************
+             <summary>Compares two Database objects.</summary>
+             <returns>True if the objects are equal. False otherwise.</returns>
+             <param name="obj">The other database object to compare with.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.ResultInterface.GetHashCode">
+            ****************************************************************************
+             <summary>Computes a unique hash code for this object.</summary>
+             <returns>Unique hash code as an integer.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.ResultInterface.GetEnumerator">
+            ****************************************************************************
+             <summary>Returns enumerator for this object.</summary>
+             <returns>Enumerator to loop through object.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.ResultInterface.MoveNext">
+            ****************************************************************************
+             <summary>Moves to the next row in the result.</summary>
+             <returns>True if the next row exists. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.ResultInterface.Reset">
+            ****************************************************************************
+             <summary>Resets the iterator.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Databases.Result._sql">
+            <value>The sql query used for this Result set.</value> *
+        </member>
+        <member name="F:Databases.Result._connectionString">
+            <value>The sql connection string to the database.</value> *
+        </member>
+        <member name="M:Databases.Result.#ctor(System.String)">
+            ****************************************************************************
+            		 * <summary>Constructor. Stores settings.</summary>
+                     * <param name="sql">The sql query to execute.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.Result.#ctor(Databases.Result)">
+            ****************************************************************************
+            		 * <summary>Copy Constructor.</summary>
+                     * <param name="result">The Result object to copy.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.Result.Finalize">
+            ****************************************************************************
+            		 * <summary>Destructor. Cleans up database resources.</summary>
+                     ******************************************************************************
+        </member>
+        <member name="M:Databases.Result.ToString">
+            ****************************************************************************
+             <summary>Print out properties for debugging purposes.</summary>
+             <returns>String containing the Result properties.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Result.Equals(System.Object)">
+            ****************************************************************************
+             <summary>Compares two Result objects.</summary>
+             <returns>True if the objects are equal. False otherwise.</returns>
+             <param name="obj">The other Result object to compare with.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Result.GetHashCode">
+            ****************************************************************************
+             <summary>Computes a unique hash code for this Result object.</summary>
+             <returns>Unique hash code as an integer.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Result.Dispose">
+            ****************************************************************************
+             <summary>
+               Implements the IDisposable interface for better cleanup and closing the 
+               database connection.  
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Result.FetchRow">
+            ****************************************************************************
+             <summary>Retrieves the next row in the result set.</summary>
+             <returns>The next Row object.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Result.Close">
+            ****************************************************************************
+             <summary>Closes Result connection.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Result.GetEnumerator">
+            ****************************************************************************
+             <summary>Returns enumerator for this object.</summary>
+             <returns>Enumerator to loop through object.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Result.MoveNext">
+            ****************************************************************************
+             <summary>Moves to the next row in the result.</summary>
+             <returns>True if the next row exists. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Result.Reset">
+            ****************************************************************************
+             <summary>Resets the iterator.</summary>
+            ******************************************************************************
+        </member>
+        <member name="P:Databases.Result.Columns">
+            <value>The column names for the table.</value> *
+        </member>
+        <member name="P:Databases.Result.RowCount">
+            <value>Number of rows in the result set.</value> *
+        </member>
+        <member name="P:Databases.Result.ColumnCount">
+            <value>Number of columns in the result set.</value> *
+        </member>
+        <member name="P:Databases.Result.sql">
+            <value>Public access to the sql query.</value> *
+        </member>
+        <member name="P:Databases.Result.HasRows">
+            <value>Determines if the result set has any rows. True if the sql has results. False otherwise.</value> *
+        </member>
+        <member name="P:Databases.Result.Current">
+            ****************************************************************************
+             <value>Gets the current Row object.</value>
+            ******************************************************************************
+        </member>
+        <member name="T:Databases.Row">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 1:20 PM</date>
+             <category>Database Class</category>
+             <summary>
+               Provides access to a Row in a Database table.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.Close">
+            ****************************************************************************
+             <summary>Closes the Row connection.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.ToString">
+            ****************************************************************************
+             <summary>Print out properties for debugging purposes.</summary>
+             <returns>String containing the database properties.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.Dispose">
+            ****************************************************************************
+             <summary>
+               Implements the IDisposable interface for better cleanup and closing the 
+               database connection.  
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.Equals(System.Object)">
+            ****************************************************************************
+             <summary>Compares two Database objects.</summary>
+             <returns>True if the objects are equal. False otherwise.</returns>
+             <param name="obj">The other database object to compare with.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.GetHashCode">
+            ****************************************************************************
+             <summary>Computes a unique hash code for this object.</summary>
+             <returns>Unique hash code as an integer.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getObject(System.String)">
+            ****************************************************************************
+             <summary>Gets the row value as the base object.</summary>
+             <param name="column">The column data to retrieve.</param>
+             <returns>The object representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getObject(System.Int32)">
+            ****************************************************************************
+             <summary>Gets the row value as the base object.</summary>
+             <param name="index">The column data to retrieve.</param>
+             <returns>The object representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getString(System.String)">
+            ****************************************************************************
+             <summary>Gets the row value as a string.</summary>
+             <param name="column">The column name to retrieve.</param>
+             <returns>The string representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getString(System.Int32)">
+            ****************************************************************************
+             <summary>Gets the row value as a string.</summary>
+             <param name="index">The column index to retrieve.</param>
+             <returns>The string representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getStringSafely(System.String)">
+            ****************************************************************************
+             <summary>Gets the row value as a string. If it's a null string, return empty string.</summary>
+             <param name="column">The column name to retrieve.</param>
+             <returns>The string representation of the sql data. If null, returns an empty string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getStringSafely(System.Int32)">
+            ****************************************************************************
+             <summary>Gets the row value as a string. If it's a null string, return empty string.</summary>
+             <param name="index">The column index to retrieve.</param>
+             <returns>The string representation of the sql data. If null, returns an empty string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getInt(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to an integer.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The integer representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getInt(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to an integer.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The integer representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getDouble(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a double.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The double representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getDouble(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a double.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The double representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getFloat(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a float.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The float representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getFloat(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a float.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The float representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getDateTime(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a DateTime.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The DateTime representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getDateTime(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a DateTime.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The DateTime representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getBoolean(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a boolean.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The boolean representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getBoolean(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to an integer.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The integer representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getBytes(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a byte array.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The byte array representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.RowInterface.getBytes(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a byte array.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The byte array representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.#ctor">
+            ****************************************************************************
+            		 * <summary>Constructor. Does Nothing</summary>
+                     ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.Finalize">
+            ****************************************************************************
+            		 * <summary>Destructor. Cleans up database resources. Not used att. Still need to debug large sql processing that halts.</summary>
+                     ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.ToString">
+            ****************************************************************************
+             <summary>Print out properties for debugging purposes.</summary>
+             <returns>String containing the Result properties.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.Equals(System.Object)">
+            ****************************************************************************
+             <summary>Compares two Result objects.</summary>
+             <returns>True if the objects are equal. False otherwise.</returns>
+             <param name="obj">The other Result object to compare with.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.GetHashCode">
+            ****************************************************************************
+             <summary>Computes a unique hash code for this Result object.</summary>
+             <returns>Unique hash code as an integer.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.Dispose">
+            ****************************************************************************
+             <summary>
+               Implements the IDisposable interface for better cleanup and closing the 
+               database connection.  
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.Row.Close">
+            ****************************************************************************
+             <summary>Closes the Row connection.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getObject(System.String)">
+            ****************************************************************************
+             <summary>Gets the row value as the base object.</summary>
+             <param name="column">The column data to retrieve.</param>
+             <returns>The object representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getObject(System.Int32)">
+            ****************************************************************************
+             <summary>Gets the row value as the base object.</summary>
+             <param name="index">The column data to retrieve.</param>
+             <returns>The object representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getString(System.String)">
+            ****************************************************************************
+             <summary>Gets the row value as a string.</summary>
+             <param name="column">The column name to retrieve.</param>
+             <returns>The string representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getString(System.Int32)">
+            ****************************************************************************
+             <summary>Gets the row value as a string.</summary>
+             <param name="index">The column index to retrieve.</param>
+             <returns>The string representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getStringSafely(System.String)">
+            ****************************************************************************
+             <summary>Gets the row value as a string. If it's a null string, return empty string.</summary>
+             <param name="column">The column name to retrieve.</param>
+             <returns>The string representation of the sql data. If null, returns an empty string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getStringSafely(System.Int32)">
+            ****************************************************************************
+             <summary>Gets the row value as a string. If it's a null string, return empty string.</summary>
+             <param name="index">The column index to retrieve.</param>
+             <returns>The string representation of the sql data. If null, returns an empty string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getInt(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to an integer.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The integer representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getInt(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to an integer.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The integer representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getDouble(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a double.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The double representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getDouble(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a double.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The double representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getFloat(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a float.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The float representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getFloat(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a float.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The float representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getDateTime(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a DateTime.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The DateTime representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getDateTime(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a DateTime.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The DateTime representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getBoolean(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a boolean.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The boolean representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getBoolean(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to an integer.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The integer representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getBytes(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a byte array.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The byte array representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.Row.getBytes(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a byte array.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The byte array representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Databases.Row.Item(System.Int32)">
+            <value>Retrieve the ith column value</value> *
+        </member>
+        <member name="P:Databases.Row.Item(System.String)">
+            <value>Retrieve the column value by name.</value> *
+        </member>
+        <member name="P:Databases.Row.ColumnCount">
+            <value>The number of columns in the row.</value> *
+        </member>
+        <member name="P:Databases.Row.Columns">
+            <value>The list of column names in the row.</value> *
+        </member>
+        <member name="T:Databases.SqlDatabase">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 03, 2011 - 1:20 PM</date>
+             <category>Database Class</category>
+             <summary>
+               Connects and operates on a SQL database.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.#ctor">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Calls parent constructor. Attempts to opens database connection 
+                     *   with credentials from an xml file.
+                     * </summary>
+                     ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.#ctor(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Constructor. Connect using an odbc connection string.
+                     * </summary>
+                     ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.#ctor(System.String,System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Calls parent constructor. Stores settings.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.#ctor(System.String,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Calls parent constructor. Stores settings.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.#ctor(Databases.SqlDatabase)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Copy Constructor. Opens database connection with identical credentials.
+                     * </summary>
+                     * <param name="database">The database object to copy.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.ToString">
+            ****************************************************************************
+             <summary>
+               Prints out properties connection string for debugging purposes.
+             </summary>
+             <returns>String with connection properties</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Equals(System.Object)">
+            ****************************************************************************
+             <summary>Compares two SqlDatabase objects.</summary>
+             <returns>True if the objects are equal. False otherwise.</returns>
+             <param name="obj">The other SqlDatabase object to compare with.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.GetHashCode">
+            ****************************************************************************
+             <summary>Computes a unique hash code for this SqlDatabase object.</summary>
+             <returns>Unique hash code as an integer.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Connect">
+            ****************************************************************************
+             <summary>Performs actual database connection. Uses an odbc style string to connect.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Close">
+            ****************************************************************************
+             <summary>Closes connections to the open database and table reader.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Query(System.String)">
+            ****************************************************************************
+             <summary>Performs a query on the database and stores the result.</summary>
+             <returns>Result set of the rows returned in the sql query.</returns>
+             <param name="query">MSSQL-type of query to run.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Query(System.Object)">
+            ****************************************************************************
+             <summary>Performs a query on the database and stores the result.</summary>
+             <returns>Result set of the rows returned in the sql query.</returns>
+             <param name="query">Generic object to query on.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Fetch(System.String)">
+            ****************************************************************************
+             <summary>Gets the first row from a sql statement.</summary>
+             <returns>Row object containing the data of the first row returned from the sql statement.</returns>
+             <param name="query">SQL statement to execute.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.NonQuery(System.String)">
+            ****************************************************************************
+            		 * <summary>
+                     *   Executes database query without storing a result. Typically used for an 
+                     *   insert, delete, or update statement.
+                     * </summary>
+                     * <param name="sql">The sql command to execute.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Exists(System.String,System.String[],System.Object[])">
+            ****************************************************************************
+             <summary>
+               Returns true if a matching row can be found. Formulates a select query 
+               statement such as, select [column] from [table] where [column] = '[value]'.
+               However, multiple columns and values can be given in one to one arrays.
+             </summary>
+             <param name="table">Name of the database table.</param>
+             <param name="columns">List of columns to search.</param>
+             <param name="values">List of data in the columns to search.</param>
+             <returns>True if a matching row was found. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Select(System.String,System.String[],System.Object[])">
+            ****************************************************************************
+             <summary>
+               Returns a Query object for a select statement. String arrays, columns and
+               values should have a one-to-one mapping.
+             </summary>
+             <param name="table">The database table to perform the select statement.</param>
+             <param name="columns">Columns to perform select lookup on.</param>
+             <param name="values">Column values to lookup.</param>
+             <returns>Query object containing the sql result.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Select(System.String,System.String[],System.Object[],System.String)">
+            *****************************************************************************
+             <summary>Performs a sql select statement.</summary>
+             <param name="table">The sql table to select from.</param>
+             <param name="columns">The list of columns to retrieve.</param>
+             <param name="values">The values in the where clause.</param>
+             <param name="orderby">The select statement order by condition.</param>
+             <returns>Query object containing the sql result set.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Insert(System.String,System.String[],System.Object[])">
+            ****************************************************************************
+             <summary>
+               Shorthand for an insert statement. Specify the table to insert the row and
+               the columns and values have a 1-to-1 relationship. Returns the last row id
+               inserted.
+             </summary>
+             <param name="table">The database table to perform the insert statement.</param>
+             <param name="columns">List of columns to be inserted.</param>
+             <param name="values">List of values to be inserted.</param>
+             <returns>Identifying value of the column inserted.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Update(System.String,System.String[],System.Object[],System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Shorthand for an update statement. Specify the table to update. The row and
+               the columns and values have a 1-to-1 relationship. Returns the last row
+               updated.
+             </summary>
+             <param name="table">The database table to perform the insert statement.</param>
+             <param name="columns">List of columns to be updated.</param>
+             <param name="values">List of values to be updated.</param>
+             <param name="id">The column to match when performing the update.</param>
+             <param name="idValue">The column value to match when performing the update.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.Delete(System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>
+               Shorthand for a delete statement. Specify the table to delete plus the column.
+             </summary>
+             <param name="table">The database table to perform the delete statement.</param>
+             <param name="column">The column to perform the where filter with.</param>
+             <param name="value">The value to match when deleting.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.ExecuteStoredProcedure(System.String,System.String[],System.String[],System.String[],System.String[])">
+            ****************************************************************************
+             <summary>
+               Executes a sql stored procedure.
+             </summary>
+             <param name="procedure">The name of the stored procedure to execute.</param>
+             <param name="parameters">The variable names.</param>
+             <param name="values">The values of the variables.</param>
+             <param name="outputParameters">The return results of the stored procedure.</param>
+             <param name="outputTypes">The types of the return results.</param>
+             <returns>Results of the stored procedure as a string array.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.IdentityColumn(System.String)">
+            ****************************************************************************
+             <summary>Lookup the name of the identity id column for a particular table.</summary>
+             <returns>The identity id column name.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.PrimaryKeyColumn(System.String)">
+            ****************************************************************************
+             <summary>Lookup the name of the primary key column for a particular table.</summary>
+             <returns>The primary key column name.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.TruncateLogFile(System.Int32)">
+            ****************************************************************************
+             <summary>Truncates size of log file for the database.</summary>
+             <param name="size">The size (in megabytes) to shrink the file to.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.getGUID">
+            ****************************************************************************
+             <summary>
+               Returns a global unique identifier, such as used for a row id.
+             </summary>
+             <returns>A new guid.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.ServerList">
+            ****************************************************************************
+             <summary>Returns list of sql servers on the network</summary>
+             <returns>String array of sql server names</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.DatabaseList">
+            ****************************************************************************
+             <summary>Returns list of databases.</summary>
+             <returns>String array of database names on the server.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.TableList">
+            ****************************************************************************
+             <summary>Returns list of tables.</summary>
+             <returns>String array of tables in the database.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlDatabase.SaveSnapshot(System.String,System.String[])">
+            ****************************************************************************
+             <summary>Saves a snapshot of all data in a table.</summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Databases.DatabaseInfo">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>August 31, 2012 - 1:30 PM</date>
+             <category>Database Class</category>
+             <summary>
+               Provides easy static connections to the common databases.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Databases.DatabaseInfo.Debug">
+            <value>Whether we should connect to the development database instead.</value> *
+        </member>
+        <member name="M:Databases.DatabaseInfo.getDatabase(System.String)">
+            ****************************************************************************
+             <summary>Retrieves the database connection based on a string value.</summary>
+             <returns>A database connection object.</returns>
+             <param name="databaseName">The name of the database to retrieve.</param>
+            ******************************************************************************
+        </member>
+        <member name="P:Databases.DatabaseInfo.WARWICK">
+            <value>SQL Database connection to the Warwick database.</value> *
+        </member>
+        <member name="P:Databases.DatabaseInfo.ABECAS">
+            <value>SQL Database connection to the Abecas database.</value> *
+        </member>
+        <member name="P:Databases.DatabaseInfo.MOM">
+            <value>SQL Database connection to a MOM database, dependent on the specified company.</value> *
+        </member>
+        <member name="T:Databases.SqlLinqResult">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>August 31, 2012 - 12:47 PM</date>
+             <category>Database Class</category>
+             <summary>
+               Incomplete. Uses a linq query to loop through a sql table. Added in version 
+               3.0.
+             </summary>
+            ******************************************************************************
+        </member>
+        <member name="T:Databases.SqlResult">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 1:20 PM</date>
+             <category>Database Class</category>
+             <summary>
+               Opens a Result set and iterates through list of Row objects in a SqlDatabase Table.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlResult.#ctor(System.String,System.Data.SqlClient.SqlConnection)">
+            ****************************************************************************
+            		 * <summary>Constructor. Stores settings and executes sql query.</summary>
+                     * <param name="sql">The sql query to execute.</param>
+                     * <param name="connection">The sql connection to use.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.SqlResult.#ctor(System.String,System.String,System.Boolean)">
+            ****************************************************************************
+            		 * <summary>Constructor. Stores settings and opens up new sql connection. Then executes sql query.</summary>
+                     * <param name="sql">The sql query to execute.</param>
+                     * <param name="connectionString">The odbc sql connection to open.</param>
+                     * <param name="execute">Whether or not to execute the sql string immediately.</param> 
+            		 *******************************************************************************
+        </member>
+        <member name="M:Databases.SqlResult.ToString">
+            ****************************************************************************
+             <summary>Print out properties for debugging purposes.</summary>
+             <returns>String containing the Result properties.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlResult.Equals(System.Object)">
+            ****************************************************************************
+             <summary>Compares two Result objects.</summary>
+             <returns>True if the objects are equal. False otherwise.</returns>
+             <param name="obj">The other Result object to compare with.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlResult.GetHashCode">
+            ****************************************************************************
+             <summary>Computes a unique hash code for this Result object.</summary>
+             <returns>Unique hash code as an integer.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlResult.FetchRow">
+            ****************************************************************************
+             <summary>Retrieves the next row in the result set.</summary>
+             <returns>The next Row object.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlResult.Close">
+            ****************************************************************************
+             <summary>Closes Result connection.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlResult.GetEnumerator">
+            ****************************************************************************
+             <summary>Returns enumerator for this object.</summary>
+             <returns>Enumerator to loop through object.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlResult.MoveNext">
+            ****************************************************************************
+             <summary>Moves to the next row in the result.</summary>
+             <returns>True if the next row exists. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlResult.Reset">
+            ****************************************************************************
+             <summary>Resets the iterator.</summary>
+            ******************************************************************************
+        </member>
+        <member name="P:Databases.SqlResult.ColumnCount">
+            <value>Number of columns in the result set.</value> *
+        </member>
+        <member name="P:Databases.SqlResult.RowCount">
+            <value>Number of rows in the result set.</value> *
+        </member>
+        <member name="P:Databases.SqlResult.Columns">
+            ****************************************************************************
+             <summary>Returns the list of column names as a string array.</summary>
+             <returns>List (string array) of column names as a string array.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Databases.SqlResult.HasRows">
+            <value>Determines if the result set has any rows. True if the sql has results. False otherwise.</value> *
+        </member>
+        <member name="P:Databases.SqlResult.Current">
+            ****************************************************************************
+             <value>Gets the current Row object.</value>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlLinqResult.#ctor(System.Object,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Establishes linq query and database connection.</summary>
+             <param name="query">The linq query.</param>
+             <param name="connectionString">ODBC connection string to use for connecting to the SQL database.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlLinqResult.ToString">
+            ****************************************************************************
+             <summary>Print out properties for debugging purposes.</summary>
+             <returns>String containing the Result properties.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlLinqResult.Equals(System.Object)">
+            ****************************************************************************
+             <summary>Compares two Result objects.</summary>
+             <returns>True if the objects are equal. False otherwise.</returns>
+             <param name="obj">The other Result object to compare with.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlLinqResult.GetHashCode">
+            ****************************************************************************
+             <summary>Computes a unique hash code for this Result object.</summary>
+             <returns>Unique hash code as an integer.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlLinqResult.FetchRow">
+            ****************************************************************************
+             <summary>Retrieves the next row in the result set.</summary>
+             <returns>The next Row object.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlLinqResult.Close">
+            ****************************************************************************
+             <summary>Closes Result connection.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlLinqResult.GetEnumerator">
+            *****************************************************************************
+             <summary>Returns enumerator for this object.</summary>
+             <returns>Enumerator to loop through object.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlLinqResult.MoveNext">
+            ****************************************************************************
+             <summary>Moves to the next row in the result.</summary>
+             <returns>True if the next row exists. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlLinqResult.Reset">
+            ****************************************************************************
+             <summary>Resets the iterator.</summary>
+            ******************************************************************************
+        </member>
+        <member name="P:Databases.SqlLinqResult.ColumnCount">
+            <value>Number of columns in the result set.</value> *
+        </member>
+        <member name="P:Databases.SqlLinqResult.RowCount">
+            <value>Number of rows in the result set.</value> *
+        </member>
+        <member name="P:Databases.SqlLinqResult.Columns">
+            ****************************************************************************
+             <summary>Returns the list of column names as a string array.</summary>
+             <returns>List (string array) of column names as a string array.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Databases.SqlLinqResult.HasRows">
+            <value>Determines if the result set has any rows. True if the sql has results. False otherwise.</value> *
+        </member>
+        <member name="P:Databases.SqlLinqResult.Current">
+            ****************************************************************************
+             <value>Gets the current Row object.</value>
+            ******************************************************************************
+        </member>
+        <member name="T:Databases.SqlRow">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 1:20 PM</date>
+             <category>Database Class</category>
+             <summary>
+               Provides access to a Sql row.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Databases.SqlRow.#ctor(System.Data.SqlClient.SqlDataReader)">
+            ****************************************************************************
+            		 * <summary>Constructor. Stores data reader.</summary>
+                     *******************************************************************************
+        </member>
+        <member name="M:Databases.SqlRow.ToString">
+            ****************************************************************************
+             <summary>Print out properties for debugging purposes.</summary>
+             <returns>String containing the Result properties.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlRow.Equals(System.Object)">
+            ****************************************************************************
+             <summary>Compares two Result objects.</summary>
+             <returns>True if the objects are equal. False otherwise.</returns>
+             <param name="obj">The other Result object to compare with.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlRow.GetHashCode">
+            ****************************************************************************
+             <summary>Computes a unique hash code for this Result object.</summary>
+             <returns>Unique hash code as an integer.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlRow.Close">
+            ****************************************************************************
+             <summary>Closes the Row connection.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlRow.getObject(System.String)">
+            ****************************************************************************
+             <summary>Gets the row value as the base object.</summary>
+             <param name="column">The column data to retrieve.</param>
+             <returns>The object representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Databases.SqlRow.getObject(System.Int32)">
+            ****************************************************************************
+             <summary>Gets the row value as a base object.</summary>
+             <param name="index">The column data to retrieve.</param>
+             <returns>The object representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Databases.SqlRow.Item(System.Int32)">
+            <value>Returns value of ith column.</value> *
+        </member>
+        <member name="P:Databases.SqlRow.Item(System.String)">
+            <value>Returns value of the column name.</value> *
+        </member>
+        <member name="P:Databases.SqlRow.ColumnCount">
+            <value>Number of columns in the result set.</value> *
+        </member>
+        <member name="P:Databases.SqlRow.Columns">
+            ****************************************************************************
+             <value>Returns the list of column names as a string array. Returns a list 
+             (string array) of column names as a string array.</value>
+            *****************************************************************************
+        </member>
+    </members>
+</doc>

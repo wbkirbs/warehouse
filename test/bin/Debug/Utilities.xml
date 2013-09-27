@@ -1,0 +1,2252 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Utilities</name>
+    </assembly>
+    <members>
+        <member name="T:Utilities.CommonSettings">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Provides basic settings common to most applications.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Utilities.Settings">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Settings class for programs to use.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Utilities.Settings._read">
+            <value>Whether we have already read in the settings data or not.</value> *
+        </member>
+        <member name="F:Utilities.Settings._options">
+            <value>Class to represent the command line arguments.</value> *
+        </member>
+        <member name="M:Utilities.Settings.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Calls Read().</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Settings.#ctor(System.String[])">
+            ****************************************************************************
+             <summary>Constructor. Sets up the options and calls Read().</summary>
+             <param name="args">The command lien argument to list to use for the program options.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Settings.Read">
+            ****************************************************************************
+             <summary>Marks read as true so we don't read in settings more than once. 
+               Returns if read has already been called.
+             </summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Settings.ValidateRequiredField(System.String)">
+            ****************************************************************************
+             <summary>Checks if a field has a value. If not the application exits.</summary>
+            ******************************************************************************
+        </member>
+        <member name="F:Utilities.CommonSettings._from">
+            <value>The from address to send emails.</value> *
+        </member>
+        <member name="F:Utilities.CommonSettings._to">
+            <value>The email address to send to.</value> *
+        </member>
+        <member name="F:Utilities.CommonSettings._subject">
+            <value>The subject line of the email.</value> *
+        </member>
+        <member name="F:Utilities.CommonSettings._body">
+            <value>The message of the email.</value> *
+        </member>
+        <member name="F:Utilities.CommonSettings._email">
+            <value>An email object to use for sending emails.</value> *
+        </member>
+        <member name="M:Utilities.CommonSettings.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Reads in the common settings.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.CommonSettings.#ctor(System.String[])">
+            ****************************************************************************
+             <summary>Constructor. Reads in the common settings of an argument list or the 
+               location of the /settings file.</summary>
+             <param name="args">The argument list to use for settings variables.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.CommonSettings.Read">
+            ****************************************************************************
+             <summary>Reads in the common settings.</summary>
+            *****************************************************************************
+        </member>
+        <member name="P:Utilities.CommonSettings._database">
+            <value>A single database object to connect to. Uses the database and server tags to create the connection.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings._files">
+            <value>List of files to process. Folder and filter tags are used to get the file list.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings._folder">
+            <value>An input/output folder for files.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings._archive">
+            <value>Archive folder to save files.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings._filename">
+            <value>File name to use.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings._headers">
+            <value>List of CSV column headers.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings._query">
+            <value>A SQL query.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.Database">
+            <value>A database connection.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.FileList">
+            <value>A list of files to process.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.Folder">
+            <value>The input/output folder to use.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.ArchiveFolder">
+            <value>The folder to archive data.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.FileName">
+            <value>A file name to use.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.From">
+            <value>Email address to send from.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.To">
+            <value>Email address to send from.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.Subject">
+            <value>Email subject to use.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.Body">
+            <value>Body of the email message.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.Email">
+            <value>Email object.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.Headers">
+            <value>List of CSV column headers.</value> *
+        </member>
+        <member name="P:Utilities.CommonSettings.Query">
+            <value>A SQL query to execute.</value> *
+        </member>
+        <member name="T:Utilities.DateRange">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>February 28, 2012 - 8:16 AM</date>
+             <category>Utility Class</category>
+             <summary>
+               Provides a method for handling a date range, with starting and ending dates.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.DateRange.#ctor(System.DateTime,System.DateTime)">
+            ****************************************************************************
+             <summary>Constructor. Requires the start and end date range.</summary>
+             <param name="startDate">The beginning date of the date range.</param>
+             <param name="endDate">The ending date of the date range.</param>
+            *****************************************************************************
+        </member>
+        <member name="P:Utilities.DateRange.StartDate">
+            <value>Public access to the starting date.</value> *
+        </member>
+        <member name="P:Utilities.DateRange.EndDate">
+            <value>Public access to the ending date.</value> *
+        </member>
+        <member name="T:Utilities.Debugger.Message">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Stores the types of debug messages that are output. Different levels of messages
+               can be displayed, depending on the level of debugging required.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Utilities.Debugger.Message.Notice">
+            <value>Your general debugging message.</value> *
+        </member>
+        <member name="F:Utilities.Debugger.Message.Error">
+            <value>An error message.</value> *
+        </member>
+        <member name="F:Utilities.Debugger.Message.Warning">
+            <value>A warning message.</value> *
+        </member>
+        <member name="F:Utilities.Debugger.Message.Verbose">
+            <value>Detailed debugging message.</value> *
+        </member>
+        <member name="T:Utilities.Debugger.DebugNode">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Stores debugging information on a per-class instance.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.DebugNode.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Does nothing.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.DebugNode.#ctor(System.Boolean)">
+            ****************************************************************************
+             <summary>Constructor. Sets values.</summary>
+             <param name="debugMode">Whether debuggine is turned on or not.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.DebugNode.setDebugMode(System.Boolean)">
+            ****************************************************************************
+             <summary>Sets the debug mode member for a particular class.</summary>
+             <param name="debugMode">The boolean to store as debug mode.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.DebugNode.setStepMode(System.Boolean)">
+            ****************************************************************************
+             <summary>Sets the step mode member for a particular class.</summary>
+             <param name="stepMode">The boolean to store as step mode.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.DebugNode.setForceStepMode(System.Boolean)">
+            ****************************************************************************
+             <summary>Sets the force step mode member for a particular class.</summary>
+             <param name="forceStepMode">The boolean to store as force step mode.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.DebugNode.setVerboseMode(System.Boolean)">
+            ****************************************************************************
+             <summary>Sets the verbose mode member for a particular class.</summary>
+             <param name="verboseMode">The boolean to store as verbose mode.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.DebugNode.setTimeMode(System.Boolean)">
+            ****************************************************************************
+             <summary>Sets the time mode member for a particular class.</summary>
+             <param name="timeMode">The boolean to store as time mode.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.DebugNode.setIndentMode(System.Boolean)">
+            ****************************************************************************
+             <summary>Sets the indent mode member for a particular class.</summary>
+             <param name="indentMode">The boolean to store as indent mode.</param>
+            *****************************************************************************
+        </member>
+        <member name="P:Utilities.Debugger.DebugNode.DebugMode">
+            <value>Turn debugging mode on or off. If on, notices, errors, and warnings will be printed.</value> *
+        </member>
+        <member name="P:Utilities.Debugger.DebugNode.StepMode">
+            <value>Turns step mode on or off. Program will pause or step and wait for user to press a key before proceeding.</value> *
+        </member>
+        <member name="P:Utilities.Debugger.DebugNode.ForceStep">
+            <value>Forces all print messages to use step functionality. For the lazy man.</value> *
+        </member>
+        <member name="P:Utilities.Debugger.DebugNode.VerboseMode">
+            <value>Print all messages, even verbose ones.</value> *
+        </member>
+        <member name="P:Utilities.Debugger.DebugNode.TimeMode">
+            <value>Prints the timestamp at the end of each message.</value> *
+        </member>
+        <member name="P:Utilities.Debugger.DebugNode.IndentMode">
+            <value>Will attempt to indent messages in a logical manner.</value> *
+        </member>
+        <member name="T:Utilities.Debugger.Debug">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Allows static access to debugging properties.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Utilities.Debugger.Debug.GuiMode">
+            <value>Whether to print messages to a windows form.</value> *
+        </member>
+        <member name="F:Utilities.Debugger.Debug.EndOnError">
+            <value>Whether to kill application when ThrowError is called.</value> *
+        </member>
+        <member name="F:Utilities.Debugger.Debug.Email">
+            <value>The email address to send errors to.</value> *
+        </member>
+        <member name="F:Utilities.Debugger.Debug.DebugTextBox">
+            <value>The gui control to output messages to.</value> *
+        </member>
+        <member name="M:Utilities.Debugger.Debug.StartBlock(System.String)">
+            ****************************************************************************
+             <summary>Print the start of a block of messages. Useful when seperating calls to a method.</summary>
+             <param name="msg">The message to print.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.EndBlock">
+            ****************************************************************************
+             <summary>Close the printing block.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.Call(Utilities.Debugger.Debug.SimpleDelegate)">
+            ****************************************************************************
+             <summary>Invoke a method via a delegate call. Alias of Call.</summary>
+             <param name="d">The delegate to invoke.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.Call(Utilities.Debugger.Debug.SimpleDelegate,System.String)">
+            ****************************************************************************
+             <summary>Invokes a delegate method call.</summary>
+             <param name="d">The delegate to invoke.</param>
+             <param name="msg">The message to print.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.Clear">
+            ****************************************************************************
+             <summary>Clear the gui messages.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.ThrowError(System.Exception,System.String)">
+            ****************************************************************************
+             <summary>
+               Handles program errors and exceptions. Displays a message and logs the error
+               and then terminates the program.
+             </summary>
+             <param name="e">The Exception object that occurred.</param>
+             <param name="message">Optional user message to display and log.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.ThrowError(System.Exception)">
+            ****************************************************************************
+             <summary>Alias of ThrowError</summary>
+             <param name="e">The Exception object that occurred.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.ThrowError(System.String)">
+            ****************************************************************************
+             <summary>Alias of ThrowError</summary>
+             <param name="message">User message to display and log.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.Step">
+            ****************************************************************************
+             <summary>Alias of Step. Doesn't print any message, just pauses program execution.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.Step(System.String)">
+            ****************************************************************************
+             <summary>Alias of Step.</summary>
+             <param name="text">Optional text to display before continuing.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.Step(System.String,System.Boolean)">
+            ****************************************************************************
+             <summary>
+               Pause program execution until user hits a key. Only will pause if StepMode
+               is enabled
+             </summary>
+             <param name="text">Optional text to display before continuing.</param>
+             <param name="forceStep">Whether to force pausing even if step mode is not enabled.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.Print(System.String)">
+            ****************************************************************************
+                     * <summary>Wrapper function to print a line of text.</summary>
+                     * <param name="text">The text to print to console or gui textbox.</param>
+                    ********************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.Print(System.String,System.String[])">
+            ****************************************************************************
+                     * <summary>Wrapper function to print a line of text.</summary>
+                     * <param name="text">The text to print to console or gui textbox.</param>
+                     * <param name="args">The arguments to send to string.Format for the text string to print.</param>
+                    ********************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.Print(System.String,System.Boolean)">
+            ****************************************************************************
+                     * <summary>Wrapper function to print a line of text.</summary>
+                     * <param name="text">The text to print to console or gui textbox.</param>
+                     * <param name="forceStep">Whether to force step mode.</param>
+                    ********************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.Print(System.String,Utilities.Debugger.Message)">
+            ****************************************************************************
+                     * <summary>Wrapper function to print a line of text.</summary>
+                     * <param name="text">The text to print to console or gui textbox.</param>
+                     * <param name="messageType">What type of message we're printing.</param>
+                    ********************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.TurnOnDebugging">
+            ****************************************************************************
+                     * <summary>Turns on Debugging for all classes.</summary>
+                    ********************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.TurnOffDebugging">
+            ****************************************************************************
+                     * <summary>Turns off Debugging for all classes.</summary>
+                    ********************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.TurnOnDebugging(System.Object)">
+            ****************************************************************************
+                     * <summary>Turns on Debugging for a particular class.</summary>
+                     * <param name="o">The class to turn on debugging for.</param>
+                    ********************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.TurnOffDebugging(System.Object)">
+            ****************************************************************************
+                     * <summary>Turns off Debugging for a particular class.</summary>
+                     * <param name="o">The class to turn off debugging for.</param>
+                    ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.TurnOnDebugging(System.String)">
+            ****************************************************************************
+                     * <summary>Turns on Debugging for a particular class. Full namespace required.</summary>
+                     * <param name="className">The fully qualified class name to turn on debugging for.</param>
+                    ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.TurnOffDebugging(System.String)">
+            ****************************************************************************
+                     * <summary>Turns off Debugging for a particular class. Full namespace required.</summary>
+                     * <param name="className">The fully qualified class name to turn on debugging for.</param>
+                    ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.TurnOnStepMode(System.Object)">
+            ****************************************************************************
+                     * <summary>Turns on Step Mode Debugging for a particular class.</summary>
+                     * <param name="o">The class to turn on debugging for.</param>
+                    ********************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.TurnOffStepMode(System.Object)">
+            ****************************************************************************
+                     * <summary>Turns off Step Mode Debugging for a particular class.</summary>
+                     * <param name="o">The class to turn off debugging for.</param>
+                    ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.RedirectConsoleToFile(System.String)">
+            ****************************************************************************
+                     * <summary>
+                     *   Redirects Console output to a file. Sends all normal console output
+                     *   to a text file instead.
+                     * </summary>
+                     * <param name="filename">The file name to write all output to.</param>
+                    ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.UnhandledException(System.Object,System.UnhandledExceptionEventArgs)">
+            ****************************************************************************
+             <summary>Will handle any uncaught program exception.</summary>
+             <example>AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(Utilities.Debugger.Log.UnhandledException);</example>
+             <param name="sender">Some program information about where the exception was made. Typically an AppDomain object.</param>
+             <param name="args">Exception information about the exception thrown.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.UnhandledException">
+            ****************************************************************************
+             <summary>Automatically sets up the unhandled exception for any program crash.</summary>
+             <example>Debug.SetupUnhandledException();</example>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.RunTests">
+            ****************************************************************************
+             <summary>Runs All Nunits test in a test project.</summary>
+             <example>Debug.RunTests(); //will run for tests for the calling executable</example>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Debug.RunTests(System.String)">
+            ****************************************************************************
+             <summary>Runs All Nunits test in a test project.</summary>
+             <param name="projectName">The project name to run.</param>
+             <example>Debug.RunTests("MyProject"); //will run for tests for the MyProjectTest.exe executable</example>
+            *****************************************************************************
+        </member>
+        <member name="P:Utilities.Debugger.Debug.DebugMode">
+            <value>Print notices, errors, and warnings - on a per class basis,</value> *
+        </member>
+        <member name="P:Utilities.Debugger.Debug.StepMode">
+            <value>Pauses for user input - on a per class basis.</value> *
+        </member>
+        <member name="P:Utilities.Debugger.Debug.ForceStep">
+            <value>Forces all debug statements to use step mode.</value> *
+        </member>
+        <member name="P:Utilities.Debugger.Debug.VerboseMode">
+            <value>Whether to print verbose messages.</value> *
+        </member>
+        <member name="P:Utilities.Debugger.Debug.TimeMode">
+            <value>Whether to print the time with the debugging messages.</value> *
+        </member>
+        <member name="P:Utilities.Debugger.Debug.IndentMode">
+            <value>Whether to print indentation with the debugging messages.</value> *
+        </member>
+        <member name="P:Utilities.Debugger.Debug.ClassName">
+            ****************************************************************************
+                     * <value>Name of the namespace and class that made a call to the Debug class.</value>
+                    ********************************************************************************
+        </member>
+        <member name="T:Utilities.Debugger.Debug.SimpleDelegate">
+            <summary>Your basic delegate with no parameters and returns nothing.</summary> *
+        </member>
+        <member name="T:Utilities.Debugger.Debug.ObjectDelegate">
+            <summary>A delegate that returns an object</summary> *
+        </member>
+        <member name="T:Utilities.Debugger.Debug.ObjectParamDelegate">
+            ****************************************************************************
+             <summary>A delgate that returns an object and takes in an object.</summary>
+             <param name="o">The object to use in the delegate call.</param>
+            ******************************************************************************
+        </member>
+        <member name="T:Utilities.Mail.Email">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Provides email functionality.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.#ctor(System.String,Utilities.Crypto.Encryption)">
+            ****************************************************************************
+            		 * <summary>Constructor. Stores email message settings. Sets class members.</summary>
+            		 * <param name="email">Email address you're sending from.</param>
+                     * <param name="password">The password to connect to a POP3 account.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.#ctor(System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>Constructor. Stores email message settings. Sets class members.</summary>
+            		 * <param name="from">Email address you're sending from.</param>
+                     * <param name="to">Email address you're sending to.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.#ctor(System.String,System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>Constructor. Stores email message settings. Sets class members.</summary>
+            		 * <param name="from">Email address you're sending from.</param>
+                     * <param name="to">Email address you're sending to.</param>
+                     * <param name="subject">Subject of the email message.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.#ctor(System.String,System.String,System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>Constructor. Stores email message settings. Sets class members.</summary>
+            		 * <param name="from">Email address you're sending from.</param>
+                     * <param name="to">Email address you're sending to.</param>
+                     * <param name="subject">Subject of the email message.</param>
+                     * <param name="body">Body of the email message.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            ****************************************************************************
+            		 * <summary>Constructor. Stores email message settings. Sets class members.</summary>
+            		 * <param name="from">Email address you're sending from.</param>
+                     * <param name="to">Email address you're sending to.</param>
+                     * <param name="subject">Subject of the email message.</param>
+                     * <param name="body">Body of the email message.</param>
+                     * <param name="attachment">Semi-colon delimited file locations of attachments to include.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.#ctor(System.String,System.String[],System.String,System.String,System.String[])">
+            ****************************************************************************
+            		 * <summary>Constructor. Stores email message settings. Sets class members.</summary>
+            		 * <param name="from">Email address you're sending from.</param>
+                     * <param name="toArray">List of Email addresses you're sending to.</param>
+                     * <param name="subject">Subject of the email message.</param>
+                     * <param name="body">Body of the email message.</param>
+                     * <param name="attachmentArray">List of file location attachments to include on the email.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.#ctor(Utilities.Mail.Email)">
+            ****************************************************************************
+             <summary>Copy Constructor.</summary>
+             <param name="email">The email object to create a copy of.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.Finalize">
+            ****************************************************************************
+             <summary>Destructor. Cleans up email message.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.Dispose">
+            ****************************************************************************
+             <summary>Cleans up email message.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.Send">
+            ****************************************************************************
+             <summary>Sends the email message.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.SendHtml(System.String)">
+            ****************************************************************************
+             <summary>Sends html and plain text email.</summary>
+             <param name="html">The html message to send.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.setBody(System.String)">
+            ****************************************************************************
+             <summary>Stores the body of the message.</summary>
+             <param name="body">The body string to store.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.setSubject(System.String)">
+            ****************************************************************************
+             <summary>Stores the subject of the message.</summary>
+             <param name="subject">The subject string to store.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.SendITEmail(Utilities.Mail.Email.Table)">
+            ****************************************************************************
+             <summary>Sends an IT style email. Black background baby.</summary>
+             <param name="table">The Table object to use as the email body message.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.SendITEmail">
+            ****************************************************************************
+             <summary>Sends an IT style email. Black background baby.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.AddImage(System.String,System.String)">
+            ****************************************************************************
+             <summary>Add an embedded html image to the email message.</summary>
+             <param name="id">The image id to use for embedding email images.</param>
+             <param name="imagePath">The file location of the image.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.Add(System.String)">
+            ****************************************************************************
+             <summary>Adds an email address for receiving the message.</summary>
+             <param name="email">Email address to add.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.AddAttachment(System.String)">
+            ****************************************************************************
+             <summary>Add an attachment to the email message.</summary>
+             <param name="filepath">The file attachment to add.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.Find(System.String)">
+            ****************************************************************************
+             <summary>Searches for text in an email message.</summary>
+             <param name="search">The string to search for.</param>
+            *****************************************************************************
+        </member>
+        <member name="P:Utilities.Mail.Email.From">
+            <value>Read access to the from addresses of the email message.</value> *
+        </member>
+        <member name="P:Utilities.Mail.Email.To">
+            <value>Read access to the send to addresses of the email message.</value> *
+        </member>
+        <member name="P:Utilities.Mail.Email.Subject">
+            <value>Read access to the subject of the email message.</value> *
+        </member>
+        <member name="P:Utilities.Mail.Email.Body">
+            <value>Read access to the contents of the email message.</value> *
+        </member>
+        <member name="P:Utilities.Mail.Email.Attachment">
+            <value>The attachment file path to send in the email.</value> *
+        </member>
+        <member name="T:Utilities.Mail.Email.Table">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Provides cvs style encoding of a html message.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.Table.ToString">
+            ****************************************************************************
+             <summary>Gets the Table object as a html message.</summary>
+             <returns>HTML message view of the Table object.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.Table.Add(System.String)">
+            ****************************************************************************
+             <summary>Add a table cell.</summary>
+             <param name="htmlcell">The table cell to add (<tr><td>htmlcell</td></tr>).</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.Table.NewRow">
+            ****************************************************************************
+             <summary>Adds a new row to the html table.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.Table.AddHeader(System.String)">
+            ****************************************************************************
+             <summary>Stores header text for the html message.</summary>
+             <param name="header">The text to include on the header</param>
+            *****************************************************************************
+        </member>
+        <member name="P:Utilities.Mail.Email.Table.Header">
+            <value>The header text to output on the html message.</value> *
+        </member>
+        <member name="T:Utilities.Mail.Email.Table.Row">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Wrapper for <tr></tr> of a html table.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.Table.Row.AddColumn(System.String)">
+            ****************************************************************************
+             <summary>Add a new column to the row.</summary>
+             <param name="htmlcell">The column text to store.</param>
+            ******************************************************************************
+        </member>
+        <member name="P:Utilities.Mail.Email.Table.Row.Columns">
+            <value>The list of columns in the row.</value> *
+        </member>
+        <member name="T:Utilities.Mail.Email.Table.Column">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Wrapper for <td></td> of a html table.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Mail.Email.Table.Column.#ctor(System.String)">
+            ****************************************************************************
+             <summary>Add a new cell to the html table.</summary>
+             <param name="htmlcell">The text to store in the cell.</param>
+            ******************************************************************************
+        </member>
+        <member name="P:Utilities.Mail.Email.Table.Column.HTML">
+            <value>The html of the table cell.</value> *
+        </member>
+        <member name="T:Utilities.IO.File">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Handles basic file I/O operations. Is primarily a wrapper for System.IO features.
+               Mixture between System.IO and custom IO functionality.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.#ctor(System.String)">
+            ****************************************************************************
+             <summary>
+               Constructor. Stores text file to work with and attempts to open file if file
+               path was passed in.
+             </summary>
+             <param name="filename">Location of the file to work with.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.UniqueFileName(System.String)">
+            ****************************************************************************
+             <summary>Checks if the file exists and appends a number to the end until it is unique.</summary>
+             <returns>A unique file name.</returns>
+             <param name="filename">The file to make unique.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.UniqueFileName">
+            ****************************************************************************
+             <summary>Checks if the file exists and appends a number to the end until it is unique.</summary>
+             <returns>A unique file name.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Open">
+            ****************************************************************************
+             <summary>Opens a file for reading and stores the pointer to the file.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Open(System.String)">
+            ****************************************************************************
+             <summary>Gets the stream reader from a file path.</summary>
+             <param name="filename">The file path to open.</param>
+             <returns>A StreamReader object of the filename.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Read(System.String)">
+            ****************************************************************************
+             <summary>Reads entire file into a string and returns the contents.</summary>
+             <returns>The contents of the file.</returns>
+             <param name="filename">Path where the file is located.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Read">
+            ****************************************************************************
+             <summary>Alias of Read. Returns the contents of a file.</summary>
+             <returns>The entire contents of the class file.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Delete(System.String)">
+            ****************************************************************************
+             <summary>Deletes specified file.</summary>
+             <param name="filename">The file to delete.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Delete">
+            ****************************************************************************
+             <summary>Deletes stored file.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.ReadLines(System.String)">
+            ****************************************************************************
+             <summary>Reads in a file and breaks up each line into an element of an array.</summary>
+             <param name="filename">Path where the file is located.</param>
+             <returns>Zero-indexed Array of each line in the file.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.ReadLines">
+            ****************************************************************************
+             <summary>Reads in a file and breaks up each line into an element of an array.</summary>
+             <returns>Zero-indexed Array of each line in the file.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Write(System.String,System.String)">
+            ****************************************************************************
+             <summary>Writes a file to disc.</summary>
+             <returns>True if the file was sucessfully written. False otherwise.</returns>
+             <param name="contents">String contents to write to disc.</param>
+             <param name="filename">Location where the file will be written to disc.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Write(System.String)">
+            ****************************************************************************
+             <summary>Writes a file to disc.</summary>
+             <returns>True if the file was sucessfully written. False otherwise.</returns>
+             <param name="contents">String contents to write to disc.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Write(System.Byte[],System.String)">
+            ****************************************************************************
+             <summary>Binary Write. Similar to write, but takes in a byte array</summary>
+             <returns>True if the file was successfully written. False otherwise.</returns>
+             <param name="bytes">The byte array to write to disc.</param>
+             <param name="filename">The location to write the file to disc.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Write(System.Byte[])">
+            ****************************************************************************
+             <summary>Binary Write. Similar to write, but takes in a byte array</summary>
+             <returns>True if the file was successfully written. False otherwise.</returns>
+             <param name="bytes">The byte array to write to disc.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.WriteLine(System.String)">
+            ****************************************************************************
+             <summary>Writes a line to end of file and keeps file pointer open.</summary>
+             <param name="contents">The text contents to append to the file.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.WriteLine(System.String,System.String)">
+            ****************************************************************************
+             <summary>Writes a line to end of file and keeps file pointer open.</summary>
+             <param name="contents">The text contents to append to the file.</param>
+             <param name="filename">The location to write the file to disc.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Append(System.String)">
+            ****************************************************************************
+             <summary>Appends text to a file.</summary>
+             <param name="contents">String contents to write to disc.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Append(System.String,System.String)">
+            ****************************************************************************
+             <summary>Appends text to a file.</summary>
+             <param name="contents">String contents to write to disc.</param>
+             <param name="filename">Location where the file will be written to disc.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.NextLine">
+            ****************************************************************************
+             <summary>Returns the next line of a file and advances the file pointer.</summary>
+             <returns>Contents of the next line in the file.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.ls(System.String,System.String,System.Boolean)">
+            ****************************************************************************
+             <summary>Reads in list of files in a directory and returns the list of files.</summary>
+             <returns>Array containing the list of files in the directory.</returns>
+             <param name="dir">Directory path to read.</param>
+             <param name="regexFilter">The regular expression to match file names against.</param>
+             <param name="includeFullPath">Whether to include the folder path in the list of files.
+               By default, the full file name will be included.
+             </param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.ls(System.String,System.String)">
+            ****************************************************************************
+             <summary>Reads in list of files in a directory and returns the list of files.</summary>
+             <returns>Array containing the list of files in the directory.</returns>
+             <param name="dir">Directory path to read.</param>
+             <param name="filter">The regular expression to match file names against.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.ls(System.String)">
+            ****************************************************************************
+             <summary>Reads in list of files in a directory and returns the list of files.</summary>
+             <returns>Array containing the list of files in the directory.</returns>
+             <param name="dir">Directory path to read.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.ls">
+            ****************************************************************************
+             <summary>Reads in list of files in a directory and returns the list of files.</summary>
+             <returns>Array containing the list of files in the local directory.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Archive(System.String[],System.String)">
+            ****************************************************************************
+             <summary>Archives list of files to specified folder.</summary>
+             <param name="files">List of files to save to the archive folder.</param>
+             <param name="archiveFolder">The directory to save the files to.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Archive(System.String[],System.String,System.Boolean)">
+            ****************************************************************************
+             <summary>Archives list of files to specified folder.</summary>
+             <param name="files">List of files to save to the archive folder.</param>
+             <param name="archiveFolder">The directory to save the files to.</param>
+             <param name="copy">Whether to copy the archive files. By default, the files 
+               are moved, as that is usually what an archival process does.
+             </param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Archive(System.String,System.String)">
+            ****************************************************************************
+             <summary>Archives list of files to specified folder.</summary>
+             <param name="file">Single file to save to the archive folder.</param>
+             <param name="archiveFolder">The directory to save the files to.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Archive(System.String,System.String,System.Boolean)">
+            ****************************************************************************
+             <summary>Archives list of files to specified folder.</summary>
+             <param name="file">Single file to save to the archive folder.</param>
+             <param name="archiveFolder">The directory to save the files to.</param>
+             <param name="copy">Whether to copy the archive files. By default, the files 
+               are moved, as that is usually what an archival process does.
+             </param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Archive(System.String[],System.String[])">
+            ****************************************************************************
+             <summary>Archives list of files from one location to the next.</summary>
+             <param name="sourceFiles">The list of files to archive.</param>
+             <param name="archiveFiles">The matching list of files to archive to.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Archive(System.String[],System.String[],System.Boolean)">
+            ****************************************************************************
+             <summary>Archives list of files from one location to the next.</summary>
+             <param name="sourceFiles">The list of files to archive.</param>
+             <param name="archiveFiles">The matching list of files to archive to.</param>
+             <param name="copy">Whether to copy the archive files. By default, the files 
+               are moved, as that is usually what an archival process does.
+             </param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Copy(System.String,System.String)">
+            ****************************************************************************
+             <summary>Copies file from source to destination.</summary>
+             <param name="srcFile">The file location to copy.</param>
+             <param name="dstFile">The file location to copy to.</param>
+             <returns>True if the file was successfully copied. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Copy(System.String)">
+            ****************************************************************************
+             <summary>Copies file to destination. Filename is the source file</summary>
+             <param name="dstFile">The file location to copy to.</param>
+             <returns>True if the file was successfully copied. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Copy(System.String[],System.String)">
+            ****************************************************************************
+             <summary>Copies list of files to a destination folder. Or to a list of destination files.</summary>
+             <param name="srcFiles">List of files to copy.</param>
+             <param name="dstFolder">The folder location to copy to.</param>
+             <returns>True if all the files were successfully copied. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Copy(System.String[],System.String[])">
+            ****************************************************************************
+             <summary>Copies list of files to destination files.</summary>
+             <param name="srcFiles">List of files to copy.</param>
+             <param name="dstFiles">The 1:1 corresponding file locations to copy to.</param>
+             <returns>True if all the files were successfully copied. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Move(System.String,System.String)">
+            ****************************************************************************
+             <summary>Moves A File.</summary>
+             <param name="srcFile">File that is going to be moved.</param>
+             <param name="dstFile">Destination filename to move to.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Move(System.String)">
+            ****************************************************************************
+             <summary>Moves A File.</summary>
+             <param name="dstFile">Destination filename to move to.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.SetTextFile(System.String)">
+            ****************************************************************************
+             <summary>Set method for TextFile member.</summary>
+             <param name="filename">Path of the text file to set.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.FileInUse(System.String)">
+            ****************************************************************************
+             <summary>Determines if a file is currently in use.</summary>
+             <param name="filename">File to check for.</param>
+             <returns>True if the file is use. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Close">
+            ****************************************************************************
+             <summary>Closes file handles.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.RemoveBlankLines(System.String)">
+            ****************************************************************************
+             <summary>Removes any lines that just have whitespace.</summary>
+             <param name="filename">The file path to remove blank lines from.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Merge(System.String[],System.String)">
+            ****************************************************************************
+             <summary>Merges n files together and saves them to new location.</summary>
+             <param name="files">List of files to merge.</param>
+             <param name="filename">File to write merged files to.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Merge(System.String[])">
+            ****************************************************************************
+             <summary>Merges n files together and saves them to new location.</summary>
+             <param name="files">List of files to merge.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Merge(System.String,System.String)">
+            ****************************************************************************
+             <summary>Merges two files together and saves them to new location.</summary>
+             <param name="file">File to merge.</param>
+             <param name="filename">File to write merged files to.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Merge(System.String)">
+            ****************************************************************************
+             <summary>Merges two files together and saves them to new location.</summary>
+             <param name="file">File to write merged files to.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.FixEndOfLine(System.String)">
+            ****************************************************************************
+             <summary>Replaces EOL character with the Windows Standard EOL.</summary>
+             <param name="filename">The file name to perform the replacement.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Exists(System.String)">
+            ****************************************************************************
+             <summary>Returns true if the file exists on disk.</summary>
+             <param name="filename">The file path to check.</param>
+             <returns>True if the file exists. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.Exists">
+            ****************************************************************************
+             <summary>Returns true if the file exists on disk.</summary>
+             <returns>True if the file exists. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.isDir(System.String)">
+            ****************************************************************************
+             <summary>Returns true if the file is a directory.</summary>
+             <param name="dir">The folder location to check.</param>
+             <returns>True if the directory exists. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.isDir">
+            ****************************************************************************
+             <summary>Returns true if the file is a directory.</summary>
+             <returns>True if the directory exists. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.CreateDirectory(System.String)">
+            ****************************************************************************
+             <summary>Creates a folder.</summary>
+             <param name="dir">The folder location to create.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.CreateDirectory">
+            ****************************************************************************
+             <summary>Creates a folder.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.CopyDirectory(System.String,System.String)">
+            ****************************************************************************
+             <summary>Copies the entire contents of a directory.</summary>
+             <param name="source">The folder location to copy.</param>
+             <param name="target">The folder location to copy to.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.RecentFileByCreationTime(System.String,System.String)">
+            ****************************************************************************
+             <summary>Returns the full path to the most recent file in the given directory path</summary>
+             <returns>The full path to the most recently created file.</returns>
+             <param name="folder">The folder to check.</param>
+             <param name="filter">Regular expression filter to only select certain files in the folder.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.RecentFileByCreationTime(System.String)">
+            ****************************************************************************
+             <summary>Returns the full path to the most recent file in the given directory path</summary>
+             <returns>The full path to the most recently modified file.</returns>
+             <param name="folder">The folder to check.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.RecentFileByWriteTime(System.String,System.String)">
+            ****************************************************************************
+             <summary>Returns the full path to the most recent file in the given directory path</summary>
+             <returns>The full path to the most recently modified file.</returns>
+             <param name="folder">The folder to check.</param>
+             <param name="filter">Regular expression filter to only select certain files in the folder.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.IO.File.RecentFileByWriteTime(System.String)">
+            ****************************************************************************
+             <summary>Returns the full path to the most recent file in the given directory path</summary>
+             <returns>The full path to the most recently created file.</returns>
+             <param name="folder">The folder to check.</param>
+            ******************************************************************************
+        </member>
+        <member name="P:Utilities.IO.File.Filename">
+            <value>The file name the class is using for IO operations.</value> *
+        </member>
+        <member name="P:Utilities.IO.File.TempFolder">
+            <value>Returns the temporary folder directory of the system</value> *
+        </member>
+        <member name="P:Utilities.IO.File.TempFileName">
+            <value>Returns a temporary file name on the system.</value> *
+        </member>
+        <member name="T:Utilities.Images.Image">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Handles image manipulation and functionality.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Images.Image.ResizeImage(System.String,System.String,System.Int32,System.Int32,System.Boolean)">
+            ****************************************************************************
+             <summary>Resized an image.</summary>
+             <param name="originalFile">The file location of the image to resize.</param>
+             <param name="newFile">The file location to save the resized image to.</param>
+             <param name="newWidth">The width to resize to.</param>
+             <param name="maxHeight">The height to resize to.</param>
+             <param name="onlyResizeIfWider">If true, the image will not be resized unless the original file is wider than the new file.</param>
+            *****************************************************************************
+        </member>
+        <member name="T:Utilities.JSON">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 17, 2012 - 1:52 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Class to standardize serializing and deserializing of JSON objects.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.JSON.Serialize(System.Object)">
+            ****************************************************************************
+             <summary>Serializes object into a json string.</summary>
+             <param name="o">The object to serialize.</param>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Databases.Linq.Warwick.LinqExtensions">
+            ****************************************************************************
+             <author>Tim Paris/Wayne Bryan</author>
+             <date>October 18, 2012 - 1:40 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Helpful methods for linq
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.LinqExtensions.GetPage``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+            ****************************************************************************
+             <summary>Used by LINQ.</summary>
+             <param name="source">Linq query</param>
+             <param name="page">"Page" to start at.</param>
+             <param name="recordsPerPage">Total Number of records to return.</param>
+             <returns>Linq query results.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Databases.Linq.Warwick.LinqExtensions.GetPage``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
+            ****************************************************************************
+             <summary>Used by LINQ to SQL.</summary>
+             <param name="source">Linq query</param>
+             <param name="page">"Page" to start at.</param>
+             <param name="recordsPerPage">Total Number of records to return.</param>
+             <returns>Linq query results.</returns>
+            *****************************************************************************
+        </member>
+        <member name="T:Utilities.Debugger.Log">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Stores log messages to text file and/or database.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Log.constructor(System.String,System.String,System.Boolean,System.Boolean,System.String)">
+            *****************************************************************************
+                     * Constructor. Passes in class settings. See above for member descriptions.
+            		 *******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Log.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Sets default settings.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Log.#ctor(System.String,System.String,System.Boolean,System.Boolean,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Saves settings.</summary>
+             <param name="id">The logging id to log.</param>
+             <param name="company">The company name to log.</param>
+             <param name="logFile">Whether to log to a file.</param>
+             <param name="logDatabase">Whether to log to a database.</param>
+             <param name="logFolder">The folder to log messages to.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Log.#ctor(System.String,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Saves settings.</summary>
+             <param name="id">The logging id to log.</param>
+             <param name="company">The company name to log.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Log.#ctor(System.String)">
+            ****************************************************************************
+             <summary>Constructor. Saves settings.</summary>
+             <param name="company">The company name to log.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Log.Add(System.String,Utilities.Debugger.Message)">
+            ****************************************************************************
+                     * <summary>Adds a new log entry. Will write a text file and/or write to a database table.</summary>
+                     * <param name="message">Text message to log.</param>
+                     * <param name="status">Log status id based on Debugger.Message enumerator.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Log.Add(System.String)">
+            ****************************************************************************
+                     * <summary>Adds a new log entry. Will write a text file and/or write to a database table.</summary>
+                     * <param name="message">Text message to log.</param>
+            		 *******************************************************************************
+        </member>
+        <member name="M:Utilities.Debugger.Log.Add(Warehouse.Databases.Linq.Warwick.logs)">
+            ****************************************************************************
+             <summary>Adds a new log entry to Warwick logs database table.</summary>
+             <param name="logs">The log object to create.</param>
+            ******************************************************************************
+        </member>
+        <member name="T:Utilities.Runtime.Options">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Handles reading command line and xml file arguments to programs.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Reads in default settings and program arguments.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.#ctor(System.IO.FileInfo)">
+            ****************************************************************************
+             <summary>Constructor. The file to load the settings file from.</summary>
+             <param name="fileinfo">The file location to open.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.#ctor(System.String[])">
+            ****************************************************************************
+             <summary>Constructor. Reads in arguments based on array.</summary>
+             <param name="args">The argument list to read in.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.#ctor(System.String)">
+            ****************************************************************************
+             <summary>Constructor. Reads in argument list from a string.</summary>
+             <param name="args">Argument list as a text string, such as that from a command line prompt.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.ArgumentList">
+            ****************************************************************************
+             <summary>Returns argument list, based on current parameters.</summary>
+             <returns>Argument list, similar to what one would type on a command prompt.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getString(System.String)">
+            ****************************************************************************
+             <summary>Gets the row value as a string.</summary>
+             <param name="column">The column name to retrieve.</param>
+             <returns>The string representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getString(System.Int32)">
+            ****************************************************************************
+             <summary>Gets the row value as a string.</summary>
+             <param name="index">The column index to retrieve.</param>
+             <returns>The string representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getStringSafely(System.String)">
+            ****************************************************************************
+             <summary>Gets the row value as a string. If it's a null string, return empty string.</summary>
+             <param name="column">The column name to retrieve.</param>
+             <returns>The string representation of the sql data. If null, returns an empty string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getStringSafely(System.Int32)">
+            ****************************************************************************
+             <summary>Gets the row value as a string. If it's a null string, return empty string.</summary>
+             <param name="index">The column index to retrieve.</param>
+             <returns>The string representation of the sql data. If null, returns an empty string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getInt(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to an integer.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The integer representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getInt(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to an integer.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The integer representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getDouble(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a double.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The double representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getDouble(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a double.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The double representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getFloat(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a float.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The float representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getFloat(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a float.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The float representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getDateTime(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a DateTime.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The DateTime representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getDateTime(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a DateTime.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The DateTime representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getBoolean(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a boolean.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The boolean representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getBoolean(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to an integer.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The integer representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getBytes(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a byte array.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The byte array representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getBytes(System.Int32)">
+            ****************************************************************************
+             <summary>Converts row value to a byte array.</summary>
+             <param name="index">The column index to convert.</param>
+             <returns>The byte array representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.ToString">
+            ****************************************************************************
+             <summary>Gets parameters for debugging.</summary>
+             <returns>String of parameters.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.exists(System.String)">
+            ****************************************************************************
+             <summary>Checks if the parameter exists in the list.</summary>
+             <param name="parameter">The parameter to check for.</param>
+             <returns>Returns true if parameter exists. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.Exists(System.String)">
+            ****************************************************************************
+             <summary>Checks if the parameter exists in the list.</summary>
+             <param name="parameter">The parameter to check for.</param>
+             <returns>Returns true if parameter exists. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getHash">
+            ****************************************************************************
+             <summary>Gets list of parameters as a hash table.</summary>
+             <returns>Hash table representing the parameters.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.Read(System.String)">
+            ****************************************************************************
+             <summary>Reads in value of a parameter.</summary>
+             <param name="parameter">The parameter to search for.</param>
+             <returns>Return value of a parameter</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.get(System.String)">
+            ****************************************************************************
+             <summary>Reads in value of a parameter.</summary>
+             <param name="parameter">The parameter to search for.</param>
+             <returns>Return value of a parameter</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.read(System.String)">
+            ****************************************************************************
+             <summary>Reads in value of a parameter.</summary>
+             <param name="parameter">The parameter to search for.</param>
+             <returns>Return value of a parameter</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.Arguments">
+            ****************************************************************************
+             <summary>Reverse engineer argument list</summary>
+             <returns>String of argument list.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.Set(System.String,System.Int32@)">
+            ****************************************************************************
+             <summary>Attempts to set a parameter with the specified integer.</summary>
+             <returns>True if integer is set successful. False otherwise.</returns>
+             <param name="argumentName">The parameter name.</param>
+             <param name="i">The integer to set.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.Set(System.String,System.DateTime@)">
+            ****************************************************************************
+             <summary>Attempts to set a parameter with the specified DateTime.</summary>
+             <returns>True if DateTime is set successful. False otherwise.</returns>
+             <param name="argumentName">The parameter name.</param>
+             <param name="datetime">The DateTime to set.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.Set(System.String,System.Boolean@)">
+            ****************************************************************************
+             <summary>Attempts to set a parameter with the specified boolean.</summary>
+             <returns>True if boolean is set successful. False otherwise.</returns>
+             <param name="argumentName">The parameter name.</param>
+             <param name="b">The boolean to set.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.Set(System.String,System.String@)">
+            ****************************************************************************
+             <summary>Attempts to set a parameter with the specified string.</summary>
+             <returns>True if string is set successful. False otherwise.</returns>
+             <param name="argumentName">The parameter name.</param>
+             <param name="s">The string to set.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getXml">
+            ****************************************************************************
+             <summary>Xml access to the underlying options</summary>
+             <returns>Xml representation of the parameter settings.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getList(System.String)">
+            ****************************************************************************
+             <summary>Retrieves multiple options with the same argument.</summary>
+             <returns>The list of values for the specified parameter.</returns>
+             <param name="option">The parameter list to return.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.GetEnumerator">
+            ****************************************************************************
+             <summary>Returns an enumerator.</summary>
+             <returns>An enumerator for the Options class.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getObject(System.String)">
+            ****************************************************************************
+             <summary>Looks for the value of the object based on the argument.</summary>
+             <param name="argument">The string to search for.</param>
+             <returns>The object found for the argument.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.setObject(System.String,System.Object)">
+            ****************************************************************************
+             <summary>Sets an argument value.</summary>
+             <param name="argument">The argument name to set.</param>
+             <param name="o">The argument object value to set to.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Runtime.Options.getObjectList(System.String)">
+            ****************************************************************************
+             <summary>Gets a list of arguments.</summary>
+             <param name="argument">The argument name to search for.</param>
+             <returns>List of argument strings.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Utilities.Runtime.Options.ArgumentsList">
+            <value>The original, unaltered string list.</value> *
+        </member>
+        <member name="P:Utilities.Runtime.Options.Count">
+            <value>Returns the number of argument parameters.</value> *
+        </member>
+        <member name="P:Utilities.Runtime.Options.Item(System.String)">
+            <value>Returns parameter value, based on key.</value> *
+        </member>
+        <member name="P:Utilities.Runtime.Options.Item(System.Int32)">
+            <value>Returns ith parameter value.</value> *
+        </member>
+        <member name="T:Utilities.String.SuperString">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <update>August 21, 2012 - 12:46 PM. Changed private string member to use the 
+               mutable StringBuilder object.</update>
+             <category>Utility Class</category>
+             <summary>
+               Provides additional functionality for strings.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="F:Utilities.String.SuperString.printNullAsEmptyString">
+            <value>How to handle null strings</value> *
+        </member>
+        <member name="M:Utilities.String.SuperString.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Instantiates StringBuilder object.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.#ctor(System.String)">
+            ****************************************************************************
+             <summary>Constructor. Sets string value.</summary>
+             <param name="s">Stores the string to operate on.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.#ctor(System.Char)">
+            ****************************************************************************
+             <summary>Constructor. Stores character as string.</summary>
+             <param name="c">The character to store as a string.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.#ctor(System.Int32)">
+            ****************************************************************************
+             <summary>Constructor. Stores integer as string.</summary>
+             <param name="i">The integer to store as a string.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.#ctor(System.Double)">
+            ****************************************************************************
+             <summary>Constructor. Stores double as string.</summary>
+             <param name="d">The double to store as a string.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.#ctor(System.Boolean)">
+            ****************************************************************************
+             <summary>Constructor. Stores boolean as string.</summary>
+             <param name="b">The boolean value to store as a string.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.ToString">
+            ****************************************************************************
+             <summary>Override the ToString function to return the SuperString as a string</summary>
+             <returns>The string.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.op_Implicit(System.String)~Utilities.String.SuperString">
+            ****************************************************************************
+             <summary>Implicit Conversion from string to SuperString.</summary>
+             <param name="x">The string to convert to a SuperString.</param>
+             <returns>Creates a new SuperString and returns it.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.op_Implicit(System.Char)~Utilities.String.SuperString">
+            ****************************************************************************
+             <summary>Implicit Conversion from character to SuperString.</summary>
+             <param name="c">The character to convert to a SuperString.</param>
+             <returns>Creates a new SuperString and returns it.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.op_Implicit(System.Int32)~Utilities.String.SuperString">
+            ****************************************************************************
+             <summary>Implicit Conversion from integer to SuperString.</summary>
+             <param name="i">The integer to convert to a SuperString.</param>
+             <returns>Creates a new SuperString and returns it.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.op_Explicit(Utilities.String.SuperString)~System.String">
+            ****************************************************************************
+             <summary>Explicit conversion from SuperString to string.</summary>
+             <param name="s">The SuperString to convert to a string.</param>
+             <returns>The internal string representation.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.Left(System.Int32)">
+            ****************************************************************************
+             <summary>Gets the left most characters of a string.</summary>
+             <param name="length">The number of characters to return, starting from the left.</param>
+             <returns>The left most substring.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.Right(System.Int32)">
+            ****************************************************************************
+             <summary>Gets the right most characters of a string.</summary>
+             <param name="length">The number of characters to return, starting from the right.</param>
+             <returns>The right most substring.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.Mid(System.Int32,System.Int32)">
+            ****************************************************************************
+             <summary>Gets a part of a string.</summary>
+             <param name="startIndex">Where to start copying the string.</param>
+             <param name="length">The number of characters to gather.</param>
+             <returns>The part of the string specified.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.Mid(System.Int32)">
+            ****************************************************************************
+             <summary>Gets a part of a string.</summary>
+             <param name="startIndex">Where to start copying the string.</param>
+             <returns>The part of the string specified.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.RemoveFromEnd(System.Int32)">
+            ****************************************************************************
+             <summary>Remove n characters from the end of the string.</summary>
+             <param name="count">The number of characters to remove from the end.</param>
+             <returns>The string after the characters have been removed.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.Split">
+            ****************************************************************************
+             <summary>Splits a string based on several common character separators.</summary>
+             <returns>Array of strings, after the split.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.Split(System.String)">
+            ****************************************************************************
+             <summary>Splits a string based on another string.</summary>
+             <param name="split">The string to split the string on.</param>
+             <returns>Array of strings, after the split.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.Split(System.String,System.String)">
+            ****************************************************************************
+             <summary>Splits a string based on another string.</summary>
+             <param name="str">The string to split.</param>
+             <param name="split">The string to split the string on.</param>
+             <returns>Array of strings, after the split.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.ucwords">
+            ****************************************************************************
+             <summary>Converts string to upper case words.</summary>
+             <returns>Upper case words of the string</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.ucwords(System.String)">
+            ****************************************************************************
+             <summary>Converts string to upper case words.</summary>
+             <param name="words">The string to convert to upper case words.</param>
+             <returns>Upper case words of the string</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.RemoveBlankLines(System.String[])">
+            ****************************************************************************
+             <summary>Removes blank lines from a string array.</summary>
+             <param name="lines">The array to remove blank lines from.</param>
+             <returns>String array after the blank lines have been removed.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.DatabaseFormat">
+            ****************************************************************************
+             <summary>Format a string into a sql database string</summary>
+             <returns>String escaped as valid sql string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.DatabaseFormat(System.String)">
+            ****************************************************************************
+             <summary>Format a string into a sql database string</summary>
+             <param name="s">The string to escape.</param>
+             <returns>String escaped as valid sql string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.DatabaseFormat(System.Int32)">
+            ****************************************************************************
+             <summary>Format a string into a sql database string</summary>
+             <param name="len">The length of the string.</param>
+             <returns>String escaped as valid sql string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.DatabaseFormat(System.String,System.Int32)">
+            ****************************************************************************
+             <summary>Format a string into a sql database string</summary>
+             <param name="s">The string to escape.</param>
+             <param name="len">The length of the string.</param>
+             <returns>String escaped as valid sql string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.truncate(System.Int32)">
+            ****************************************************************************
+             <summary>Gets a string of maximum length.</summary>
+             <param name="len">The maximum number of characters in the string.</param>
+             <returns>A truncated string.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.DatabaseBoolToBit">
+            ****************************************************************************
+             <summary>Converts boolean true/false to bit 1/0</summary>
+             <returns>Bit representation of database boolean.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.DatabaseBoolToBit(System.Boolean)">
+            ****************************************************************************
+             <summary>Converts boolean true/false to bit 1/0</summary>
+             <param name="b">The boolean to convert.</param>
+             <returns>Bit representation of database boolean.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.DatabaseBitToBool(System.String)">
+            ****************************************************************************
+             <summary>Converts bit 1/0 to boolean true/false.</summary>
+             <param name="s">The string to convert.</param>
+             <returns>Boolean representation of database bit.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.Substring(System.Int32,System.Int32)">
+            ****************************************************************************
+             <summary>Returns substring of internal string.</summary>
+             <param name="startIndex">Where to start copying the string from.</param>
+             <param name="length">The number of characters to return.</param>
+             <returns>A substring of internal string.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.doubleToInt(System.String)">
+            ****************************************************************************
+             <summary>Converts double to integer.</summary>
+             <param name="s">The double string to convert.</param>
+             <returns>An integer representation of the double string.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.IsEmpty">
+            ****************************************************************************
+             <summary>Checks if the string is empty.</summary>
+             <returns>True if string is empty or null. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.StringToByte">
+            ****************************************************************************
+             <summary>Converts string to byte array representation.</summary>
+             <returns>Byte array of internal string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.StringToByte(System.String)">
+            ****************************************************************************
+             <summary>Converts string to byte array representation.</summary>
+             <param name="s">THe string to convert.</param>
+             <returns>Byte array of internal string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.ByteToString(System.Byte[])">
+            ****************************************************************************
+             <summary>Converts byte array to a string.</summary>
+             <param name="b">The byte array to convert.</param>
+             <returns>A string representation of the byte array.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.op_Addition(Utilities.String.SuperString,System.String)">
+            ****************************************************************************
+             <summary>Implements string concatenation.</summary>
+             <param name="s1">The string to combine.</param>
+             <param name="s2">The string to add to.</param>
+             <returns>A new string of s1 and s2 combined.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.op_Addition(Utilities.String.SuperString,Utilities.String.SuperString)">
+            ****************************************************************************
+             <summary>Implements string concatenation.</summary>
+             <param name="s1">The string to combine.</param>
+             <param name="s2">The string to add to.</param>
+             <returns>A new string of s1 and s2 combined.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.op_Subtraction(Utilities.String.SuperString,System.String)">
+            ****************************************************************************
+             <summary>Implements string decatenation.</summary>
+             <param name="s1">The string to search.</param>
+             <param name="s2">The string to remove.</param>
+             <returns>A new string of with s2 removed from s1.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.String.SuperString.Format(System.String[])">
+            ****************************************************************************
+             <summary>Wrapper for String.Format to format string parameters.</summary>
+             <param name="parameters">The string to use for formatting.</param>
+             <returns>Formatted string.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Utilities.String.SuperString.nl">
+            <value>Short version of a new line string.</value> *
+        </member>
+        <member name="P:Utilities.String.SuperString.Length">
+            <value>Gets number of characters in the  string.</value> *
+        </member>
+        <member name="T:Utilities.TestInterface">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>October 17, 2012 - 1:49 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               A standard testing interface for use with testing classes.
+               This is unfinished.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.TestInterface.Test">
+            ****************************************************************************
+             <summary>Primary testing function.</summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Utilities.Utility">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>November 23, 2011 - 11:37 AM</date>
+             <category>Static Class</category>
+             <summary>
+               Provides useful static functions that are common to many programs.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.getDateTime(System.String)">
+            ****************************************************************************
+             <summary>Useful string to DateTime conversion function.</summary>
+             <param name="datetimeString">The string to use to convert to a DateTime.</param>
+             <returns>Converted DateTime object.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.getDouble(System.String)">
+            ****************************************************************************
+             <summary>Useful string to double conversion function.</summary>
+             <param name="doubleString">The string to use to convert to a double.</param>
+             <returns>Converted double.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.getFloat(System.String)">
+            ****************************************************************************
+             <summary>Useful string to float conversion function.</summary>
+             <param name="floatString">The string to use to convert to a float.</param>
+             <returns>Converted float.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.getInt(System.String)">
+            ****************************************************************************
+             <summary>Useful string to int conversion function.</summary>
+             <param name="intString">The string to use to convert to a int.</param>
+             <returns>Converted int.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.getBoolean(System.String)">
+            ****************************************************************************
+             <summary>Converts a string to a boolean object.</summary>
+             <param name="boolean">String format of a boolean, such as true or yes.</param>
+             <returns>Boolean representation of the string.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.getBytes(System.String)">
+            ****************************************************************************
+             <summary>Converts a string to a byte array.</summary>
+             <param name="bytes">String to convert to byte array.</param>
+             <returns>A byte array, using utf8 encoding.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.getCurrency(System.String)">
+            ****************************************************************************
+             <summary>Converts a string number to currency format.</summary>
+             <param name="number">String format of a number.</param>
+             <returns>A string representation of a number, rounded to two decimal places.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.getCurrency(System.Double)">
+            ****************************************************************************
+             <summary>Converts a number to currency format. Alias.</summary>
+             <param name="number">The number to convert to currency.</param>
+             <returns>A string representation of a number, rounded to two decimal places.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.AddBusinessDays(System.Int32)">
+            ****************************************************************************
+             <summary>Adds n number of business days from the current date.</summary>
+             <param name="numBusinessDays">The number of business days to add..</param>
+             <returns>A DateTime of today's date plus the number of business days specified.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.Run(System.String,System.String)">
+            ****************************************************************************
+             <summary>Runs an executable.</summary>
+             <param name="exe">The file path to the executable to run.</param>
+             <param name="arguments">Any arguments to pass to the executable.</param>
+             <returns>Output of the executable.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.Run(System.String,System.String,System.String)">
+            ****************************************************************************
+             <summary>Runs an executable.</summary>
+             <param name="exe">The file path to the executable to run.</param>
+             <param name="folder">The folder to start the executable from.</param>
+             <param name="arguments">Any arguments to pass to the executable.</param>
+             <returns>Output of the executable.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Utility.CheckDate(System.String)">
+            ****************************************************************************
+             <summary>Determines whether this is a valid date/time.</summary>
+             <param name="date">The date to check.</param>
+             <returns>True if date is valid date/time. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="T:Utilities.WarwickSettings">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>August 29, 2012 - 1:17 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Manages program settings stored in the Warwick.settings database table.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.#ctor">
+            ****************************************************************************
+             <summary>Constructor. Reads in all settings for a particular project. The 
+               project name is assumed to be the executable.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.#ctor(System.String)">
+            ****************************************************************************
+             <summary>Constructor. Reads in all settings for a particular project.</summary>
+             <param name="projectName">The project name to read settings for.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.#ctor(System.String,System.String)">
+            ****************************************************************************
+             <summary>Constructor. Reads in all settings for a particular project and company name.</summary>
+             <param name="projectName">The project name to read settings for.</param>
+             <param name="companyName">The company name to read settings for.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.getList(System.String)">
+            *****************************************************************************
+             <summary>Gets a list of all setting values for a particular argument.</summary>
+             <param name="argument">The setting argument to search for.</param>
+             <returns>List of setting values.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.Update(System.String,System.String)">
+            *****************************************************************************
+             <summary>Updates a setting value.</summary>
+             <param name="argument">The argument to update.</param>
+             <param name="value">The value to update.</param>
+             <returns>True if the argument exists and was sucessfully updated. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.getString(System.String)">
+            *****************************************************************************
+             <summary>Gets the row value as a string.</summary>
+             <param name="column">The column name to retrieve.</param>
+             <returns>The string representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.getStringSafely(System.String)">
+            ****************************************************************************
+             <summary>Gets the row value as a string. If it's a null string, return empty string.</summary>
+             <param name="column">The column name to retrieve.</param>
+             <returns>The string representation of the sql data. If null, returns an empty string.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.getInt(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to an integer.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The integer representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.getDouble(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a double.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The double representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.getFloat(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a float.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The float representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.getDateTime(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a DateTime.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The DateTime representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.getBoolean(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a boolean.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The boolean representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.WarwickSettings.getBytes(System.String)">
+            ****************************************************************************
+             <summary>Converts row value to a byte array.</summary>
+             <param name="column">The column data to convert.</param>
+             <returns>The byte array representation of the sql data.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Utilities.WarwickSettings.Item(System.String)">
+            <value>Setting value for a particular setting argument.</value> *
+        </member>
+        <member name="P:Utilities.WarwickSettings.Item(System.String,System.String)">
+            <value>Setting value for a particular setting argument of a company.</value> *
+        </member>
+        <member name="P:Utilities.WarwickSettings.CompanyId">
+            <value>The company to use for reading in settings.</value> *
+        </member>
+        <member name="P:Utilities.WarwickSettings.SystemId">
+            <value>The system to use for reading in settings.</value> *
+        </member>
+        <member name="P:Utilities.WarwickSettings.CompanyName">
+            <value>The company name that we read in.</value> *
+        </member>
+        <member name="P:Utilities.WarwickSettings.CompanyList">
+            <value>List of companies that were read in.</value> *
+        </member>
+        <member name="T:Utilities.Xml.XmlX">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>Octoboer 17, 2012 - 2:14 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Handles serializing and deserializing XML files and strings.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlX.#ctor">
+            ****************************************************************************
+             <summary>Constructor.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlX.#ctor(System.String)">
+            ****************************************************************************
+             <summary>Constructor.</summary>
+             <param name="pathOrText">The file or xml string to read.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlX.getNode(System.String)">
+            ****************************************************************************
+             <summary>Returns xml tag object for a specified xpath.</summary>
+             <param name="xpath">The xpath, e.g. "/a/b/c" to look for.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlX.getArray(System.String)">
+            ****************************************************************************
+             <summary>Assumes we're looking for an array of values in the xpath.</summary>
+             <param name="xpath">The xpath, e.g. "/a/b/c" to look for.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlX.Read">
+            ****************************************************************************
+             <summary>Reads the xml data file.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlX.Write(System.String)">
+            ****************************************************************************
+             <summary>Writes an xml file.</summary>
+             <param name="xml">The xml data/file to write.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlX.IsLegalXmlChar(System.Char)">
+            ****************************************************************************
+             <summary>Whether a given character is allowed by XML 1.0.</summary>
+             <param name="c">The character to check.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlX.SanitizeXmlString(System.String)">
+            ****************************************************************************
+             <summary>Remove illegal XML characters from a string.</summary>
+             <param name="xml">The xml string to check.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlX.Read(System.String,System.Object)">
+            ****************************************************************************
+             <summary>Reads an xml file.</summary>
+             <param name="filename">The xml path to read</param>
+             <param name="xmlClass">The xml object to deserialize.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlX.Write(System.String,System.String)">
+            ****************************************************************************
+             <summary>Writes an xml file.</summary>
+             <param name="filename">The xml file path.</param>
+             <param name="xmlContents">Contents of the xml data.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlX.Write(System.String,System.Object)">
+            ****************************************************************************
+             <summary>Writes an xml file.</summary>
+             <param name="filename">The xml file path.</param>
+             <param name="xmlClass">The xml object to serialize.</param>
+            *****************************************************************************
+        </member>
+        <member name="P:Utilities.Xml.XmlX.Item(System.String)">
+            <value>XPath lookup for a particular xml element.</value> *
+        </member>
+        <member name="T:Utilities.Xml.XmlLinq">
+            ****************************************************************************
+             <author>Wayne Bryan/Tim Paris</author>
+             <date>October 24, 2012 - 10:14 AM</date>
+             <category>Utility Class</category>
+             <summary>
+               Manages Xml Linq documents.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlLinq.#ctor(System.String)">
+            ****************************************************************************
+             <summary>Constructor. Reads in the xml document.</summary>
+             <param name="xmlFile">XML file path to read.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlLinq.Read">
+            ****************************************************************************
+             <summary>Loads xml document.</summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlLinq.SanitizeXmlString(System.String)">
+            ****************************************************************************
+             <summary>Remove illegal XML characters from a string.</summary>
+             <param name="xml">The xml string.</param>
+             <returns>Clean xml string.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Utilities.Xml.XmlLinq.IsLegalXmlChar(System.Int32)">
+            ****************************************************************************
+             <summary>Whether a given character is allowed by XML 1.0.</summary>
+             <param name="character">The character to check.</param>
+             <returns>True if a valid xml character. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Utilities.Xml.XmlLinq.Xml">
+            <value>The XML Document.</value> *
+        </member>
+        <member name="P:Utilities.Xml.XmlLinq.Root">
+            <value>The Root element of the XML Document.</value> *
+        </member>
+        <member name="T:Utilities.Zip">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>January 14, 2012 - 4:20 PM</date>
+             <category>Utility Class</category>
+             <summary>
+               Provides common zip functionality.
+             </summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Zip.#ctor(System.String)">
+            ****************************************************************************
+             <summary>Constructor. Stores filename.</summary>
+             <param name="filename">File location of where to find the zip file.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Zip.Create(System.String[])">
+            ****************************************************************************
+             <summary>Creates a zip file from a list of files.</summary>
+             <param name="files">The list of files that will make up the created zip file.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Zip.Create(System.String)">
+            ****************************************************************************
+             <summary>Creates a zip file from a single file.</summary>
+             <param name="file">The file that will make up the created zip file.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Zip.ZipFile(System.String[])">
+            ****************************************************************************
+             <summary>Creates a zip file from a list of files.</summary>
+             <param name="files">The file list that will make up the created zip file.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Zip.ZipFile(System.String)">
+            ****************************************************************************
+             <summary>Creates a zip file from a single file.</summary>
+             <param name="file">The file that will make up the created zip file.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Utilities.Zip.Unzip(System.String)">
+            ****************************************************************************
+             <summary>Unzips the zip file to the given output folder.</summary>
+             <param name="outputFolder">The directory path to unzip the contents to.</param>
+            ******************************************************************************
+        </member>
+        <member name="P:Utilities.Zip.filename">
+            <value>The file location to read/write the zip file.</value> *
+        </member>
+        <member name="P:Utilities.Zip.FileList">
+            <value>List of files in the zip archive.</value> *
+        </member>
+    </members>
+</doc>

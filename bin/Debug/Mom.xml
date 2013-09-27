@@ -1,0 +1,444 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mom</name>
+    </assembly>
+    <members>
+        <member name="T:Warehouse.Mom.Company">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>March 27, 2012 - 9:58 AM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides specific company information to the MOM system. Right now, there 
+               is not any need for additional functionality.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Mom.CompanyInfo">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>November 19, 2012 - 1:11 PM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Sets up instant connections to a Mom Database for a company. If the 
+               development flag is set, a connection to Mom-Flourish will be established.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.CompanyInfo.loadCompany(System.String)">
+            ****************************************************************************
+            		 * <summary>Finds the Mom company based on a string.</summary>
+            		 * <param name="companyName">The company id to search for.</param>
+                     * <returns>Corresponding company object.</returns>
+            		 *******************************************************************************
+        </member>
+        <member name="P:Warehouse.Mom.CompanyInfo.WARWICK">
+            <value>Connection to Mom. Defaults to test database, Mom-Flourish.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.CompanyInfo.FLOURISH">
+            <value>Connection to Mom. Defaults to test database, Mom-Flourish.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.CompanyInfo.OLIOCARLI">
+            <value>Connection to Olio Carli Mom Database.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.CompanyInfo.WILLITS">
+            <value>Connection to Willits Mom Database.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.CompanyInfo.FREECOUNTRY">
+            <value>Connection to Free Country Mom Database.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.CompanyInfo.AHCA">
+            <value>Connection to Mom. Defaults to test database, Mom-AHCA.</value> *
+        </member>
+        <member name="T:Warehouse.Mom.Country">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>March 27, 2012 - 10:16 AM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides functionality to a country in MOM.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.Mom.Country.country">
+            <value>Public access to the MOM supplier table</value> *
+        </member>
+        <member name="T:Warehouse.Mom.Customer">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>May 13, 2010 - 9:34 AM</date>
+             <updated>March 27, 2012 10:00 AM</updated>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides access to a customer record in MOM.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Mom.Department">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>March 27, 2012 - 10:01 AM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides access to a site link department.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Department.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Simply calls the parent constructor to setup the mom connection.</summary>
+             <param name="company">The company to use for MOM access.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Department.Exists">
+            ****************************************************************************
+             <summary>Determines if the department exists.</summary>
+             <returns>True if the department exists. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Department.Create">
+            ****************************************************************************
+             <summary>Creates a new sitelink department.</summary>
+             <returns>True if the department was successfully created. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Department.Read">
+            ****************************************************************************
+             <summary>Reads in the sitelink department values from the database.</summary>
+             <returns>True if the department could be found and read. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.Mom.Department.sldept">
+            <value>Public access to the MOM sl_dept table</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Department.id">
+            <value>Alias of the department name.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Department.name">
+            <value>The name of the department.</value> *
+        </member>
+        <member name="T:Warehouse.Mom.Inventory">
+            *****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>September 30, 2010 - 1:41 PM</date>
+             <category>Warehouse Class</category>
+             <summary>Provides Inventory management for the MOM system.</summary>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.#ctor(Warehouse.Company)">
+            *****************************************************************************
+             <summary>Constructor. Assigns company value.</summary>
+             <param name="company">The Company object to store.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.#ctor(Warehouse.Mom.Inventory)">
+            *****************************************************************************
+             <summary>Copy Constructor. Copies Inventory member data.</summary>
+             <param name="inventory">The Inventory object to copy.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.ToString">
+            *****************************************************************************
+             <summary>Gets text details of the Inventory object.</summary>
+             <returns>String representation of the Inventory class.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.Adjustment(System.Int32)">
+            *****************************************************************************
+             <summary>Creates an inventory adjust record in MOM.</summary>
+             <returns>True if adjustment was successful. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.setSiteLink(Warehouse.Mom.SiteLink)">
+            *****************************************************************************
+             <summary>Stores a sitelink object for the Inventory item.</summary>
+             <param name="sitelink">The sitelink object to use for this Inventory item.</param>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.Copy">
+            *****************************************************************************
+             <summary>Copies the current object data.</summary>
+             <returns>New Inventory object copy.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.Exists">
+            *****************************************************************************
+             <summary>Determines if this Inventory object exists.</summary>
+             <returns>True if the inventory item already exists. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.Create">
+            *****************************************************************************
+             <summary>
+               Creates a new Inventory object for the MOM company. If the mom tables already
+               exist, based on sku, then the tables will just be updated. Creates stock, bin,
+               stockinf, stockmem, inventor, invtrans, and froogle tables.
+             </summary>
+             <returns>True if Inventory creation is successful. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.Read">
+            *****************************************************************************
+             <summary>Reads in Inventory data, based on sku.</summary>
+             <returns>True if read was successful, false otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.ReadAll">
+            *****************************************************************************
+             <summary>Reads a list of Inventory items.</summary>
+             <returns>Array of Inventory objects read.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.Update">
+            *****************************************************************************
+             <summary>Updates the inventory object. Will create a table if it doesn't exist.</summary>
+             <returns>True if update was successful. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Inventory.Delete">
+            *****************************************************************************
+             <summary>Deletes the Inventory in MOM.</summary>
+             <returns>True if deletion was successful. False otherwise.</returns>
+            ******************************************************************************
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.stock">
+            <value>Public access to the MOM stock table</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.stockinf">
+            <value>Public access to the MOM stockinf table</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.stockmem">
+            <value>Public access to the MOM stockmem table</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.bin">
+            <value>Public access to the MOM bin table</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.inventor">
+            <value>Public access to the MOM inventor table</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.froogle">
+            <value>Public access to the MOM froogle table</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.new_">
+            <value>Public access to the MOM new table</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.id">
+            <value>The sku of the item.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.quantity">
+            <value>The quantity of the item. This represents the "Units In Stock" value in MOM, which is equal to "Net on Shelf" - "Units Committed".</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.description">
+            <value>The text description of the item.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.description2">
+            <value>Additional text description of the item.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.price">
+            <value>The price of the item.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.kit">
+            <value>Whether or not this item is a kit.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.dropship">
+            <value>Whether this item allows drop shipping.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.Suppliers">
+            <value>List of suppliers for this item.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.Supplier">
+            <value>The primary supplier for this item.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Inventory.SiteLink">
+            <value>Access to SiteLink information.</value> *
+        </member>
+        <member name="T:Warehouse.Mom.OrderItem">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>May 14, 2010 - 2:35 PM</date>
+             <updated>March 27, 2012 10:03 AM</updated>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides access to a line item on an order.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Mom.Kit">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>March 27, 2012 - 10:03 PM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides access to the kitting functionality in MOM.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Mom.Order">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>May 14, 2010 - 2:35 PM</date>
+             <updated>March 27, 2012 - 10:04 AM</updated>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides access to a MOM order..
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.Mom.Order.TotalItemPrice">
+            FIX -- how not to include *
+        </member>
+        <member name="T:Warehouse.Mom.Plan">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>May 28, 2010 - 2:06 PM</date>
+             <updated>March 27, 2012 10:04 AM</updated>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides access to a continuity plan in MOM.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Mom.PurchaseOrder">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>March 27, 2012 - 10:05 AM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides functionality for a purchase order in MOM.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="T:Warehouse.Mom.SiteLink">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>March 27, 2012 - 10:06 AM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides functionality for SiteLink information of an inventory item.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.SiteLink.#ctor(Warehouse.Company)">
+            ****************************************************************************
+             <summary>Constructor. Simply calls the parent constructor.</summary>
+             <param name="company">The mom company to use for access.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.SiteLink.Exists">
+            ****************************************************************************
+             <summary>Determines if the sitelink item exists.</summary>
+             <returns>True if the sitelink item exists. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.SiteLink.Create">
+            ****************************************************************************
+             <summary>Creates a new sitelink item.</summary>
+             <returns>True if the sitelink item was successfully created. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.SiteLink.Read">
+            ****************************************************************************
+             <summary>Reads in the sitelink values from the database.</summary>
+             <returns>True if the sitelink item could be found and read. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.Mom.SiteLink.sldepts">
+            <value>Access to the site link departments.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.SiteLink.sldept">
+            <value>Access to the first site link department, since many site link items only have one department associated.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.SiteLink.slprod">
+            <value>Access to the sitelink product table.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.SiteLink.slcross">
+            <value>Access to the sl_cross table.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.SiteLink.stockmem">
+            <value>Access to the stockmem table for a sitelink item.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.SiteLink.stock">
+            <value>Access to the stock table for a sitelink item.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.SiteLink.shortDescription">
+            <value>A short description of the product. Found on the product listing page.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.SiteLink.description">
+            <value>A longer, detailed description of the product. Found on the main product page.</value> *
+        </member>
+        <member name="T:Warehouse.Mom.Supplier">
+            ****************************************************************************
+             <author>Wayne Bryan</author>
+             <date>March 27, 2012 - 9:51 AM</date>
+             <category>Warehouse Class</category>
+             <summary>
+               Provides functionality for a supplier of an inventory item.
+             </summary>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Supplier.#ctor(Warehouse.Mom.Company,Warehouse.Mom.Inventory)">
+            ****************************************************************************
+             <summary>Constructor. Just calls parent constructor to setup the company.</summary>
+             <param name="company">The mom company to provide access to the sql database.</param>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Supplier.Exists">
+            ****************************************************************************
+             <summary>Determines if the supplier table exists, based on the unique supplier code.</summary>
+             <returns>True if the supplier code exists. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Supplier.Create">
+            ****************************************************************************
+             <summary>Creates a new supplier.</summary>
+             <returns>True if the supplier record is created successfully. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Supplier.Read">
+            ****************************************************************************
+             <summary>Reads in a supplier.</summary>
+             <returns>True if the supplier code can be read. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="M:Warehouse.Mom.Supplier.Update">
+            ****************************************************************************
+             <summary>Updates the supplier table.</summary>
+             <returns>True if the supplier table was updated successfully. False otherwise.</returns>
+            *****************************************************************************
+        </member>
+        <member name="P:Warehouse.Mom.Supplier.supplier">
+            <value>Public access to the MOM supplier table</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Supplier.buyprice">
+            <value>Public access to the MOM buyprice table</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Supplier.id">
+            <value>The unique id string for the supplier. This is a short name, and can only be 6 characters.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Supplier.name">
+            <value>The full name of the supplier.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Supplier.address">
+            <value>The address of the supplier.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Supplier.address2">
+            <value>The 2nd line address of the supplier.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Supplier.address3">
+            <value>The 3rd line address of the supplier.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Supplier.phone">
+            <value>The telephone number of the supplier.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Supplier.fax">
+            <value>The fax number of the supplier.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Supplier.email">
+            <value>The email address contact for the supplier.</value> *
+        </member>
+        <member name="P:Warehouse.Mom.Supplier.country">
+            <value>The country of the supplier.</value> *
+        </member>
+    </members>
+</doc>
